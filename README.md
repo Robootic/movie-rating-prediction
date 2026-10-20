@@ -78,7 +78,7 @@ Cada etapa tem um notebook que explica o que foi feito, por que e o que foi enco
 | Etapa | Status | Notebook | O que foi feito / principais achados |
 |---|---|---|---|
 | 1. Análise exploratória | ✅ Concluída | [01_eda](notebooks/01_eda.ipynb) | Reproduzimos a referência linear (RMSE de CV ≈ 0,83). O achado principal é a **afinidade de gênero**: a proporção do gênero do filme no histórico do usuário é uma interação que a linear bruta não enxerga, e só ela leva o RMSE a ≈ 0,66. Também encontramos curvatura nessa relação, efeito de teto/piso do alvo em [0, 5] e colinearidade perfeita entre as `share_*`. |
-| 2. Protocolo de validação | ⏳ A fazer | — | Validação cruzada repetida com dobras fixas e baselines. |
+| 2. Protocolo de validação | ✅ Concluída | [02_validacao](notebooks/02_validacao.ipynb) | Protocolo fixo: **5 dobras × 3 repetições** (semente 2026), as mesmas para todos os modelos, implementado em [`src/validation.py`](src/validation.py). Um holdout único varia ±0,02 só pela divisão, contra ±0,0003 do protocolo. Os baselines do enunciado foram reproduzidos (constante ≈ 1,17, linear ≈ 0,82). A comparação pareada confirma o ganho da afinidade (≈ 0,65, melhor em 15 de 15 dobras). A curva do kNN ilustra o equilíbrio viés–variância, e a validação aninhada mede o otimismo da escolha de hiperparâmetros. |
 | 3. Modelos lineares com engenharia de atributos | ⏳ A fazer | — | Afinidade, encolhimento das médias, splines, Ridge e Lasso. |
 | 4. Modelos não lineares | ⏳ A fazer | — | kNN, árvores e ensembles, SVM, redes neurais, abordagem ordinal. |
 | 5. Modelo final e submissão | ⏳ A fazer | — | |
