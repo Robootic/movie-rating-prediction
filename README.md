@@ -55,7 +55,7 @@ docs/          documentos de organização do projeto
 
 ## Como reproduzir
 
-Requer Python 3.10 ou superior.
+Requer Python 3.9 ou superior.
 
 ```bash
 git clone https://github.com/Robootic/movie-rating-prediction.git
@@ -70,6 +70,19 @@ Coloque os arquivos `train.csv` e `test.csv` em `data/` e abra os notebooks com 
 ## Resultados
 
 *Em andamento.* A tabela com o RMSE de validação de cada modelo será adicionada aqui.
+
+## Andamento do projeto
+
+Cada etapa tem um notebook que explica o que foi feito, por que e o que foi encontrado. Esta tabela resume as etapas e aponta para cada notebook.
+
+| Etapa | Status | Notebook | O que foi feito / principais achados |
+|---|---|---|---|
+| 1. Análise exploratória | ✅ Concluída | [01_eda](notebooks/01_eda.ipynb) | Reproduzimos a referência linear (RMSE de CV ≈ 0,83). O achado principal é a **afinidade de gênero**: a proporção do gênero do filme no histórico do usuário é uma interação que a linear bruta não enxerga, e só ela leva o RMSE a ≈ 0,66. Também encontramos curvatura nessa relação, efeito de teto/piso do alvo em [0, 5] e colinearidade perfeita entre as `share_*`. |
+| 2. Protocolo de validação | ⏳ A fazer | — | Validação cruzada repetida com dobras fixas e baselines. |
+| 3. Modelos lineares com engenharia de atributos | ⏳ A fazer | — | Afinidade, encolhimento das médias, splines, Ridge e Lasso. |
+| 4. Modelos não lineares | ⏳ A fazer | — | kNN, árvores e ensembles, SVM, redes neurais, abordagem ordinal. |
+| 5. Modelo final e submissão | ⏳ A fazer | — | |
+| 6. Relatório | ⏳ A fazer | — | |
 
 ## Referências
 

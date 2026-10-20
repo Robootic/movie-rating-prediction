@@ -16,3 +16,6 @@ venv/
 
 # Dados (fornecidos pelo professor, não versionados)
 data/*.csv
+
+# Documentos internos do grupo
+docs/PLANO.md
