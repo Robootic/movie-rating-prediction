@@ -13,3 +13,6 @@ venv/
 *.log
 *.out
 *.synctex.gz
+
+# Dados (fornecidos pelo professor, não versionados)
+data/*.csv

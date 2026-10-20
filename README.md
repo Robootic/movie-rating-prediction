@@ -1,99 +1,77 @@
-# Prevendo avaliações de filmes — Projeto MAE0501
+# Prevendo avaliações de filmes
 
-Projeto da disciplina **MAE0501 – Aprendizagem Estatística** (IME–USP, 2º semestre de 2026, Prof. Morgan André).
+Este repositório tenta prever **quantas estrelas (de 0 a 5) um usuário dá a um filme** numa plataforma de streaming fictícia. A previsão usa apenas estatísticas-resumo do usuário e do filme. Não há identificadores nem histórico completo.
 
-**Tarefa:** dado um par (usuário, filme) descrito por 10 atributos, prever quantas estrelas (0 a 5) o usuário dá ao filme.
-**Métrica:** RMSE no conjunto de teste (previsões reais, cortadas em [0, 5]).
+O trabalho foi desenvolvido como projeto da disciplina MAE0501 – Aprendizagem Estatística (IME–USP, 2026). A ideia central é usar o problema para estudar, na prática, **generalização, validação e o equilíbrio entre viés e variância**.
 
-| Referência | RMSE |
+## O problema
+
+Cada linha é um par (usuário, filme) descrito por dez atributos:
+
+| Grupo | Atributo | Descrição |
+|---|---|---|
+| Usuário | `user_avg_stars` | média das notas que o usuário deu a outros filmes |
+| | `user_n_ratings` | quantas notas essa média resume |
+| | `age` | idade (16–80) |
+| | `share_action`, `share_comedy`, `share_drama` | proporção de cada gênero no histórico do usuário (somam 1) |
+| Filme | `movie_avg_stars` | média das notas que outros usuários deram ao filme |
+| | `movie_n_ratings` | quantas notas essa média resume |
+| | `genre` | `action`, `comedy` ou `drama` |
+| | `release_year` | ano de lançamento (1970–2024) |
+| **Alvo** | `stars` | estrelas dadas pelo usuário ao filme (0–5) |
+
+Os dados são sintéticos: 4000 pares de treino e 2000 de teste, sem valores faltantes.
+
+### Métrica e referências
+
+O desempenho é medido pela **raiz do erro quadrático médio (RMSE)**. As previsões são números reais, cortados no intervalo [0, 5].
+
+| Modelo | RMSE |
 |---|---|
-| Constante (média de treino) | ~1,19 |
-| Regressão linear nos 10 atributos brutos | ~0,84 ← meta a bater |
-| Oráculo (piso teórico, ruído irredutível) | ~0,39 |
+| Previsão constante (média de treino) | ≈ 1,19 |
+| Regressão linear nos atributos brutos | ≈ 0,84 |
+| Oráculo (conhece o mecanismo gerador; piso teórico) | ≈ 0,39 |
 
-**Entregáveis:** `submissions/` (arquivo `pair_id,stars`), o código deste repositório e um relatório de no máximo 4 páginas em `report/`.
-**Avaliação:** qualidade da **validação** e capacidade de explicar, nos termos do curso, **por que** o modelo final supera (ou não) a regressão linear.
+A distância entre a regressão linear e o oráculo mostra o quanto ainda há de estrutura a ser capturada. O que fica abaixo de 0,39 é ruído irredutível.
 
----
+## Abordagem
+
+1. **Análise exploratória:** investigar relações não lineares e interações. Por exemplo, a afinidade entre os gêneros que o usuário costuma assistir e o gênero do filme, e o quanto confiar numa média que resume poucas notas.
+2. **Protocolo de validação:** usar validação cruzada k-fold com as mesmas dobras para todos os modelos. O conjunto de teste é usado só na previsão final.
+3. **Modelos lineares com engenharia de atributos:** codificação de gênero, encolhimento (*shrinkage*) das médias, interações e splines, com regularização Ridge e Lasso.
+4. **Modelos não lineares:** k-vizinhos mais próximos, árvores e seus ensembles, SVM e redes neurais. Também uma formulação ordinal que prevê o valor esperado das estrelas.
+5. **Comparação e escolha do modelo:** decidir com base no erro de validação e interpretar o resultado à luz da teoria da generalização.
 
 ## Estrutura do repositório
 
 ```
-data/          train.csv, test.csv, sample_submission.csv (fornecidos pelo professor)
-notebooks/     análises exploratórias e experimentos (um notebook por etapa)
-src/           código reutilizável: validação, features, modelos
-submissions/   arquivos de submissão gerados
-report/        relatório final (≤ 4 páginas)
+data/          dados (não versionados; ver data/README.md)
+notebooks/     análises exploratórias e experimentos
+src/           código reutilizável: validação, atributos, modelos
+submissions/   previsões geradas para o conjunto de teste
+report/        relatório final
+docs/          documentos de organização do projeto
 ```
 
-## Como rodar
+## Como reproduzir
+
+Requer Python 3.10 ou superior.
 
 ```bash
+git clone https://github.com/Robootic/movie-rating-prediction.git
+cd movie-rating-prediction
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-jupyter lab
 ```
 
----
+Coloque os arquivos `train.csv` e `test.csv` em `data/` e abra os notebooks com `jupyter lab`.
 
-## Plano de trabalho
+## Resultados
 
-### Etapa 0 — Preparação
-- Colocar os CSVs em `data/`, configurar o ambiente, todos clonarem o repositório.
+*Em andamento.* A tabela com o RMSE de validação de cada modelo será adicionada aqui.
 
-### Etapa 1 — Análise exploratória (EDA)
-Perguntas que guiam a análise:
-- Como `stars` se relaciona com `user_avg_stars` e `movie_avg_stars`? A relação é linear?
-- **Confiabilidade das médias:** uma média calculada com 3 notas é muito mais ruidosa do que uma com 500. O efeito de `user_avg_stars` depende de `user_n_ratings`? (mesma pergunta para o filme)
-- **Afinidade de gênero:** o usuário que assiste muito drama gosta mais de filmes de drama? Isso é uma *interação* entre `genre` e `share_*` que a regressão linear bruta não enxerga.
-- Efeitos não lineares de `age` e `release_year`?
+## Referências
 
-### Etapa 2 — Protocolo de validação (a parte mais importante da nota)
-- **Validação cruzada k-fold** (k = 5, repetida com algumas sementes) sobre as 4000 linhas de treino, com **as mesmas dobras para todos os modelos** → comparação justa.
-- Reportar RMSE médio ± desvio entre dobras.
-- Toda escolha (features, hiperparâmetros) é feita **só** com a validação; o teste nunca é usado para decidir nada.
-- Reproduzir os dois baselines (constante ≈ 1,19 e linear ≈ 0,84) como sanidade do protocolo.
-- Ligação com a teoria: E_in (erro de treino) vs. E_out (erro fora da amostra), sobreajuste, desigualdade de Hoeffding (por que o erro de validação é um bom estimador de E_out).
-
-### Etapa 3 — Melhorar o modelo linear com boas features
-- Codificar `genre` (one-hot).
-- **Afinidade:** `share` do gênero do filme (ex.: se o filme é de ação, usar `share_action`).
-- **Encolhimento (shrinkage) das médias:** `(n · média + k · média_global) / (n + k)` — puxa médias baseadas em poucas notas para a média global.
-- Transformações (`log(n)`), interações, termos polinomiais / splines.
-- **Regularização** (Ridge / Lasso) para controlar a complexidade → trade-off viés–variância.
-
-### Etapa 4 — Modelos não lineares
-- k-vizinhos mais próximos, árvores, florestas aleatórias / gradient boosting (de acordo com o que for visto no curso).
-- Aproveitar a natureza **ordinal**: modelar P(stars = k) e prever o **valor esperado** E[stars] (não a classe mais provável).
-- (Opcional) variante de classificação "gostou" (stars ≥ 4).
-
-### Etapa 5 — Modelo final e submissão
-- Escolher o modelo pelo RMSE de validação (preferindo o mais simples entre os empatados — Navalha de Ockham).
-- Reajustar em todo o treino, prever o teste, cortar em [0, 5], gerar `submissions/submission.csv`.
-
-### Etapa 6 — Relatório (≤ 4 páginas) e apresentação
-1. Dados e EDA (principais achados)
-2. Protocolo de validação
-3. Modelos testados e tabela de RMSE de validação
-4. **Por que o modelo final supera a regressão linear** — viés (a linear bruta não representa interações/não linearidades) vs. variância (regularização, dimensão VC / número de parâmetros), distância até o piso do oráculo (0,39)
-5. Conclusão
-
----
-
-## Divisão de tarefas (sugestão)
-
-| Integrante | Responsabilidade principal |
-|---|---|
-| A | EDA + engenharia de features (Etapas 1 e 3) |
-| B | Protocolo de validação + baselines + modelos lineares regularizados (Etapas 2 e 3) |
-| C | Modelos não lineares / ordinais + submissão (Etapas 4 e 5) |
-
-O relatório é escrito por todos, e **todos** devem saber explicar por que o modelo final foi escolhido.
-
-## Fluxo de trabalho no Git
-
-1. `git pull` antes de começar.
-2. Crie uma branch para sua tarefa: `git checkout -b eda-afinidade`.
-3. Commits pequenos com mensagens claras.
-4. Abra um Pull Request e peça para um colega revisar antes de fazer merge na `main`.
+- Y. Abu-Mostafa, M. Magdon-Ismail e H.-T. Lin. *Learning from Data*. AMLBook, 2012.
+- G. James, D. Witten, T. Hastie e R. Tibshirani. *An Introduction to Statistical Learning*, 2ª ed., 2023.
