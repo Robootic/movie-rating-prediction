@@ -47,7 +47,8 @@ A distância entre a regressão linear e o oráculo mostra o quanto ainda há de
 ```
 data/          dados (não versionados; ver data/README.md)
 notebooks/     análises exploratórias e experimentos
-src/           código reutilizável: validação, atributos, modelos
+src/           código reutilizável: validação, atributos, receitas e experimentos
+results/       resultados em JSON das execuções completas
 submissions/   previsões geradas para o conjunto de teste
 report/        relatório final
 docs/          documentos de organização do projeto
@@ -79,10 +80,27 @@ Cada etapa tem um notebook que explica o que foi feito, por que e o que foi enco
 |---|---|---|---|
 | 1. Análise exploratória | ✅ Concluída | [01_eda](notebooks/01_eda.ipynb) | Reproduzimos a referência linear (RMSE de CV ≈ 0,83). O achado principal é a **afinidade de gênero**: a proporção do gênero do filme no histórico do usuário é uma interação que a linear bruta não enxerga, e só ela leva o RMSE a ≈ 0,66. Também encontramos curvatura nessa relação, efeito de teto/piso do alvo em [0, 5] e colinearidade perfeita entre as `share_*`. |
 | 2. Protocolo de validação | ✅ Concluída | [02_validacao](notebooks/02_validacao.ipynb) | Protocolo fixo: **5 dobras × 3 repetições** (semente 2026), as mesmas para todos os modelos, implementado em [`src/validation.py`](src/validation.py). Um holdout único varia ±0,02 só pela divisão, contra ±0,0003 do protocolo. Os baselines do enunciado foram reproduzidos (constante ≈ 1,17, linear ≈ 0,82). A comparação pareada confirma o ganho da afinidade (≈ 0,65, melhor em 15 de 15 dobras). A curva do kNN ilustra o equilíbrio viés–variância, e a validação aninhada mede o otimismo da escolha de hiperparâmetros. |
-| 3. Modelos lineares com engenharia de atributos | ⏳ A fazer | — | Afinidade, encolhimento das médias, splines, Ridge e Lasso. |
-| 4. Modelos não lineares | ⏳ A fazer | — | kNN, árvores e ensembles, SVM, redes neurais, abordagem ordinal. |
-| 5. Modelo final e submissão | ⏳ A fazer | — | |
+| 3. Modelos lineares com engenharia de atributos | 🧪 Preparado para execução | [03_lineares](notebooks/03_lineares.ipynb), [04_splines](notebooks/04_splines.ipynb) | Ridge, Lasso, Elastic Net, encolhimento, interações e splines. |
+| 4. Modelos não lineares | 🧪 Preparado para execução | [05_knn](notebooks/05_knn.ipynb), [06_arvores](notebooks/06_arvores.ipynb), [07_boosting](notebooks/07_boosting.ipynb), [08_svr](notebooks/08_svr.ipynb), [09_mlp](notebooks/09_mlp.ipynb) | Busca interna de hiperparâmetros e avaliação externa comum. Abordagem ordinal fica como extensão. |
+| 5. Modelo final e submissão | 🧪 Preparado para execução | [10_comparacao_final](notebooks/10_comparacao_final.ipynb) | Carrega os resultados, compara, reajusta e exporta quando `test.csv` estiver disponível. |
 | 6. Relatório | ⏳ A fazer | — | |
+
+## Executar os experimentos por família
+
+Abra os notebooks 03–09 a partir da raiz do projeto ou da pasta `notebooks` e execute as células em ordem. Eles são independentes entre si e compartilham as receitas de `src/experiments.py`. Não é necessário executar novamente a EDA ou o notebook de validação.
+
+- `SMOKE_TEST = False` (padrão): avaliação completa nas mesmas 5 dobras × 3 repetições, com busca interna de 3 dobras em cada partição externa. Pode levar vários minutos por família.
+- `SMOKE_TEST = True`: verifica os pipelines com uma amostra e uma configuração por receita. Não salva resultados e não serve para comparar desempenho.
+- As execuções completas salvam `results/<família>.json`: erros por dobra, configurações escolhidas, previsões externas e identificação dos dados, código e protocolo. Reexecute as famílias se esses elementos mudarem.
+- O notebook 10 lê esses arquivos sem repetir os experimentos. Informa famílias pendentes e faz uma nova busca somente para ajustar o modelo escolhido em todo o treino.
+- Para gerar `submissions/submission_final.csv`, adicione `data/test.csv`. O arquivo ainda não está presente nesta cópia do projeto.
+
+A avaliação aninhada protege a busca de hiperparâmetros dentro de cada receita. A escolha final entre famílias ainda pode tornar o menor erro observado otimista; a comparação final explicita essa limitação. As conclusões dos notebooks devem ser preenchidas após as execuções completas.
+
+## Materiais de estudo e próximos passos
+
+- [Apresentação visual dos modelos](docs/modelos-bauhaus.html): slides em HTML com exemplos didáticos animados e controles interativos. Abra o arquivo no navegador.
+- [Próximos passos e plano de estudo](docs/proximos-passos.md): sequência dos experimentos, conceitos prioritários e revisão dos notebooks com a voz e a compreensão do grupo.
 
 ## Referências
 
