@@ -1,0 +1,329 @@
+{
+  "notebook": "07_comparacao_boosting",
+  "data_sha256": "c6a68513f1453981505a4109c6c964e7bf8bb6c9f4dc52de5fcace32cf6c2c4e",
+  "code_sha256": "3493028047e56d83ee7f4cd42863e1d7413cfa3017cac747381a81df4249f62e",
+  "partitions_sha256": "ab4ddce6641939fcc3fb86e2c4fbe208ba2b63fafcc51cba0f3f0218af84f496",
+  "protocol": {
+    "n_splits": 5,
+    "n_repeats": 5,
+    "seed": 2026,
+    "clip": true
+  },
+  "versions": {
+    "python": "3.9.6",
+    "numpy": "2.0.2",
+    "pandas": "2.3.3",
+    "sklearn": "1.6.1"
+  },
+  "records": [
+    {
+      "name": "Regressão com gênero",
+      "array_key": "model_0",
+      "rmse_oof": 0.6250359648961895,
+      "rmse_repeat": [
+        0.6246813428550095,
+        0.6248735290788593,
+        0.6251188517525503,
+        0.6249704107870976,
+        0.6255353598623553
+      ],
+      "rmse_valid": [
+        0.6256282475458249,
+        0.6216059974368442,
+        0.6146211611292516,
+        0.6397238843068009,
+        0.6215491617873244,
+        0.6423914251659507,
+        0.626736192612364,
+        0.6135267156427257,
+        0.6204315842593309,
+        0.620901970448205,
+        0.6089882301010612,
+        0.5939124301294744,
+        0.6292604805695009,
+        0.6422634289935183,
+        0.649459922080757,
+        0.6318504424498793,
+        0.6162174682901017,
+        0.6186045935227769,
+        0.6213946643445042,
+        0.6365360554938718,
+        0.6174860156464561,
+        0.5982470569281109,
+        0.6593899478218667,
+        0.6290626109074637,
+        0.6219075814124722
+      ],
+      "rmse_train": [
+        0.6225532510180743,
+        0.6243086179264561,
+        0.6260958480656634,
+        0.6194045443836896,
+        0.6247410875765869,
+        0.6182531864483135,
+        0.6235029386368778,
+        0.6255069639824477,
+        0.6252765777548625,
+        0.6244998495278662,
+        0.6274119606197384,
+        0.6307131224632425,
+        0.6220902324061601,
+        0.6196447826131565,
+        0.6169593736007286,
+        0.6225613797122717,
+        0.6253633104839064,
+        0.6251048131546924,
+        0.6236654882282943,
+        0.6202486067629142,
+        0.6247279445797259,
+        0.6296282388964277,
+        0.6161276978699104,
+        0.6222507011655738,
+        0.6237939970564395
+      ]
+    },
+    {
+      "name": "Boosting",
+      "array_key": "model_1",
+      "rmse_oof": 0.6192478088536497,
+      "rmse_repeat": [
+        0.6178263965335731,
+        0.6206035819195266,
+        0.619797975568372,
+        0.6176080976798055,
+        0.6203963965618312
+      ],
+      "rmse_valid": [
+        0.6268356549658044,
+        0.6081349298681145,
+        0.6115256676826878,
+        0.6234086271769846,
+        0.6190268906378337,
+        0.6332852931332308,
+        0.6307299763287516,
+        0.6047145076186646,
+        0.6201777954907749,
+        0.6136557098030958,
+        0.6020334966835736,
+        0.6024781243895978,
+        0.622153905769426,
+        0.6282532241060822,
+        0.6430752949945783,
+        0.6108815470488821,
+        0.6149905159289978,
+        0.6081966533329812,
+        0.6226340152066512,
+        0.6310569913827874,
+        0.6033461455001525,
+        0.5982990334568905,
+        0.6515875047288421,
+        0.6257162785764768,
+        0.6215971380362285
+      ],
+      "rmse_train": [
+        0.5653487633429187,
+        0.5638457723557287,
+        0.5691796842912532,
+        0.5629122488797578,
+        0.5641001936647152,
+        0.5621244561778493,
+        0.5666985662278737,
+        0.5651847148905582,
+        0.5646897876175585,
+        0.5649856188081923,
+        0.5668994509823478,
+        0.5712723781095935,
+        0.5665827391944149,
+        0.5598929106424961,
+        0.5595850652717566,
+        0.567521421284155,
+        0.5655361755693695,
+        0.5651577044048555,
+        0.5616378110866651,
+        0.5620555985460454,
+        0.5703567479114007,
+        0.5753479584078591,
+        0.5632168995226404,
+        0.571527298039694,
+        0.5625272515913212
+      ]
+    }
+  ],
+  "selections": [
+    {
+      "particao": 1,
+      "l2_regularization": 10.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6245607118446644
+    },
+    {
+      "particao": 2,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6266647602720633
+    },
+    {
+      "particao": 3,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6279149717324878
+    },
+    {
+      "particao": 4,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6237150918313827
+    },
+    {
+      "particao": 5,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6259324161180965
+    },
+    {
+      "particao": 6,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6269497156564178
+    },
+    {
+      "particao": 7,
+      "l2_regularization": 10.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6182238892270168
+    },
+    {
+      "particao": 8,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6262506474037002
+    },
+    {
+      "particao": 9,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6208380405259797
+    },
+    {
+      "particao": 10,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6271445937803598
+    },
+    {
+      "particao": 11,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6323154897566302
+    },
+    {
+      "particao": 12,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6316588221821998
+    },
+    {
+      "particao": 13,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 60,
+      "RMSE interno selecionado": 0.6257232525847541
+    },
+    {
+      "particao": 14,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6211207310089081
+    },
+    {
+      "particao": 15,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6155188589317383
+    },
+    {
+      "particao": 16,
+      "l2_regularization": 10.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6234704260761376
+    },
+    {
+      "particao": 17,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6271475969411652
+    },
+    {
+      "particao": 18,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6248541089357132
+    },
+    {
+      "particao": 19,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.620894134094215
+    },
+    {
+      "particao": 20,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6252742533831044
+    },
+    {
+      "particao": 21,
+      "l2_regularization": 10.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6253680292875914
+    },
+    {
+      "particao": 22,
+      "l2_regularization": 10.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6290209980394658
+    },
+    {
+      "particao": 23,
+      "l2_regularization": 10.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.615486716518198
+    },
+    {
+      "particao": 24,
+      "l2_regularization": 10.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6218619978392858
+    },
+    {
+      "particao": 25,
+      "l2_regularization": 0.0,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "RMSE interno selecionado": 0.6296605804466943
+    }
+  ]
+}

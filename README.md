@@ -32,22 +32,21 @@ O desempenho é medido pela **raiz do erro quadrático médio (RMSE)**. As previ
 | Regressão linear nos atributos brutos | ≈ 0,84 |
 | Oráculo (conhece o mecanismo gerador; piso teórico) | ≈ 0,39 |
 
-A distância entre a regressão linear e o oráculo mostra o quanto ainda há de estrutura a ser capturada. O que fica abaixo de 0,39 é ruído irredutível.
+Esses valores são referências históricas do problema, não métricas da rodada atual. A diferença até o oráculo não é uma promessa de ganho recuperável com os atributos disponíveis; o oráculo conhece o mecanismo gerador.
 
-## Abordagem
+## Linha investigativa
 
-1. **Análise exploratória:** investigar relações não lineares e interações. Por exemplo, a afinidade entre os gêneros que o usuário costuma assistir e o gênero do filme, e o quanto confiar numa média que resume poucas notas.
-2. **Protocolo de validação:** usar validação cruzada k-fold com as mesmas dobras para todos os modelos. O conjunto de teste é usado só na previsão final.
-3. **Modelos lineares com engenharia de atributos:** codificação de gênero, encolhimento (*shrinkage*) das médias, interações e splines, com regularização Ridge e Lasso.
-4. **Modelos não lineares:** k-vizinhos mais próximos, árvores e seus ensembles, SVM e redes neurais. Também uma formulação ordinal que prevê o valor esperado das estrelas.
-5. **Comparação e escolha do modelo:** decidir com base no erro de validação e interpretar o resultado à luz da teoria da generalização.
+Partimos de regressões simples para testar uma mudança por vez: duas médias, afinidade, curvatura e gênero. Depois comparamos procedimentos usando os mesmos seis atributos: regressão comum, Ridge, Bayesian Ridge e boosting. A investigação é guiada pela EDA e pelos resíduos; seus resultados são exploratórios, não confirmação independente.
+
+A rodada atual foi executada. Não adicionamos automaticamente redes, vizinhos ou outras árvores: os resíduos agora motivam discutir idade e ano de lançamento antes de abrir novas famílias.
 
 ## Estrutura do repositório
 
 ```
 data/          dados (não versionados; ver data/README.md)
 notebooks/     análises exploratórias e experimentos
-src/           código reutilizável: validação, atributos, modelos
+src/           código reutilizável: validação, atributos, receitas e experimentos
+results/       resultados em JSON das execuções completas
 submissions/   previsões geradas para o conjunto de teste
 report/        relatório final
 docs/          documentos de organização do projeto
@@ -67,22 +66,53 @@ pip install -r requirements.txt
 
 Coloque os arquivos `train.csv` e `test.csv` em `data/` e abra os notebooks com `jupyter lab`.
 
-## Resultados
+## Resultados da rodada atual
 
-*Em andamento.* A tabela com o RMSE de validação de cada modelo será adicionada aqui.
+5 folds × 5 repetições, semente 2026; RMSE sobre todas as previsões OOF separadamente, com corte em [0, 5]. Valores em estrelas. O teste não foi usado.
 
-## Andamento do projeto
+| Modelo | RMSE OOF repetido |
+|---|---:|
+| Constante | 1,165913 |
+| Só média do usuário | 1,038440 |
+| Só média do filme | 0,995403 |
+| Duas médias | 0,839575 |
+| Duas médias + afinidade | 0,660065 |
+| + afinidade² | 0,628989 |
+| + gênero | 0,625036 |
+| Ridge com os mesmos seis atributos | 0,625036 |
+| Bayesian Ridge com os mesmos seis atributos | 0,625074 |
+| Boosting com os mesmos seis atributos | 0,619248 |
 
-Cada etapa tem um notebook que explica o que foi feito, por que e o que foi encontrado. Esta tabela resume as etapas e aponta para cada notebook.
+A construção de atributos trouxe os maiores ganhos. Boosting melhorou em 20/25 partições e nas cinco repetições, mas a redução sobre regressão com gênero foi modesta (0,005788). Seu RMSE médio de treino foi 0,565527, contra 0,623377 da regressão: existe maior adaptação ao treino, não prova de ausência de sobreajuste. Regularização não trouxe ganho material. Nenhum modelo final foi escolhido.
 
-| Etapa | Status | Notebook | O que foi feito / principais achados |
-|---|---|---|---|
-| 1. Análise exploratória | ✅ Concluída | [01_eda](notebooks/01_eda.ipynb) | Reproduzimos a referência linear (RMSE de CV ≈ 0,83). O achado principal é a **afinidade de gênero**: a proporção do gênero do filme no histórico do usuário é uma interação que a linear bruta não enxerga, e só ela leva o RMSE a ≈ 0,66. Também encontramos curvatura nessa relação, efeito de teto/piso do alvo em [0, 5] e colinearidade perfeita entre as `share_*`. |
-| 2. Protocolo de validação | ✅ Concluída | [02_validacao](notebooks/02_validacao.ipynb) | Protocolo fixo: **5 dobras × 3 repetições** (semente 2026), as mesmas para todos os modelos, implementado em [`src/validation.py`](src/validation.py). Um holdout único varia ±0,02 só pela divisão, contra ±0,0003 do protocolo. Os baselines do enunciado foram reproduzidos (constante ≈ 1,17, linear ≈ 0,82). A comparação pareada confirma o ganho da afinidade (≈ 0,65, melhor em 15 de 15 dobras). A curva do kNN ilustra o equilíbrio viés–variância, e a validação aninhada mede o otimismo da escolha de hiperparâmetros. |
-| 3. Modelos lineares com engenharia de atributos | ⏳ A fazer | — | Afinidade, encolhimento das médias, splines, Ridge e Lasso. |
-| 4. Modelos não lineares | ⏳ A fazer | — | kNN, árvores e ensembles, SVM, redes neurais, abordagem ordinal. |
-| 5. Modelo final e submissão | ⏳ A fazer | — | |
-| 6. Relatório | ⏳ A fazer | — | |
+## Roteiro e estado dos notebooks
+
+| Notebook | Papel | Estado |
+|---|---|---|
+| [01 EDA](notebooks/01_eda.ipynb) | Exploração que motivou hipóteses | Histórico, preservar limites das conclusões |
+| [02 Validação](notebooks/02_validacao.ipynb) | Discussão do protocolo anterior 5 × 3 | Histórico, não define a rodada atual |
+| [03 Duas médias](notebooks/03_hipotese_duas_medias.ipynb) | Testar informação complementar | Executado, leitura para discussão |
+| [04 Afinidade](notebooks/04_hipotese_afinidade.ipynb) | Acrescentar afinidade | Executado, leitura para discussão |
+| [05 Curvatura](notebooks/05_hipotese_curvatura.ipynb) | Acrescentar afinidade² | Executado, leitura para discussão |
+| [06 Gênero](notebooks/06_hipotese_genero.ipynb) | Testar deslocamentos por gênero | Executado, ganho modesto |
+| [07 Boosting](notebooks/07_comparacao_boosting.ipynb) | Comparar flexibilidade com informação igual | Executado, busca interna de três folds |
+| [08 Regularização](notebooks/08_hipotese_regularizacao_bayesiana.ipynb) | Comparar regressão comum, Ridge e Bayesian Ridge | Executado, sem ganho material |
+| [09 Síntese](notebooks/09_sintese_investigacao.ipynb) | Consolidar e diagnosticar erros restantes | Executado, duas hipóteses propostas |
+
+As 25 partições externas são iguais para todos os modelos. A média das cinco previsões por observação serve apenas aos gráficos; não é a previsão pontuada. Ridge e boosting selecionam hiperparâmetros em três folds internos. Bayesian Ridge estima as precisões no treino com hiperparâmetros dos priors fixados.
+
+Os notebooks 03–08 são independentes e gravam previsões por repetição, erros, configurações e identificadores de dados/código via `src/current_results.py`. A síntese 09 verifica compatibilidade e reprodução das referências entre notebooks antes de comparar. Execute 03–08 antes de 09. Os resultados estão em `results/rodada_atual`; não se misturam aos JSONs antigos.
+
+As partições compartilham treino; variação e contagens de vitórias são descritivas. A busca aninhada protege a escolha de hiperparâmetros dentro de cada procedimento, mas a seleção entre famílias e a exploração de atributos continuam sujeitas a otimismo.
+
+**Próxima decisão:** discutir testes separados de idade e ano de lançamento, pois ambos exibem padrões nos resíduos de regressão e boosting. Ainda não implementados. Se alterarem os atributos escolhidos, refazer a comparação entre procedimentos com a mesma informação. Redes, vizinhos e outras árvores permanecem opcionais, não uma lista obrigatória.
+
+Os notebooks em `notebooks/antigos`, `src/experiments.py`, `src/validation.py` e os resultados fora de `results/rodada_atual` preservam o roteiro antigo. O dashboard e o notebook 11 são materiais auxiliares, não definem o protocolo nem substituem a síntese atual.
+
+## Materiais de estudo e próximos passos
+
+- [Apresentação visual dos modelos](docs/modelos-bauhaus.html): slides em HTML com exemplos didáticos animados e controles interativos. Abra o arquivo no navegador.
+- [Próximos passos e plano de estudo](docs/proximos-passos.md): sequência dos experimentos, conceitos prioritários e revisão dos notebooks com a voz e a compreensão do grupo.
 
 ## Referências
 
