@@ -73,6 +73,7 @@ python -m src.ridge_sensitivity
 python -m src.final_feature_tests
 python -m src.count_feature_test
 python -m src.final_submission
+python -m src.reference_linear
 python -m src.corrected_test
 python -m src.nostalgia_test
 python report/build_report.py
@@ -85,6 +86,7 @@ python report/build_report.py
 | Modelo | RMSE OOF repetido |
 |---|---:|
 | Constante | 1,165913 |
+| Regressão nos dez atributos brutos (referência do enunciado) | 0,824064 |
 | Só média do usuário | 1,038440 |
 | Só média do filme | 0,995403 |
 | Duas médias | 0,839575 |
