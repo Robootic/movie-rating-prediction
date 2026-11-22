@@ -4,6 +4,10 @@ __pycache__/
 .venv/
 venv/
 .ipynb_checkpoints/
+.ipython/
+.jupyter/
+.jupyter-data/
+.matplotlib/
 
 # Sistema
 .DS_Store
