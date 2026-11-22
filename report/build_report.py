@@ -202,9 +202,9 @@ def build():
         Paragraph("5.2 Regularização", heading),
         academic_table([
             ["alpha", "0", "0,01", "0,1", "1", "10", "100"],
-            ["RMSE", "0,616080", "0,616081", "0,616087", "0,616153", "0,617612", "0,640695"],
+            ["RMSE", "0,615210", "0,615210", "0,615216", "0,615283", "0,616726", "0,639475"],
         ], [2.2 * cm] + [2.25 * cm] * 6, ["LEFT"] + ["RIGHT"] * 6, 7.7),
-        Paragraph("Ridge escolheu alpha = 0,01 nas 25 partições e permaneceu praticamente "
+        Paragraph("Com as onze colunas, Ridge escolheu alpha = 0,01 nas 25 partições e permaneceu praticamente "
                   "idêntico à regressão. Penalizações maiores aumentaram o erro; não houve "
                   "evidência de benefício da regularização linear.", body),
         Paragraph("5.3 Por que o boosting supera a regressão", heading),
