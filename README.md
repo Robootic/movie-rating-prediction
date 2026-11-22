@@ -116,7 +116,7 @@ Restringindo as interações permitidas ao boosting, a que mais reduz o erro é 
 | Regressão, 11 colunas + pico de nostalgia | 0,541704 | 0,003 |
 | **Boosting, 11 colunas + idade no lançamento** | **0,519532** | 0,079 |
 
-Com a coluna de nostalgia, a regressão empata com o boosting de onze colunas (p = 0,50 no teste t corrigido). A vantagem do boosting vinha, em grande parte, de aprender essa interação. Com a idade no lançamento, o boosting melhora em todas as 25 partições. A hipótese surgiu depois de explorar os mesmos dados; ver [notebook 10](notebooks/10_hipotese_nostalgia.ipynb) e `src/nostalgia_test.py`.
+Com a coluna de nostalgia, a regressão empata com o boosting de onze colunas (p = 0,50 no teste t corrigido). A vantagem do boosting vinha, em grande parte, de aprender essa interação. Com a idade no lançamento, o boosting melhora em todas as 25 partições. A hipótese surgiu depois de explorar os mesmos dados; ver [notebook 12](notebooks/12_hipotese_nostalgia.ipynb) e `src/nostalgia_test.py`.
 
 ## Modelo e submissão final
 
@@ -138,7 +138,8 @@ A versão LaTeX pronta para importar no Overleaf está em [`report/relatorio_ove
 | [07 Boosting](notebooks/07_comparacao_boosting.ipynb) | Comparar flexibilidade com informação igual | Executado, busca interna de três folds |
 | [08 Regularização](notebooks/08_hipotese_regularizacao_bayesiana.ipynb) | Comparar regressão comum, Ridge e Bayesian Ridge | Executado, sem ganho material |
 | [09 Síntese](notebooks/09_sintese_investigacao.ipynb) | Consolidar e diagnosticar erros restantes | Executado, duas hipóteses propostas |
-| [10 Nostalgia](notebooks/10_hipotese_nostalgia.ipynb) | Explicar a vantagem do boosting pela interação idade × ano | Executado, exploratório |
+| [10 Testes finais](notebooks/10_testes_finais.ipynb) | Idade, ano e contagens; comparação final e submissão | Executado, receita final |
+| [12 Nostalgia](notebooks/12_hipotese_nostalgia.ipynb) | Explicar a vantagem do boosting pela interação idade × ano | Executado, exploratório |
 
 As 25 partições externas são iguais para todos os modelos. A média das cinco previsões por observação serve apenas aos gráficos; não é a previsão pontuada. Ridge e boosting selecionam hiperparâmetros em três folds internos. Bayesian Ridge estima as precisões no treino com hiperparâmetros dos priors fixados.
 
@@ -146,14 +147,15 @@ Os notebooks 03–08 são independentes e gravam previsões por repetição, err
 
 As partições compartilham treino; variação e contagens de vitórias são descritivas. A busca aninhada protege a escolha de hiperparâmetros dentro de cada procedimento, mas a seleção entre famílias e a exploração de atributos continuam sujeitas a otimismo.
 
-Idade, ano e contagens foram testados em alterações controladas. A receita vencedora usa informação dos dez atributos brutos em onze colunas numéricas. A exploração foi encerrada e a receita final foi congelada antes da submissão.
+Idade, ano e contagens foram testados em alterações controladas. A receita vencedora usa informação dos dez atributos brutos em onze colunas numéricas. A exploração foi encerrada e a receita final foi congelada antes da submissão. A análise da nostalgia (notebook 12) veio depois, para explicar a vantagem do boosting, e não alterou o modelo final.
 
-Os notebooks em `notebooks/antigos`, `src/experiments.py`, `src/validation.py` e os resultados fora de `results/rodada_atual` preservam o roteiro antigo. O dashboard e o notebook 11 são materiais auxiliares, não definem o protocolo nem substituem a síntese atual.
+Os notebooks em `notebooks/antigos`, `src/experiments.py`, `src/validation.py` e os resultados fora de `results/rodada_atual` preservam o roteiro antigo. O dashboard e o notebook 11 (gráfico 3D) são materiais auxiliares, não definem o protocolo nem substituem a síntese atual.
 
 ## Materiais de estudo e próximos passos
 
 - [Apresentação visual dos modelos](docs/modelos-bauhaus.html): slides em HTML com exemplos didáticos animados e controles interativos. Abra o arquivo no navegador.
 - [Próximos passos e plano de estudo](docs/proximos-passos.md): sequência dos experimentos, conceitos prioritários e revisão dos notebooks com a voz e a compreensão do grupo.
+- [Rascunho da apresentação](docs/apresentacao-cinemateca.html): ainda usa o protocolo antigo e tem slides de resultados com valores fictícios; precisa ser atualizado antes da apresentação.
 
 ## Referências
 

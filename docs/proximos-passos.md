@@ -33,6 +33,19 @@ Idade, ano linear, ano quadrático e as duas contagens em log foram avaliados. A
 - [x] Ajustar a receita final no treino completo e gerar a submissão sem usar o teste para escolher o modelo.
 - [x] Conferir ordem e identificadores, valores finitos e previsões em [0, 5].
 
+## Atualização de 22 de novembro de 2026
+
+Depois da decisão final, sem alterar o modelo nem a submissão:
+
+- **Diário completo.** O notebook 10 documenta os testes de idade, ano e contagens, a comparação final e a submissão, que antes só existiam como scripts.
+- **Explicação da vantagem do boosting.** O notebook 12 mostra que boa parte dela vem da interação idade × ano (nostalgia: notas mais altas para filmes lançados quando o usuário tinha 10 a 20 anos). Com essa coluna, a regressão empata com o boosting de onze colunas, e o boosting cai para 0,520. A análise é exploratória e está na seção 5.3 do relatório.
+- **Reprodutibilidade.** A submissão foi regenerada com o código atual. Os testes corrigidos citados no relatório agora têm código (`src/corrected_test.py`). O boosting varia na quarta casa decimal entre computadores (0,544851 contra 0,544933), porque algumas configurações da grade empatam quase exatamente; a regressão é idêntica.
+
+Pendências:
+
+- [ ] Decidir se o modelo final passa a usar a idade no lançamento (exige nova submissão e revisão do relatório).
+- [ ] Atualizar `apresentacao-cinemateca.html`: os slides de resultados ainda têm valores fictícios e o protocolo antigo.
+
 ## Responsabilidades sugeridas
 
 Distribuir execução e revisão entre dados e protocolo, regressões e resíduos, comparação de procedimentos e relatório/submissão. Definir nomes e prazos no grupo. Cada frente deve ter um responsável e um revisor; a compreensão do modelo final é coletiva.

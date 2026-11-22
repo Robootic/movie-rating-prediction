@@ -115,11 +115,11 @@ O gap do boosting é cerca de 44 vezes o dos modelos lineares, sinal claro de ma
 \toprule
 alpha & 0 & 0,01 & 0,1 & 1 & 10 & 100 \\
 \midrule
-RMSE & 0,616080 & 0,616081 & 0,616087 & 0,616153 & 0,617612 & 0,640695 \\
+RMSE & 0,615210 & 0,615210 & 0,615216 & 0,615283 & 0,616726 & 0,639475 \\
 \bottomrule
 \end{tabularx}
 
-Ridge permaneceu praticamente idêntico à regressão. Penalizações maiores aumentaram o erro; não houve evidência de benefício relevante da regularização linear.
+Com as onze colunas, Ridge permaneceu praticamente idêntico à regressão. Penalizações maiores aumentaram o erro; não houve evidência de benefício relevante da regularização linear.
 
 \secao{5.3 Por que o boosting supera a regressão}
 Para identificar o que o boosting aprende, restringimos as interações permitidas entre colunas (\textit{interaction\_cst}). Sem nenhuma interação, o boosting fica em 0,639. Liberar apenas idade $\times$ ano o leva a 0,601, enquanto os demais pares testados (gênero $\times$ idade, gênero $\times$ ano, afinidade $\times$ gênero, médias $\times$ afinidade) ficam entre 0,630 e 0,636. A interação tem leitura direta: usuários dão notas mais altas a filmes lançados quando tinham entre 10 e 20 anos (cerca de 4,0 estrelas, contra 3,2 nas demais faixas).
