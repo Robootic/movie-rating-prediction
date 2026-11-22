@@ -41,7 +41,7 @@ def save_run(root, notebook, frame, target, predictions, by_fold,
                         'rmse_valid': recomputed,
                         'rmse_train': scores['RMSE treino'].tolist()})
     source = root / 'notebooks' / (notebook + '.ipynb')
-    cells = json.loads(source.read_text())['cells']
+    cells = json.loads(source.read_text(encoding='utf-8'))['cells']
     code = '\n'.join(''.join(c['source']) for c in cells if c['cell_type'] == 'code')
     payload = {
         'notebook': notebook, 'data_sha256': sha256((root / 'data/train.csv').read_bytes()).hexdigest(),
@@ -52,6 +52,8 @@ def save_run(root, notebook, frame, target, predictions, by_fold,
                          pandas=pd.__version__, sklearn=sklearn.__version__),
         'records': records,
         'selections': json.loads(pd.DataFrame(selections or []).to_json(orient='records'))}
-    (destination / (notebook + '.json')).write_text(json.dumps(payload, ensure_ascii=False, indent=2))
+    (destination / (notebook + '.json')).write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8'
+    )
     np.savez_compressed(destination / (notebook + '.npz'), **arrays)
     print('Resultados verificados e salvos em', destination / (notebook + '.json'))
