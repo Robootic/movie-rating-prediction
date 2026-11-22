@@ -1,37 +1,37 @@
 # Próximos passos após a rodada atual
 
-Atualizado em 15 de novembro de 2026. Este é o roteiro vigente; o documento `plano_conclusao_projeto.docx` registra a proposta anterior à execução e deve ser lido como histórico de planejamento.
+Atualizado em 21 de novembro de 2026. O documento `plano_conclusao_projeto.docx` registra a proposta anterior à execução e deve ser lido como histórico de planejamento.
 
 ## O que foi concluído
 
 Executamos os notebooks 03–08 com 5 folds × 5 repetições, semente 2026. A síntese 09 confere dados, código, partições e versões antes de comparar resultados. Os resultados atuais ficam em `results/rodada_atual`; os demais resultados e as receitas antigas não definem esta rodada.
 
-A sequência duas médias → afinidade → curvatura → gênero reduziu o RMSE de 0,839575 para 0,625036. Com os mesmos seis atributos, boosting chegou a 0,619248, enquanto Ridge e Bayesian Ridge ficaram praticamente empatados com a regressão. O ganho do boosting foi modesto e acompanhado de maior distância entre treino e validação.
+A sequência duas médias → afinidade → curvatura → gênero reduziu o RMSE de 0,839575 para 0,625036. Idade e ano levaram o boosting a 0,564180; os logaritmos das duas contagens reduziram o resultado final a 0,544851. O boosting venceu nas 25 partições e nas cinco repetições. Ridge permaneceu praticamente idêntico à regressão.
 
-## Linha investigativa e decisões pendentes
+## Decisão final
 
-Nossa investigação distingue informação e forma funcional de mudança de algoritmo. Os maiores ganhos vieram da afinidade e de sua curvatura. A regularização não trouxe ganho material neste conjunto de atributos. Não escolhemos um vencedor definitivo nem demonstramos ausência de sobreajuste.
+Nossa investigação distingue atributos brutos de colunas construídas. Os dados possuem dez atributos brutos; a receita final os representa em onze colunas numéricas, pois o ano é desdobrado em dois termos e gênero/proporções são condensados. Escolhemos o boosting com essa representação completa porque sua vantagem permaneceu ampla e estável, mesmo reconhecendo o gap treino–validação de 0,113995, contra 0,002581 nos modelos lineares.
 
-O diagnóstico OOF da síntese mostra padrões de idade e lançamento em regressão e boosting. A prioridade proposta é discutir e testar essas duas hipóteses, uma alteração por vez, antes de abrir novas famílias:
+O diagnóstico OOF da síntese mostrou padrões de idade e lançamento. As duas hipóteses foram executadas:
 
 1. Acrescentar idade à referência, começando por um termo linear, e verificar ganho e resíduos por idade.
 2. Investigar lançamento em uma comparação separada; o arco nos resíduos motiva testar termo linear e depois quadrático, mantendo o restante fixo.
 
-Esses testes ainda não foram implementados ou executados. Se mudarem os atributos escolhidos, repetir a comparação regressão × boosting com informação igual. Não ampliar grades por tentativa e erro sem registrar a exploração.
+Idade, ano linear, ano quadrático e as duas contagens em log foram avaliados. A versão completa usa informação dos dez atributos brutos e obteve o menor RMSE. Não haverá novas explorações nesta entrega.
 
 ## Caminho até a entrega
 
-- [ ] O grupo deve revisar as leituras numéricas nos notebooks 03–09 e escrever suas interpretações.
-- [ ] Confirmar enunciado, prazo, critérios, regras de IA e construção das médias. Obter `test.csv`, ainda ausente.
-- [ ] Decidir se os dois testes de atributos cabem no prazo e congelar suas configurações antes de rodar.
-- [ ] Consolidar uma tabela comparável após os testes escolhidos, incluindo treino, validação, estabilidade e custo.
-- [ ] Considerar kNN ou uma MLP pequena somente se houver uma pergunta adicional e tempo para seleção interna e diagnóstico. Árvore simples pode ser didática; Random Forest não é uma obrigação.
-- [ ] Encerrar a exploração quando as hipóteses acordadas estiverem respondidas e testes adicionais não se justificarem pelo prazo e benefício esperado.
-- [ ] Escolher uma receita, reconhecendo o otimismo da seleção entre famílias. Não declarar pequenas diferenças como significativas com base em dobras dependentes.
-- [ ] Escrever relatório: problema → evidências → hipóteses → protocolo → resultados → decisão → limitações. Distinguir associação, hipótese e resultado.
-- [ ] Revisar documentação e apresentação para remover números e estados desatualizados. Todos devem conseguir explicar as decisões.
-- [ ] Refazer a seleção interna definida no treino completo, quando aplicável, ajustar a receita final e gerar a submissão no formato exigido, sem usar teste para escolher modelo.
-- [ ] Conferir execução limpa, versões, ordem e identificadores, valores finitos, previsões em [0, 5], referências e arquivos finais.
+- [x] Revisar as leituras numéricas dos notebooks 03–09 e consolidar suas interpretações.
+- [ ] Confirmar com o professor prazo, critérios, regras de IA e construção das médias.
+- [x] Executar os testes finais de idade e ano e congelar a receita vencedora.
+- [x] Consolidar uma tabela comparável de treino, validação e estabilidade.
+- [x] Avaliar kNN apenas como verificação motivada pela aula; ele não melhorou o resultado.
+- [x] Encerrar a exploração planejada.
+- [x] Escolher o boosting com idade, ano e contagens, reconhecendo o otimismo da seleção entre famílias e seu maior gap treino-validação.
+- [x] Escrever relatório: problema → evidências → hipóteses → protocolo → resultados → decisão → limitações. Distinguir associação, hipótese e resultado.
+- [x] Revisar a documentação para remover números e estados desatualizados.
+- [x] Ajustar a receita final no treino completo e gerar a submissão sem usar o teste para escolher o modelo.
+- [x] Conferir ordem e identificadores, valores finitos e previsões em [0, 5].
 
 ## Responsabilidades sugeridas
 

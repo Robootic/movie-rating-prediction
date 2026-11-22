@@ -1,0 +1,148 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[a4paper,left=1.85cm,right=1.85cm,top=1.55cm,bottom=1.65cm]{geometry}
+\usepackage{lmodern,microtype,booktabs,tabularx,array,fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{5pt}
+\emergencystretch=1.5em
+\pagestyle{fancy}
+\fancyhf{}
+\lfoot{\footnotesize MAE0501 -- Aprendizagem Estatística}
+\rfoot{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\newcommand{\secao}[1]{\vspace{5pt}\noindent{\large\bfseries #1}\par\vspace{2pt}}
+
+\begin{document}
+\begin{center}
+{\LARGE\bfseries Prevendo avaliações de filmes}\par\vspace{5pt}
+{\small Lucas Maia Fontes Pineiro (14591243) \quad Matheus Ramos de Oliveira Queiroz (15479562) \quad Thais Martins de Sousa (14608786)}\par\vspace{3pt}
+{\small MAE0501 -- Aprendizagem Estatística, IME-USP, 2026}
+\end{center}
+
+\begin{abstract}
+Investigamos a previsão da nota, entre 0 e 5 estrelas, que um usuário daria a um filme. A análise foi organizada como uma sequência de hipóteses sobre informação, forma funcional e flexibilidade. Afinidade, idade e ano explicaram parte importante da estrutura; as contagens de avaliações acrescentaram informação de confiabilidade. Com os dez atributos brutos representados em onze colunas numéricas, o boosting obteve RMSE OOF de 0,544851 e venceu nas 25 partições externas, sendo adotado como modelo final. Seu maior gap treino--validação foi registrado como limitação.
+\end{abstract}
+
+\secao{1. Problema e dados}
+O conjunto contém 4000 pares usuário-filme para treino e 2000 para teste. Os dez atributos brutos são: duas médias de avaliações, duas contagens, idade, três proporções de gênero, gênero do filme e ano de lançamento. O identificador \textit{pair\_id} não entra no modelo. A resposta \textit{stars} varia de 0 a 5; as previsões são reais e cortadas nesse intervalo.
+
+O desempenho é medido pela raiz do erro quadrático médio,
+\[\mathrm{RMSE}=\sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i-\widehat y_i)^2}.\]
+A métrica permanece em estrelas e penaliza erros grandes. A previsão constante apresenta RMSE próximo de 1,19 e a regressão nos atributos brutos, aproximadamente 0,84.
+
+\secao{2. Linha investigativa e contagem de atributos}
+Partimos das médias do usuário e do filme. Em seguida definimos afinidade como a proporção do gênero do filme no histórico do usuário; testamos sua curvatura e indicadores de comédia e drama. Os resíduos ainda mostravam estrutura em idade e ano, testados como idade linear, ano linear e ano quadrático. Por fim, verificamos as duas contagens por meio de $\log(1+n)$, transformação que reduz assimetria e preserva a noção de confiabilidade das médias.
+
+Os números 6, 9 e 10 designam objetos diferentes. A referência de \textbf{seis colunas construídas} usa duas médias, afinidade, afinidade ao quadrado e dois indicadores de gênero. Com idade e dois termos do ano, são \textbf{nove colunas}. Os dados, porém, possuem \textbf{dez atributos brutos}; ao acrescentar os logaritmos das duas contagens, a receita final passa a ter \textbf{onze colunas numéricas}. Não há um 11º atributo bruto: gênero e proporções foram condensados, enquanto o ano foi desdobrado em dois termos.
+
+\secao{3. Protocolo de validação}
+Usamos validação cruzada repetida com 5 folds, 5 repetições e semente 2026. Em cada repetição, todas as observações recebem uma previsão fora do treino (OOF). Todos os modelos compartilham as mesmas 25 partições. Ridge e boosting selecionam hiperparâmetros em três folds internos de cada treino externo. Transformações e seleção permanecem dentro do ajuste; o teste não foi consultado para escolher atributos, modelos ou configurações.
+
+\begin{tabularx}{\linewidth}{@{}p{3.1cm}X p{4.8cm}@{}}
+\toprule
+\textbf{Procedimento} & \textbf{Função} & \textbf{Seleção} \\
+\midrule
+Regressão comum & Referência linear interpretável & Sem hiperparâmetro \\
+Ridge & Regularização L2 & alpha em 3 folds internos \\
+Bayesian Ridge & Regularização por Bayes empírico & Precisões no treino \\
+Boosting & Relações e interações não lineares & Grade em 3 folds internos \\
+kNN & Verificação motivada pela aula & Avaliação separada \\
+\bottomrule
+\end{tabularx}
+
+\secao{4. Testes de idade, ano e contagens}
+Os testes de idade e ano foram alterações controladas na regressão sem penalização. Em seguida, as contagens foram acrescentadas à melhor representação de nove colunas e os três procedimentos principais foram novamente avaliados.
+
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\toprule
+\textbf{Conjunto de colunas} & \textbf{RMSE OOF} \\
+\midrule
+Referência: seis colunas & 0,625036 \\
++ idade & 0,620722 \\
++ ano linear & 0,622705 \\
++ ano linear e quadrático & 0,620512 \\
++ idade e ano linear & 0,618458 \\
++ idade, ano linear e quadrático (nove) & 0,616080 \\
++ duas contagens em log (onze) & 0,615210 \\
+\bottomrule
+\end{tabularx}
+
+As contagens reduziram pouco o erro linear, mas foram úteis ao boosting: seu RMSE caiu de 0,564180 para 0,544851. A melhora ocorreu nas 25 partições e permaneceu significativa no teste corrigido para folds dependentes ($p=5{,}23\times10^{-7}$).
+
+\secao{5. Resultados}
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\toprule
+\textbf{Etapa ou modelo} & \textbf{RMSE OOF} \\
+\midrule
+Constante & 1,165913 \\
+Duas médias & 0,839575 \\
+Duas médias + afinidade & 0,660065 \\
++ afinidade ao quadrado & 0,628989 \\
+Regressão com gênero (seis colunas) & 0,625036 \\
+Boosting com seis colunas & 0,619248 \\
+Regressão com nove colunas & 0,616080 \\
+Boosting com nove colunas & 0,564180 \\
+Regressão com onze colunas & 0,615210 \\
+Ridge com onze colunas & 0,615210 \\
+\textbf{Boosting com onze colunas} & \textbf{0,544851} \\
+\bottomrule
+\end{tabularx}
+
+O maior ganho inicial veio de afinidade. Idade, ano e contagens trouxeram melhora pequena à forma linear, mas substancial ao boosting, indicando relações ou interações que a regressão aditiva não representa adequadamente.
+
+\secao{5.1 Gap treino--validação}
+\begin{tabularx}{\linewidth}{@{}X r r r@{}}
+\toprule
+\textbf{Modelo} & \textbf{RMSE treino} & \textbf{RMSE validação} & \textbf{Gap} \\
+\midrule
+Regressão & 0,612450 & 0,615032 & 0,002581 \\
+Ridge & 0,612451 & 0,615032 & 0,002581 \\
+Boosting & 0,430704 & 0,544699 & 0,113995 \\
+\bottomrule
+\end{tabularx}
+
+O gap do boosting é cerca de 44 vezes o dos modelos lineares, sinal claro de maior adaptação ao treino e maior risco de sobreajuste. Isso não anula a escolha: na validação, seu RMSE ficou aproximadamente 0,070 estrela abaixo dos modelos lineares, e ele venceu nas 25 partições e nas cinco repetições. A diferença média Boosting -- regressão foi $-0{,}070333$; no teste corrigido, o intervalo de 95\% foi $[-0{,}0808;-0{,}0599]$ e $p<10^{-12}$. O critério decisivo é o erro fora do treino, não o gap isolado.
+
+\secao{5.2 Regularização}
+\begin{tabularx}{\linewidth}{@{}l*{6}{>{\raggedleft\arraybackslash}X}@{}}
+\toprule
+alpha & 0 & 0,01 & 0,1 & 1 & 10 & 100 \\
+\midrule
+RMSE & 0,616080 & 0,616081 & 0,616087 & 0,616153 & 0,617612 & 0,640695 \\
+\bottomrule
+\end{tabularx}
+
+Ridge permaneceu praticamente idêntico à regressão. Penalizações maiores aumentaram o erro; não houve evidência de benefício relevante da regularização linear.
+
+\secao{6. Modelo final e submissão}
+O modelo final é o \textbf{HistGradientBoostingRegressor} com onze colunas derivadas dos dez atributos brutos. No treino completo, a busca interna selecionou 15 folhas máximas, mínimo de 60 observações por folha, regularização L2 igual a 10, taxa de aprendizado 0,05 e 200 iterações. A escolha aceita maior complexidade porque a vantagem OOF foi ampla, consistente e permaneceu significativa após a correção.
+
+Após congelar a receita, reajustamos a busca interna e o modelo nas 4000 linhas de treino. A submissão contém 2000 previsões, sem arredondamento, alinhadas aos identificadores e cortadas em $[0,5]$. Os valores variam de 0,594460 a 5,000000, com média 3,407397.
+
+\secao{7. Limitações}
+\begin{tabularx}{\linewidth}{@{}p{5.8cm}X@{}}
+\toprule
+\textbf{Limitação} & \textbf{Consequência} \\
+\midrule
+Hipóteses motivadas pelos mesmos dados & O ganho pode conter otimismo de seleção. \\
+Treinos sobrepostos entre folds & As 25 diferenças não são independentes. \\
+Gap maior no boosting & Há maior tendência ao sobreajuste. \\
+Dados sintéticos e sem IDs de entidades & A conclusão vale para os atributos fornecidos. \\
+Oráculo conhece o gerador & RMSE 0,39 não é necessariamente atingível. \\
+\bottomrule
+\end{tabularx}
+
+A correção estatística reduz o risco de exagerar a evidência, mas não elimina o fato de que atributos e famílias foram discutidos após explorar o treino. Não abrimos novas hipóteses depois desta rodada final.
+
+\secao{8. Conclusão}
+Representar afinidade foi decisivo para superar a regressão bruta. Idade, ano e contagens explicaram estrutura adicional. A receita final usa informação de todos os dez atributos brutos; o boosting superou regressão e Ridge de maneira ampla e estável, justificando sua escolha apesar do maior gap de generalização. O projeto termina com receita congelada, validação reproduzível e submissão verificada.
+
+\vspace{4pt}
+{\footnotesize\textbf{Referências.} Abu-Mostafa, Magdon-Ismail e Lin, \textit{Learning from Data} (2012). James, Witten, Hastie e Tibshirani, \textit{An Introduction to Statistical Learning}, 2ª ed. (2023). Materiais da disciplina MAE0501 (2026).}
+\end{document}
