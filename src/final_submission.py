@@ -1,10 +1,12 @@
 """Ajusta o boosting final e gera a submissão sem usar o teste na seleção."""
 
 import json
+import platform
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import sklearn
 from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.metrics import make_scorer
 from sklearn.model_selection import GridSearchCV, KFold
@@ -59,6 +61,12 @@ def clipped_rmse(actual, predicted):
     return float(np.sqrt(np.mean((np.asarray(actual) - predicted) ** 2)))
 
 
+def recipe_oof_rmse():
+    """RMSE OOF repetido da receita, calculado por src/count_feature_test.py."""
+    summary = pd.read_csv(ROOT / "results" / "rodada_atual" / "testes_contagens.csv")
+    return float(summary.loc[summary["modelo"] == "Boosting", "RMSE OOF repetido"].iloc[0])
+
+
 def main():
     train = pd.read_csv(ROOT / "data" / "train.csv")
     test = pd.read_csv(ROOT / "data" / "test.csv")
@@ -91,6 +99,7 @@ def main():
     if not np.isfinite(prediction).all():
         raise ValueError("A previsão contém valores não finitos.")
 
+    oof_rmse = recipe_oof_rmse()
     destination = ROOT / "submissions" / "submission_final.csv"
     submission = pd.DataFrame({"pair_id": test["pair_id"], "stars": prediction})
     submission.to_csv(destination, index=False)
@@ -99,7 +108,7 @@ def main():
         "model": "HistGradientBoostingRegressor com todos os atributos brutos",
         "features": FEATURES,
         "validation_protocol": "RepeatedKFold 5 folds x 5 repetições, seed 2026",
-        "repeated_oof_rmse": 0.544851,
+        "repeated_oof_rmse": round(oof_rmse, 6),
         "selected_params": search.best_params_,
         "inner_cv_rmse_full_train": -float(search.best_score_),
         "selection_reason": (
@@ -110,6 +119,8 @@ def main():
         "prediction_mean": float(prediction.mean()),
         "prediction_max": float(prediction.max()),
         "rows": int(len(submission)),
+        "versions": {"python": platform.python_version(), "numpy": np.__version__,
+                     "pandas": pd.__version__, "sklearn": sklearn.__version__},
     }
     metadata_path = destination.with_suffix(".json")
     metadata_path.write_text(
@@ -119,7 +130,7 @@ def main():
     print("Modelo final: boosting com todos os atributos brutos")
     print("Parâmetros selecionados:", search.best_params_)
     print(f"RMSE interno no treino completo: {-search.best_score_:.6f}")
-    print("RMSE OOF repetido da receita: 0.544851")
+    print(f"RMSE OOF repetido da receita: {oof_rmse:.6f}")
     print(
         "Previsões: "
         f"mín={prediction.min():.6f}, média={prediction.mean():.6f}, "

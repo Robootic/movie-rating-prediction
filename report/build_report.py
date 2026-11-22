@@ -206,13 +206,13 @@ def build():
         Paragraph("O modelo final é o <b>HistGradientBoostingRegressor</b> com onze colunas "
                   "derivadas dos dez atributos brutos. "
                   "No treino completo, a busca interna selecionou 15 folhas máximas, mínimo de "
-                  "60 observações por folha, regularização L2 igual a 10, taxa de aprendizado "
+                  "60 observações por folha, sem regularização L2, taxa de aprendizado "
                   "0,05 e 200 iterações. A escolha aceita maior complexidade porque a vantagem "
                   "OOF foi ampla, consistente e permaneceu significativa após a correção.", body),
         Paragraph("Após congelar a receita, reajustamos a busca interna e o modelo nas 4000 "
                   "linhas de treino. A submissão contém 2000 previsões, sem arredondamento, "
                   "alinhadas aos identificadores e cortadas em [0, 5]. Os valores variam de "
-                  "0,594460 a 5,000000, com média 3,407397.", body),
+                  "0,402621 a 5,000000, com média 3,408512.", body),
         Paragraph("7. Limitações", heading),
         academic_table([
             ["Limitação", "Consequência"],

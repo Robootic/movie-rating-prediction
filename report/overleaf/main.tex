@@ -121,9 +121,9 @@ RMSE & 0,616080 & 0,616081 & 0,616087 & 0,616153 & 0,617612 & 0,640695 \\
 Ridge permaneceu praticamente idêntico à regressão. Penalizações maiores aumentaram o erro; não houve evidência de benefício relevante da regularização linear.
 
 \secao{6. Modelo final e submissão}
-O modelo final é o \textbf{HistGradientBoostingRegressor} com onze colunas derivadas dos dez atributos brutos. No treino completo, a busca interna selecionou 15 folhas máximas, mínimo de 60 observações por folha, regularização L2 igual a 10, taxa de aprendizado 0,05 e 200 iterações. A escolha aceita maior complexidade porque a vantagem OOF foi ampla, consistente e permaneceu significativa após a correção.
+O modelo final é o \textbf{HistGradientBoostingRegressor} com onze colunas derivadas dos dez atributos brutos. No treino completo, a busca interna selecionou 15 folhas máximas, mínimo de 60 observações por folha, sem regularização L2, taxa de aprendizado 0,05 e 200 iterações. A escolha aceita maior complexidade porque a vantagem OOF foi ampla, consistente e permaneceu significativa após a correção.
 
-Após congelar a receita, reajustamos a busca interna e o modelo nas 4000 linhas de treino. A submissão contém 2000 previsões, sem arredondamento, alinhadas aos identificadores e cortadas em $[0,5]$. Os valores variam de 0,594460 a 5,000000, com média 3,407397.
+Após congelar a receita, reajustamos a busca interna e o modelo nas 4000 linhas de treino. A submissão contém 2000 previsões, sem arredondamento, alinhadas aos identificadores e cortadas em $[0,5]$. Os valores variam de 0,402621 a 5,000000, com média 3,408512.
 
 \secao{7. Limitações}
 \begin{tabularx}{\linewidth}{@{}p{5.8cm}X@{}}

@@ -16,14 +16,20 @@
   "validation_protocol": "RepeatedKFold 5 folds x 5 repetições, seed 2026",
   "repeated_oof_rmse": 0.544851,
   "selected_params": {
-    "l2_regularization": 10.0,
+    "l2_regularization": 0.0,
     "max_leaf_nodes": 15,
     "min_samples_leaf": 60
   },
-  "inner_cv_rmse_full_train": 0.5469638123344724,
+  "inner_cv_rmse_full_train": 0.5463701876065662,
   "selection_reason": "Após incluir idade, ano e as contagens em log1p, superou regressão e Ridge nas 25 partições e usa informação dos dez atributos brutos.",
-  "prediction_min": 0.5944597182605598,
-  "prediction_mean": 3.4073966581651174,
+  "prediction_min": 0.40262083487755723,
+  "prediction_mean": 3.4085116108092874,
   "prediction_max": 5.0,
-  "rows": 2000
+  "rows": 2000,
+  "versions": {
+    "python": "3.9.6",
+    "numpy": "2.0.2",
+    "pandas": "2.3.3",
+    "sklearn": "1.6.1"
+  }
 }
