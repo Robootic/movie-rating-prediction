@@ -102,7 +102,9 @@ def build():
                   "representados em onze colunas, o boosting obteve RMSE OOF de 0,544851, venceu "
                   "nas 25 partições externas e foi "
                   "adotado como modelo final, com a maior tendência ao sobreajuste registrada "
-                  "como limitação.", abstract),
+                  "como limitação. Uma análise posterior mostra que boa parte dessa vantagem vem "
+                  "de uma interação entre idade e ano de lançamento (nostalgia): com essa coluna, "
+                  "a regressão linear empata com o boosting.", abstract),
         Paragraph("1. Problema e dados", heading),
         Paragraph("O conjunto contém 4000 pares usuário-filme para treino e 2000 para teste. "
                   "Os dez atributos descrevem médias e contagens de avaliações, idade, "
@@ -112,7 +114,9 @@ def build():
         Paragraph("O desempenho é medido pela raiz do erro quadrático médio, "
                   "RMSE = raiz da média de (observado - previsto)². A métrica permanece em "
                   "estrelas e penaliza erros grandes. A previsão constante apresenta RMSE "
-                  "próximo de 1,19 e a regressão nos atributos brutos, aproximadamente 0,84.", body),
+                  "próximo de 1,19 e a regressão nos dez atributos brutos, aproximadamente 0,84, "
+                  "segundo o enunciado. No nosso protocolo (seção 3), essas referências "
+                  "obtiveram 1,165913 e 0,824064.", body),
         Paragraph("2. Linha investigativa", heading),
         Paragraph("Partimos das médias do usuário e do filme. Em seguida definimos afinidade "
                   "como a proporção do gênero do filme no histórico do usuário; testamos sua "
@@ -164,6 +168,7 @@ def build():
         academic_table([
             ["Etapa ou modelo", "RMSE OOF"],
             ["Constante", "1,165913"],
+            ["Regressão nos dez atributos brutos (referência do enunciado)", "0,824064"],
             ["Duas médias", "0,839575"],
             ["Duas médias + afinidade", "0,660065"],
             ["+ afinidade ao quadrado", "0,628989"],
@@ -202,6 +207,36 @@ def build():
         Paragraph("Ridge escolheu alpha = 0,01 nas 25 partições e permaneceu praticamente "
                   "idêntico à regressão. Penalizações maiores aumentaram o erro; não houve "
                   "evidência de benefício da regularização linear.", body),
+        Paragraph("5.3 Por que o boosting supera a regressão", heading),
+        Paragraph("Para identificar o que o boosting aprende, restringimos as interações "
+                  "permitidas entre colunas (<i>interaction_cst</i>). Sem nenhuma interação, o "
+                  "boosting fica em 0,639. Liberar apenas idade × ano o leva a 0,601, enquanto os "
+                  "demais pares testados (gênero × idade, gênero × ano, afinidade × gênero, "
+                  "médias × afinidade) ficam entre 0,630 e 0,636. A interação tem leitura direta: "
+                  "usuários dão notas mais altas a filmes lançados quando tinham entre 10 e 20 anos "
+                  "(cerca de 4,0 estrelas, contra 3,2 nas demais faixas).", body),
+        Paragraph("Definimos a idade no lançamento, x = idade - (2024 - ano), e um pico "
+                  "exp(-(x - c)² / 2w²), com centro c e largura w escolhidos em três folds "
+                  "internos (c = 15 e w = 6 nas 25 partições). Nas mesmas partições:", body),
+        academic_table([
+            ["Modelo", "RMSE OOF", "Gap treino-validação"],
+            ["Regressão, onze colunas", "0,615210", "0,0026"],
+            ["Boosting, onze colunas (recalculado)", "0,544933", "0,1132"],
+            ["Regressão, onze colunas + pico de nostalgia", "0,541704", "0,0025"],
+            ["Boosting, onze colunas + idade no lançamento", "0,519532", "0,0788"],
+        ], [9.0 * cm, 3.0 * cm, 3.8 * cm], ["LEFT", "RIGHT", "RIGHT"], 8.2),
+        Paragraph("Com uma única coluna a mais, a regressão empata com o boosting de onze colunas "
+                  "(diferença -0,003; IC de 95% [-0,013; 0,006]; p = 0,50 no teste corrigido). "
+                  "Em termos de viés e variância: a regressão de referência tem viés porque seu "
+                  "conjunto de hipóteses não contém a interação idade × ano. O boosting reduz esse "
+                  "viés aproximando a faixa diagonal do plano idade × ano com muitos cortes "
+                  "paralelos aos eixos, o que eleva a variância (gap de 0,113). Construir o "
+                  "atributo reduz o mesmo viés mantendo um modelo de baixa complexidade (gap de "
+                  "0,003). Com a idade no lançamento, o boosting também melhora, nas 25 partições.",
+                  body),
+        Paragraph("Esta análise foi feita depois de congelar a receita e é exploratória: a "
+                  "validação aninhada protege a escolha de c, w e dos hiperparâmetros, mas não a "
+                  "decisão de testar a nostalgia. O modelo final não foi alterado.", small),
         Paragraph("6. Modelo final e submissão", heading),
         Paragraph("O modelo final é o <b>HistGradientBoostingRegressor</b> com onze colunas "
                   "derivadas dos dez atributos brutos. "
@@ -224,13 +259,16 @@ def build():
         ], [6.0 * cm, 9.8 * cm], font_size=8.1),
         Paragraph("A correção estatística reduz o risco de exagerar a evidência, mas não elimina "
                   "o fato de que atributos e famílias foram discutidos após explorar o treino. "
-                  "Não abrimos novas hipóteses depois desta rodada final.", body),
+                  "Depois da rodada final, apenas a análise exploratória da seção 5.3 foi feita, "
+                  "sem alterar o modelo.", body),
         Paragraph("8. Conclusão", heading),
         Paragraph("A investigação mostrou que representar afinidade foi decisivo para superar a "
                   "regressão bruta. Idade, ano e contagens explicaram estrutura adicional. A receita usa "
                   "informação de todos os dez atributos brutos, e o boosting superou regressão e Ridge de maneira "
                   "ampla e estável, justificando sua escolha apesar do maior gap de generalização. "
-                  "O projeto termina com uma receita congelada, validação reproduzível e submissão "
+                  "Boa parte dessa vantagem vem de aprender a interação entre idade e ano de "
+                  "lançamento; representada explicitamente, ela permite que um modelo linear "
+                  "alcance o mesmo erro. O projeto termina com uma receita congelada, validação reproduzível e submissão "
                   "verificada.", body),
         Paragraph("<b>Referências.</b> Abu-Mostafa, Magdon-Ismail e Lin, <i>Learning from Data</i> "
                   "(2012). James, Witten, Hastie e Tibshirani, <i>An Introduction to Statistical "
