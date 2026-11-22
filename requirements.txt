@@ -5,4 +5,5 @@ matplotlib
 seaborn
 statsmodels
 jupyterlab
-reportlab
+reportlab<4.3; python_version < "3.10"
+reportlab; python_version >= "3.10"
