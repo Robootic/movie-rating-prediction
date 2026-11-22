@@ -1,0 +1,31 @@
+{
+  "reference_year": 2024,
+  "nostalgia_grid": {
+    "nostalgia__center": [
+      10,
+      12,
+      14,
+      15,
+      16,
+      18,
+      20
+    ],
+    "nostalgia__width": [
+      3,
+      4,
+      6,
+      8,
+      10
+    ]
+  },
+  "protocol": {
+    "outer_splits": 5,
+    "outer_repeats": 5,
+    "inner_splits": 3,
+    "seed": 2026,
+    "clip": [
+      0,
+      5
+    ]
+  }
+}

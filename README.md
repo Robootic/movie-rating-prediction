@@ -73,6 +73,8 @@ python -m src.ridge_sensitivity
 python -m src.final_feature_tests
 python -m src.count_feature_test
 python -m src.final_submission
+python -m src.corrected_test
+python -m src.nostalgia_test
 python report/build_report.py
 ```
 
@@ -101,6 +103,19 @@ python report/build_report.py
 
 A construção de atributos trouxe os maiores ganhos. “Seis” e “nove” contam colunas construídas, enquanto “dez” conta os atributos brutos do projeto. A receita final usa todos eles em onze colunas: o ano gera termos linear e quadrático, e as duas contagens entram como `log1p`. O boosting chegou a 0,544851, venceu nas 25 partições e nas cinco repetições e superou a regressão em cerca de 0,070 RMSE. Seu gap treino–validação foi 0,113995, contra 0,002581 nos modelos lineares; há maior risco de sobreajuste, mas a vantagem fora do treino foi ampla e estável.
 
+### Hipótese de nostalgia (exploratória)
+
+Restringindo as interações permitidas ao boosting, a que mais reduz o erro é **idade × ano de lançamento**. Usuários dão notas mais altas a filmes lançados quando tinham entre 10 e 20 anos (≈ 4,0 estrelas, contra ≈ 3,2 nas demais faixas). Com validação aninhada, nas mesmas 25 partições:
+
+| Modelo | RMSE OOF repetido | Gap treino–validação |
+|---|---:|---:|
+| Regressão, 11 colunas | 0,615210 | 0,003 |
+| Boosting, 11 colunas | 0,544933 | 0,113 |
+| Regressão, 11 colunas + pico de nostalgia | 0,541704 | 0,003 |
+| **Boosting, 11 colunas + idade no lançamento** | **0,519532** | 0,079 |
+
+Com a coluna de nostalgia, a regressão empata com o boosting de onze colunas (p = 0,50 no teste t corrigido). A vantagem do boosting vinha, em grande parte, de aprender essa interação. Com a idade no lançamento, o boosting melhora em todas as 25 partições. A hipótese surgiu depois de explorar os mesmos dados; ver [notebook 10](notebooks/10_hipotese_nostalgia.ipynb) e `src/nostalgia_test.py`.
+
 ## Modelo e submissão final
 
 O modelo final é o **HistGradientBoostingRegressor com informação dos dez atributos brutos**, representados por onze colunas: duas médias, afinidade, afinidade², dois indicadores de gênero, idade, ano linear, ano quadrático e os logaritmos das duas contagens. O script `python -m src.final_submission` refaz a seleção interna, ajusta a receita nas 4000 linhas e gera `submissions/submission_final.csv` com 2000 previsões válidas e cortadas em [0, 5].
@@ -121,6 +136,7 @@ A versão LaTeX pronta para importar no Overleaf está em [`report/relatorio_ove
 | [07 Boosting](notebooks/07_comparacao_boosting.ipynb) | Comparar flexibilidade com informação igual | Executado, busca interna de três folds |
 | [08 Regularização](notebooks/08_hipotese_regularizacao_bayesiana.ipynb) | Comparar regressão comum, Ridge e Bayesian Ridge | Executado, sem ganho material |
 | [09 Síntese](notebooks/09_sintese_investigacao.ipynb) | Consolidar e diagnosticar erros restantes | Executado, duas hipóteses propostas |
+| [10 Nostalgia](notebooks/10_hipotese_nostalgia.ipynb) | Explicar a vantagem do boosting pela interação idade × ano | Executado, exploratório |
 
 As 25 partições externas são iguais para todos os modelos. A média das cinco previsões por observação serve apenas aos gráficos; não é a previsão pontuada. Ridge e boosting selecionam hiperparâmetros em três folds internos. Bayesian Ridge estima as precisões no treino com hiperparâmetros dos priors fixados.
 
