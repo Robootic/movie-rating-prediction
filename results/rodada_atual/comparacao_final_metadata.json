@@ -1,0 +1,24 @@
+{
+  "best_feature_set": "+ idade, ano linear e quadrático",
+  "features": [
+    "user_avg_stars",
+    "movie_avg_stars",
+    "affinity",
+    "affinity2",
+    "genre_comedy",
+    "genre_drama",
+    "age",
+    "release_year_scaled",
+    "release_year_squared"
+  ],
+  "protocol": {
+    "outer_splits": 5,
+    "outer_repeats": 5,
+    "inner_splits": 3,
+    "seed": 2026,
+    "clip": [
+      0,
+      5
+    ]
+  }
+}

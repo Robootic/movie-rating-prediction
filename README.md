@@ -38,7 +38,7 @@ Esses valores são referências históricas do problema, não métricas da rodad
 
 Partimos de regressões simples para testar uma mudança por vez: duas médias, afinidade, curvatura e gênero. Depois comparamos procedimentos usando os mesmos seis atributos: regressão comum, Ridge, Bayesian Ridge e boosting. A investigação é guiada pela EDA e pelos resíduos; seus resultados são exploratórios, não confirmação independente.
 
-A rodada atual foi executada. Não adicionamos automaticamente redes, vizinhos ou outras árvores: os resíduos agora motivam discutir idade e ano de lançamento antes de abrir novas famílias.
+A rodada atual foi concluída com testes de idade, ano e das duas contagens. Os dados têm dez atributos brutos; depois das transformações, eles são representados por onze colunas numéricas. O boosting com essa representação completa foi escolhido como modelo final.
 
 ## Estrutura do repositório
 
@@ -66,6 +66,16 @@ pip install -r requirements.txt
 
 Coloque os arquivos `train.csv` e `test.csv` em `data/` e abra os notebooks com `jupyter lab`.
 
+Para reproduzir a análise de sensibilidade, a submissão final e o relatório:
+
+```bash
+python -m src.ridge_sensitivity
+python -m src.final_feature_tests
+python -m src.count_feature_test
+python -m src.final_submission
+python report/build_report.py
+```
+
 ## Resultados da rodada atual
 
 5 folds × 5 repetições, semente 2026; RMSE sobre todas as previsões OOF separadamente, com corte em [0, 5]. Valores em estrelas. O teste não foi usado.
@@ -82,8 +92,21 @@ Coloque os arquivos `train.csv` e `test.csv` em `data/` e abra os notebooks com 
 | Ridge com os mesmos seis atributos | 0,625036 |
 | Bayesian Ridge com os mesmos seis atributos | 0,625074 |
 | Boosting com os mesmos seis atributos | 0,619248 |
+| Regressão + idade + ano linear e quadrático | 0,616080 |
+| Ridge + idade + ano linear e quadrático | 0,616081 |
+| **Boosting + idade + ano linear e quadrático** | **0,564180** |
+| Regressão + contagens em log | 0,615210 |
+| Ridge + contagens em log | 0,615210 |
+| **Boosting + contagens em log** | **0,544851** |
 
-A construção de atributos trouxe os maiores ganhos. Boosting melhorou em 20/25 partições e nas cinco repetições, mas a redução sobre regressão com gênero foi modesta (0,005788). Seu RMSE médio de treino foi 0,565527, contra 0,623377 da regressão: existe maior adaptação ao treino, não prova de ausência de sobreajuste. Regularização não trouxe ganho material. Nenhum modelo final foi escolhido.
+A construção de atributos trouxe os maiores ganhos. “Seis” e “nove” contam colunas construídas, enquanto “dez” conta os atributos brutos do projeto. A receita final usa todos eles em onze colunas: o ano gera termos linear e quadrático, e as duas contagens entram como `log1p`. O boosting chegou a 0,544851, venceu nas 25 partições e nas cinco repetições e superou a regressão em cerca de 0,070 RMSE. Seu gap treino–validação foi 0,113995, contra 0,002581 nos modelos lineares; há maior risco de sobreajuste, mas a vantagem fora do treino foi ampla e estável.
+
+## Modelo e submissão final
+
+O modelo final é o **HistGradientBoostingRegressor com informação dos dez atributos brutos**, representados por onze colunas: duas médias, afinidade, afinidade², dois indicadores de gênero, idade, ano linear, ano quadrático e os logaritmos das duas contagens. O script `python -m src.final_submission` refaz a seleção interna, ajusta a receita nas 4000 linhas e gera `submissions/submission_final.csv` com 2000 previsões válidas e cortadas em [0, 5].
+
+O relatório final de três páginas está em [`output/pdf/relatorio_final.pdf`](output/pdf/relatorio_final.pdf). Sua fonte reproduzível está em `report/build_report.py`.
+A versão LaTeX pronta para importar no Overleaf está em [`report/relatorio_overleaf.zip`](report/relatorio_overleaf.zip).
 
 ## Roteiro e estado dos notebooks
 
@@ -105,7 +128,7 @@ Os notebooks 03–08 são independentes e gravam previsões por repetição, err
 
 As partições compartilham treino; variação e contagens de vitórias são descritivas. A busca aninhada protege a escolha de hiperparâmetros dentro de cada procedimento, mas a seleção entre famílias e a exploração de atributos continuam sujeitas a otimismo.
 
-**Próxima decisão:** discutir testes separados de idade e ano de lançamento, pois ambos exibem padrões nos resíduos de regressão e boosting. Ainda não implementados. Se alterarem os atributos escolhidos, refazer a comparação entre procedimentos com a mesma informação. Redes, vizinhos e outras árvores permanecem opcionais, não uma lista obrigatória.
+Idade, ano e contagens foram testados em alterações controladas. A receita vencedora usa informação dos dez atributos brutos em onze colunas numéricas. A exploração foi encerrada e a receita final foi congelada antes da submissão.
 
 Os notebooks em `notebooks/antigos`, `src/experiments.py`, `src/validation.py` e os resultados fora de `results/rodada_atual` preservam o roteiro antigo. O dashboard e o notebook 11 são materiais auxiliares, não definem o protocolo nem substituem a síntese atual.
 

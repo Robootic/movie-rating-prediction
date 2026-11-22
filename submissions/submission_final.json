@@ -1,0 +1,29 @@
+{
+  "model": "HistGradientBoostingRegressor com todos os atributos brutos",
+  "features": [
+    "user_avg_stars",
+    "movie_avg_stars",
+    "affinity",
+    "affinity2",
+    "genre_comedy",
+    "genre_drama",
+    "age",
+    "release_year_scaled",
+    "release_year_squared",
+    "log_user_n_ratings",
+    "log_movie_n_ratings"
+  ],
+  "validation_protocol": "RepeatedKFold 5 folds x 5 repetições, seed 2026",
+  "repeated_oof_rmse": 0.544851,
+  "selected_params": {
+    "l2_regularization": 10.0,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 60
+  },
+  "inner_cv_rmse_full_train": 0.5469638123344724,
+  "selection_reason": "Após incluir idade, ano e as contagens em log1p, superou regressão e Ridge nas 25 partições e usa informação dos dez atributos brutos.",
+  "prediction_min": 0.5944597182605598,
+  "prediction_mean": 3.4073966581651174,
+  "prediction_max": 5.0,
+  "rows": 2000
+}
