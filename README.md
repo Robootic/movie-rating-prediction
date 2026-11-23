@@ -26,7 +26,7 @@ Os dados são sintéticos: 4000 pares de treino e 2000 de teste, sem valores fal
 
 O desempenho é medido pela **raiz do erro quadrático médio (RMSE)**. As previsões são números reais, cortados no intervalo [0, 5].
 
-**Notação.** Na validação cruzada, $E_{in}$ é o RMSE no próprio treino de cada partição e $E_{CV}$ é o RMSE na dobra de validação; ambos são médias nas 25 partições. $E_{CV}$ estima o erro fora da amostra, $E_{out}$. O **RMSE OOF repetido** junta todas as previsões fora da dobra (cinco por linha) num único RMSE e é o número principal das tabelas. O gap $E_{CV} - E_{in}$ indica quanto o modelo se adapta ao treino.
+**Notação.** Na validação cruzada, $E_{in}$ é o RMSE no próprio treino de cada partição e $E_{CV}$ é o RMSE na dobra de validação; ambos são médias nas 25 partições. $E_{CV}$ estima o erro fora da amostra, $E_{out}$. O **RMSE OOF repetido** junta todas as previsões fora da dobra (cinco por linha) num único RMSE e é o número principal das tabelas. O gap $E_{CV} - E_{in}$ indica quanto o modelo se adapta ao treino. Para comparar dois modelos nas mesmas partições, usamos o **teste t pareado corrigido** de Nadeau e Bengio, que leva em conta que as partições compartilham dados de treino (explicação e exemplo no notebook 10, seção 3; código em `src/corrected_test.py`).
 
 | Modelo | RMSE |
 |---|---|
@@ -40,14 +40,14 @@ Esses valores são referências históricas do problema, não métricas da rodad
 
 Partimos de regressões simples para testar uma mudança por vez: duas médias, afinidade, curvatura e gênero. Depois comparamos procedimentos usando os mesmos seis atributos: regressão comum, Ridge, Bayesian Ridge e boosting. A investigação é guiada pela EDA e pelos resíduos; seus resultados são exploratórios, não confirmação independente.
 
-A rodada atual foi concluída com testes de idade, ano e das duas contagens. Os dados têm dez atributos brutos; depois das transformações, eles são representados por onze atributos construídos. O boosting com essa representação completa foi escolhido como modelo final.
+Em seguida testamos idade, ano e as duas contagens, chegando a onze atributos construídos a partir dos dez atributos brutos. Por fim, investigamos por que o boosting supera a regressão: a interação idade × ano de lançamento (hipótese de nostalgia) explica boa parte da vantagem. O boosting com os onze atributos mais a **idade no lançamento** é o modelo final.
 
 ## Estrutura do repositório
 
 ```
 data/          dados (não versionados; ver data/README.md)
 notebooks/     análises exploratórias e experimentos
-src/           código reutilizável: validação, atributos, receitas e experimentos
+src/           código reutilizável: validação, atributos, testes e submissão
 results/       resultados em JSON das execuções completas
 submissions/   previsões geradas para o conjunto de teste
 docs/          documentos de organização do projeto
@@ -76,6 +76,7 @@ python -m src.ridge_sensitivity
 python -m src.reference_linear
 python -m src.corrected_test
 python -m src.nostalgia_test
+python -m src.nostalgia_checks
 python -m src.final_submission
 ```
 
@@ -103,24 +104,26 @@ python -m src.final_submission
 | Ridge + contagens em log | 0,615210 |
 | **Boosting + contagens em log** | **0,544933** |
 
-A construção de atributos trouxe os maiores ganhos. “Seis” e “nove” contam atributos construídos, enquanto “dez” conta os atributos brutos do projeto. A receita final usa todos eles em onze atributos construídos: o ano gera termos linear e quadrático, e as duas contagens entram como `log1p`. O boosting chegou a 0,544933, venceu nas 25 partições e nas cinco repetições e superou a regressão em cerca de 0,070 RMSE. Seu gap $E_{CV} - E_{in}$ foi 0,113212, contra 0,002581 nos modelos lineares; há maior risco de sobreajuste, mas a vantagem fora do treino foi ampla e estável.
+A construção de atributos trouxe os maiores ganhos. “Seis” e “nove” contam atributos construídos, enquanto “dez” conta os atributos brutos do projeto. A receita de onze atributos usa a informação de todos eles: o ano gera termos linear e quadrático, e as duas contagens entram como `log1p`. O boosting chegou a 0,544933, venceu nas 25 partições e nas cinco repetições e superou a regressão em cerca de 0,070 RMSE. Seu gap $E_{CV} - E_{in}$ foi 0,113212, contra 0,002581 nos modelos lineares; há maior risco de sobreajuste, mas a vantagem fora do treino foi ampla e estável.
 
-### Hipótese de nostalgia (exploratória)
+### Hipótese de nostalgia e modelo final
 
-Restringindo as interações permitidas ao boosting, a que mais reduz o erro é **idade × ano de lançamento**. Usuários dão notas mais altas a filmes lançados quando tinham entre 10 e 20 anos (≈ 4,0 estrelas, contra ≈ 3,2 nas demais faixas). Com validação aninhada, nas mesmas 25 partições:
+Restringindo as interações permitidas ao boosting, a que mais reduz o erro é **idade × ano de lançamento**. Usuários dão notas mais altas a filmes lançados quando tinham entre 10 e 20 anos (≈ 4,0 estrelas, contra ≈ 3,2 nas demais faixas). A idade no lançamento é `age − (2024 − release_year)`: **tomamos como pressuposto que as idades são relativas a 2024**, o último ano de lançamento dos dados, porque o enunciado não informa o ano da medição. Com validação aninhada, nas mesmas 25 partições:
 
 | Modelo | RMSE OOF repetido | Gap $E_{CV} - E_{in}$ |
 |---|---:|---:|
 | Regressão, 11 atributos | 0,615210 | 0,003 |
 | Boosting, 11 atributos | 0,544933 | 0,113 |
 | Regressão, 11 atributos + pico de nostalgia | 0,541704 | 0,003 |
-| **Boosting, 11 atributos + idade no lançamento** | **0,519532** | 0,079 |
+| **Boosting, 11 atributos + idade no lançamento (modelo final)** | **0,519532** | 0,079 |
 
-Com o atributo de nostalgia, a regressão empata com o boosting de onze atributos (p = 0,50 no teste t corrigido). A vantagem do boosting vinha, em grande parte, de aprender essa interação. Com a idade no lançamento, o boosting melhora em todas as 25 partições. A hipótese surgiu depois de explorar os mesmos dados; ver [notebook 12](notebooks/12_hipotese_nostalgia.ipynb) e `src/nostalgia_test.py`.
+Com o atributo de nostalgia, a regressão empata com o boosting de onze atributos (p = 0,50 no teste t corrigido): a vantagem do boosting vinha, em grande parte, de aprender essa interação. Com a idade no lançamento, o boosting vence os outros três modelos nas 25 partições (p ≈ 3 × 10⁻⁷ contra o boosting de onze atributos e p ≈ 2 × 10⁻⁵ contra a regressão com o pico).
+
+Antes de adotá-lo, verificamos que o resultado não depende do pressuposto de 2024 (com 2026 ou 2000, as previsões são idênticas) nem da borda da grade de hiperparâmetros (com árvores menores disponíveis, as escolhas não mudam). A hipótese surgiu depois de explorar os mesmos dados, o que é registrado como limitação. Ver [notebook 11](notebooks/11_hipotese_nostalgia.ipynb), `src/nostalgia_test.py` e `src/nostalgia_checks.py`.
 
 ## Modelo e submissão final
 
-O modelo final é o **HistGradientBoostingRegressor com informação dos dez atributos brutos**, representados por onze atributos construídos: duas médias, afinidade, afinidade², dois indicadores de gênero, idade, ano linear, ano quadrático e os logaritmos das duas contagens. O script `python -m src.final_submission` refaz a seleção interna, ajusta a receita nas 4000 linhas e gera `submissions/submission_final.csv` com 2000 previsões válidas e cortadas em [0, 5].
+O modelo final é o **HistGradientBoostingRegressor com doze atributos construídos**: duas médias, afinidade, afinidade², dois indicadores de gênero, idade, ano linear, ano quadrático, os logaritmos das duas contagens e a idade no lançamento. Seu RMSE OOF repetido é **0,519532**. O script `python -m src.final_submission` refaz a seleção interna, ajusta a receita nas 4000 linhas e gera `submissions/submission_final.csv` com 2000 previsões válidas e cortadas em [0, 5].
 
 ## Roteiro e estado dos notebooks
 
@@ -135,18 +138,18 @@ O modelo final é o **HistGradientBoostingRegressor com informação dos dez atr
 | [07 Boosting](notebooks/07_comparacao_boosting.ipynb) | Comparar flexibilidade com informação igual | Executado, busca interna de três folds |
 | [08 Regularização](notebooks/08_hipotese_regularizacao_bayesiana.ipynb) | Comparar regressão comum, Ridge e Bayesian Ridge | Executado, sem ganho material |
 | [09 Síntese](notebooks/09_sintese_investigacao.ipynb) | Consolidar e diagnosticar erros restantes | Executado, duas hipóteses propostas |
-| [10 Testes finais](notebooks/10_testes_finais.ipynb) | Idade, ano e contagens; comparação final e submissão | Executado, receita final |
-| [12 Nostalgia](notebooks/12_hipotese_nostalgia.ipynb) | Explicar a vantagem do boosting pela interação idade × ano | Executado, exploratório |
+| [10 Testes finais](notebooks/10_testes_finais.ipynb) | Idade, ano e contagens; teste de significância | Executado, receita de onze atributos |
+| [11 Nostalgia](notebooks/11_hipotese_nostalgia.ipynb) | Explicar a vantagem do boosting; verificações; modelo final e submissão | Executado, modelo final |
 
 As 25 partições externas são iguais para todos os modelos. A média das cinco previsões por observação serve apenas aos gráficos; não é a previsão pontuada. Ridge e boosting selecionam hiperparâmetros em três folds internos. Bayesian Ridge estima as precisões no treino com hiperparâmetros dos priors fixados.
 
-Os notebooks 03–08 são independentes e gravam previsões por repetição, erros, configurações e identificadores de dados/código via `src/current_results.py`. A síntese 09 verifica compatibilidade e reprodução das referências entre notebooks antes de comparar. Execute 03–08 antes de 09. Os resultados estão em `results/rodada_atual`; não se misturam aos JSONs antigos.
+Os notebooks 03–08 são independentes e gravam previsões por repetição, erros, configurações e identificadores de dados/código via `src/current_results.py`. A síntese 09 verifica compatibilidade e reprodução das referências entre notebooks antes de comparar. Execute 03–08 antes de 09. Os resultados estão em `results/rodada_atual`.
 
 As partições compartilham treino; variação e contagens de vitórias são descritivas. A busca aninhada protege a escolha de hiperparâmetros dentro de cada procedimento, mas a seleção entre famílias e a exploração de atributos continuam sujeitas a otimismo.
 
-Idade, ano e contagens foram testados em alterações controladas. A receita vencedora usa informação dos dez atributos brutos em onze atributos construídos. A exploração foi encerrada e a receita final foi congelada antes da submissão. A análise da nostalgia (notebook 12) veio depois, para explicar a vantagem do boosting, e não alterou o modelo final.
+Idade, ano e contagens foram testados em alterações controladas. A receita vencedora usa informação dos dez atributos brutos em onze atributos construídos. Essa receita foi congelada e gerou a primeira submissão. A análise da nostalgia (notebook 11) veio depois, para explicar a vantagem do boosting, e levou ao modelo final atual.
 
-Os notebooks em `notebooks/antigos`, `src/experiments.py`, `src/validation.py` e os resultados fora de `results/rodada_atual` preservam o roteiro antigo.
+Os notebooks 01 e 02 preservam a exploração inicial e o protocolo anterior (5 × 3); `src/validation.py` é usado apenas pelo notebook 02.
 
 ## Materiais de estudo e próximos passos
 

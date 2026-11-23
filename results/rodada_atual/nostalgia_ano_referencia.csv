@@ -1,0 +1,4 @@
+ano de referência,centro equivalente do pico,RMSE OOF boosting,RMSE OOF regressão + pico,maior diferença nas previsões do boosting,maior diferença nas previsões da regressão
+2024,15,0.5194385324590279,0.5417044425639979,0.0,0.0
+2026,13,0.5194385324590279,0.5417044425639979,0.0,0.0
+2000,39,0.5194385324590279,0.5417044425639979,0.0,0.0
