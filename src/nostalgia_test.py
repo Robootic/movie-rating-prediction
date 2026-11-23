@@ -24,12 +24,11 @@ from sklearn.preprocessing import StandardScaler
 
 from src.corrected_test import corrected_paired_ttest
 from src.final_feature_tests import BOOST_FIXED, BOOST_GRID, INNER_SPLITS, N_REPEATS, N_SPLITS
-from src.final_submission import FEATURES, SEED, add_features, clipped_rmse
+from src.final_submission import (AGE_AT_RELEASE, FEATURES, REFERENCE_YEAR, SEED,
+                                  add_features, clipped_rmse)
 
 
 ROOT = Path(__file__).resolve().parent.parent
-REFERENCE_YEAR = 2024  # último ano de lançamento; mudar a referência só desloca o centro
-AGE_AT_RELEASE = "age_at_release"
 NOSTALGIA_GRID = {
     "nostalgia__center": [10, 12, 14, 15, 16, 18, 20],
     "nostalgia__width": [3, 4, 6, 8, 10],

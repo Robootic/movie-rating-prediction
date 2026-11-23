@@ -24,6 +24,12 @@ BASE_FEATURES = [
 ]
 NINE_FEATURES = BASE_FEATURES + ["age", "release_year_scaled", "release_year_squared"]
 FEATURES = NINE_FEATURES + ["log_user_n_ratings", "log_movie_n_ratings"]
+# Pressuposto: o enunciado não informa em que ano `age` foi medida. Tomamos 2024,
+# o último ano de lançamento dos dados. Outro ano só soma uma constante à idade no
+# lançamento: não muda as previsões do boosting (src/nostalgia_checks.py).
+REFERENCE_YEAR = 2024
+AGE_AT_RELEASE = "age_at_release"
+FINAL_FEATURES = FEATURES + [AGE_AT_RELEASE]
 PARAM_GRID = {
     "max_leaf_nodes": [7, 15],
     "min_samples_leaf": [20, 60],
@@ -36,7 +42,7 @@ FIXED_PARAMS = {
     "random_state": SEED,
 }
 def add_features(frame):
-    """Constrói os onze atributos finais a partir dos dez atributos brutos."""
+    """Constrói os atributos construídos a partir dos dez atributos brutos."""
     frame = frame.copy()
     genres = {"action", "comedy", "drama"}
     if not set(frame["genre"].unique()).issubset(genres):
@@ -53,6 +59,8 @@ def add_features(frame):
     frame["release_year_squared"] = frame["release_year_scaled"] ** 2
     frame["log_user_n_ratings"] = np.log1p(frame["user_n_ratings"])
     frame["log_movie_n_ratings"] = np.log1p(frame["movie_n_ratings"])
+    # Idade aproximada do usuário quando o filme foi lançado (negativa se antes de nascer).
+    frame[AGE_AT_RELEASE] = frame["age"] - (REFERENCE_YEAR - frame["release_year"])
     return frame
 
 
@@ -62,9 +70,10 @@ def clipped_rmse(actual, predicted):
 
 
 def recipe_oof_rmse():
-    """RMSE OOF repetido da receita, calculado por src/count_feature_test.py."""
-    summary = pd.read_csv(ROOT / "results" / "rodada_atual" / "testes_contagens.csv")
-    return float(summary.loc[summary["modelo"] == "Boosting", "RMSE OOF repetido"].iloc[0])
+    """RMSE OOF repetido da receita, calculado por src/nostalgia_test.py."""
+    summary = pd.read_csv(ROOT / "results" / "rodada_atual" / "teste_nostalgia.csv")
+    row = summary["modelo"] == "Boosting 11 atributos + idade no lançamento"
+    return float(summary.loc[row, "RMSE OOF repetido"].iloc[0])
 
 
 def main():
@@ -81,8 +90,8 @@ def main():
 
     train = add_features(train)
     test = add_features(test)
-    X_train = train[FEATURES].to_numpy(dtype=float)
-    X_test = test[FEATURES].to_numpy(dtype=float)
+    X_train = train[FINAL_FEATURES].to_numpy(dtype=float)
+    X_test = test[FINAL_FEATURES].to_numpy(dtype=float)
     y = train["stars"].to_numpy(dtype=float)
 
     scorer = make_scorer(clipped_rmse, greater_is_better=False)
@@ -105,15 +114,17 @@ def main():
     submission.to_csv(destination, index=False)
 
     metadata = {
-        "model": "HistGradientBoostingRegressor com todos os atributos brutos",
-        "features": FEATURES,
+        "model": "HistGradientBoostingRegressor com onze atributos + idade no lançamento",
+        "features": FINAL_FEATURES,
+        "reference_year": REFERENCE_YEAR,
         "validation_protocol": "RepeatedKFold 5 folds x 5 repetições, seed 2026",
         "repeated_oof_rmse": round(oof_rmse, 6),
         "selected_params": search.best_params_,
         "inner_cv_rmse_full_train": -float(search.best_score_),
         "selection_reason": (
-            "Após incluir idade, ano e as contagens em log1p, superou regressão e Ridge "
-            "nas 25 partições e usa informação dos dez atributos brutos."
+            "Com a idade no lançamento (hipótese de nostalgia), superou o boosting de onze "
+            "atributos e a regressão com o pico de nostalgia nas 25 partições, com "
+            "diferença significativa no teste t corrigido."
         ),
         "prediction_min": float(prediction.min()),
         "prediction_mean": float(prediction.mean()),
@@ -127,7 +138,7 @@ def main():
         json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
-    print("Modelo final: boosting com todos os atributos brutos")
+    print("Modelo final: boosting com onze atributos + idade no lançamento")
     print("Parâmetros selecionados:", search.best_params_)
     print(f"RMSE interno no treino completo: {-search.best_score_:.6f}")
     print(f"RMSE OOF repetido da receita: {oof_rmse:.6f}")

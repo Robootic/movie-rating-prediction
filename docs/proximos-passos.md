@@ -33,17 +33,18 @@ Idade, ano linear, ano quadrático e as duas contagens em log foram avaliados. A
 - [x] Ajustar a receita final no treino completo e gerar a submissão sem usar o teste para escolher o modelo.
 - [x] Conferir ordem e identificadores, valores finitos e previsões em [0, 5].
 
-## Atualização de 22 de novembro de 2026
+## Atualizações de 22 e 23 de novembro de 2026
 
-Depois da decisão final, sem alterar o modelo nem a submissão:
-
-- **Diário completo.** O notebook 10 documenta os testes de idade, ano e contagens, a comparação final e a submissão, que antes só existiam como scripts.
-- **Explicação da vantagem do boosting.** O notebook 12 mostra que boa parte dela vem da interação idade × ano (nostalgia: notas mais altas para filmes lançados quando o usuário tinha 10 a 20 anos). Com esse atributo, a regressão empata com o boosting de onze atributos, e o boosting cai para 0,520. A análise é exploratória e está na seção 5.3 do relatório.
-- **Reprodutibilidade.** A submissão foi regenerada com o código atual. Os testes corrigidos citados no relatório agora têm código (`src/corrected_test.py`). O boosting varia na quarta casa decimal entre computadores (0,544851 na primeira execução, 0,544933 na atual), porque algumas configurações da grade empatam quase exatamente; a regressão é idêntica. Os resultados em `results/rodada_atual` foram regenerados na execução atual.
+- **Diário completo.** O notebook 10 documenta os testes de idade, ano e contagens, que antes só existiam como scripts, e explica em detalhes o teste t corrigido, com um exemplo passo a passo.
+- **Hipótese de nostalgia.** O notebook 11 mostra que boa parte da vantagem do boosting vem da interação idade × ano (notas mais altas para filmes lançados quando o usuário tinha 10 a 20 anos, supondo idades relativas a 2024). Com esse atributo, a regressão empata com o boosting de onze atributos, e o boosting com a idade no lançamento chega a 0,519532, vencendo os demais candidatos nas 25 partições.
+- **Novo modelo final.** Depois de verificar que o resultado não depende do ano de referência nem da borda da grade (`src/nostalgia_checks.py`), o boosting com os onze atributos mais a idade no lançamento passou a ser o modelo final, e a submissão foi regenerada. A submissão anterior (boosting com onze atributos) fica no histórico do Git.
+- **Reprodutibilidade.** Os testes corrigidos têm código (`src/corrected_test.py`). O boosting varia na quarta casa decimal entre computadores (0,544851 na primeira execução, 0,544933 na atual), porque algumas configurações da grade empatam quase exatamente; a regressão é idêntica. Os resultados em `results/rodada_atual` foram regenerados na execução atual.
+- **Organização.** Os notebooks do roteiro antigo, o gerador do relatório e o material auxiliar foram removidos. Os termos foram padronizados: atributo, $E_{in}$ e $E_{CV}$.
 
 Pendências:
 
-- [ ] Decidir se o modelo final passa a usar a idade no lançamento (exige nova submissão e revisão do relatório).
+- [x] Decidir se o modelo final passa a usar a idade no lançamento.
+- [ ] Revisar o relatório para o novo modelo final.
 - [ ] Atualizar `apresentacao-cinemateca.html`: os slides de resultados ainda têm valores fictícios e o protocolo antigo.
 
 ## Responsabilidades sugeridas
