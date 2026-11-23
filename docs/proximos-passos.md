@@ -6,11 +6,11 @@ Atualizado em 21 de novembro de 2026. O documento `plano_conclusao_projeto.docx`
 
 Executamos os notebooks 03–08 com 5 folds × 5 repetições, semente 2026. A síntese 09 confere dados, código, partições e versões antes de comparar resultados. Os resultados atuais ficam em `results/rodada_atual`; os demais resultados e as receitas antigas não definem esta rodada.
 
-A sequência duas médias → afinidade → curvatura → gênero reduziu o RMSE de 0,839575 para 0,625036. Idade e ano levaram o boosting a 0,564180; os logaritmos das duas contagens reduziram o resultado final a 0,544851. O boosting venceu nas 25 partições e nas cinco repetições. Ridge permaneceu praticamente idêntico à regressão.
+A sequência duas médias → afinidade → curvatura → gênero reduziu o RMSE de 0,839575 para 0,625036. Idade e ano levaram o boosting a 0,565157; os logaritmos das duas contagens reduziram o resultado final a 0,544933. O boosting venceu nas 25 partições e nas cinco repetições. Ridge permaneceu praticamente idêntico à regressão.
 
 ## Decisão final
 
-Nossa investigação distingue atributos brutos de colunas construídas. Os dados possuem dez atributos brutos; a receita final os representa em onze colunas numéricas, pois o ano é desdobrado em dois termos e gênero/proporções são condensados. Escolhemos o boosting com essa representação completa porque sua vantagem permaneceu ampla e estável, mesmo reconhecendo o gap treino–validação de 0,113995, contra 0,002581 nos modelos lineares.
+Nossa investigação distingue atributos brutos de atributos construídos. Os dados possuem dez atributos brutos; a receita final os representa em onze atributos construídos, pois o ano é desdobrado em dois termos e gênero/proporções são condensados. Escolhemos o boosting com essa representação completa porque sua vantagem permaneceu ampla e estável, mesmo reconhecendo o gap $E_{CV} - E_{in}$ de 0,113212, contra 0,002581 nos modelos lineares.
 
 O diagnóstico OOF da síntese mostrou padrões de idade e lançamento. As duas hipóteses foram executadas:
 
@@ -27,7 +27,7 @@ Idade, ano linear, ano quadrático e as duas contagens em log foram avaliados. A
 - [x] Consolidar uma tabela comparável de treino, validação e estabilidade.
 - [x] Avaliar kNN apenas como verificação motivada pela aula; ele não melhorou o resultado.
 - [x] Encerrar a exploração planejada.
-- [x] Escolher o boosting com idade, ano e contagens, reconhecendo o otimismo da seleção entre famílias e seu maior gap treino-validação.
+- [x] Escolher o boosting com idade, ano e contagens, reconhecendo o otimismo da seleção entre famílias e seu maior gap $E_{CV} - E_{in}$.
 - [x] Escrever relatório: problema → evidências → hipóteses → protocolo → resultados → decisão → limitações. Distinguir associação, hipótese e resultado.
 - [x] Revisar a documentação para remover números e estados desatualizados.
 - [x] Ajustar a receita final no treino completo e gerar a submissão sem usar o teste para escolher o modelo.
@@ -38,8 +38,8 @@ Idade, ano linear, ano quadrático e as duas contagens em log foram avaliados. A
 Depois da decisão final, sem alterar o modelo nem a submissão:
 
 - **Diário completo.** O notebook 10 documenta os testes de idade, ano e contagens, a comparação final e a submissão, que antes só existiam como scripts.
-- **Explicação da vantagem do boosting.** O notebook 12 mostra que boa parte dela vem da interação idade × ano (nostalgia: notas mais altas para filmes lançados quando o usuário tinha 10 a 20 anos). Com essa coluna, a regressão empata com o boosting de onze colunas, e o boosting cai para 0,520. A análise é exploratória e está na seção 5.3 do relatório.
-- **Reprodutibilidade.** A submissão foi regenerada com o código atual. Os testes corrigidos citados no relatório agora têm código (`src/corrected_test.py`). O boosting varia na quarta casa decimal entre computadores (0,544851 contra 0,544933), porque algumas configurações da grade empatam quase exatamente; a regressão é idêntica.
+- **Explicação da vantagem do boosting.** O notebook 12 mostra que boa parte dela vem da interação idade × ano (nostalgia: notas mais altas para filmes lançados quando o usuário tinha 10 a 20 anos). Com esse atributo, a regressão empata com o boosting de onze atributos, e o boosting cai para 0,520. A análise é exploratória e está na seção 5.3 do relatório.
+- **Reprodutibilidade.** A submissão foi regenerada com o código atual. Os testes corrigidos citados no relatório agora têm código (`src/corrected_test.py`). O boosting varia na quarta casa decimal entre computadores (0,544851 na primeira execução, 0,544933 na atual), porque algumas configurações da grade empatam quase exatamente; a regressão é idêntica. Os resultados em `results/rodada_atual` foram regenerados na execução atual.
 
 Pendências:
 
@@ -56,7 +56,7 @@ Distribuir execução e revisão entre dados e protocolo, regressões e resíduo
 |---|---|---|
 | Essencial | Problema e dados | O que uma linha representa, quais informações existem na previsão e por que `pair_id` fica fora. |
 | Essencial | Alvo, perda e RMSE | Por que prever valores reais, por que não arredondar e como o corte em [0, 5] afeta a perda quadrática. |
-| Essencial | Generalização | Diferença entre erro de treino e validação, viés, variância e sinais de sobreajuste. |
+| Essencial | Generalização | Diferença entre $E_{in}$ e $E_{CV}$, viés, variância e sinais de sobreajuste. |
 | Essencial | Vazamento e pipelines | Onde cada transformação aprende e como evitar que dados da validação influenciem o ajuste. |
 | Essencial | Validação e seleção | Função de cada laço da validação aninhada, comparação pareada e otimismo da seleção entre famílias. |
 | Essencial | Afinidade e interações | Por que a combinação de gênero e proporção importa e o que significa ser linear nos coeficientes. |

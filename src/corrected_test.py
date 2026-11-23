@@ -44,16 +44,16 @@ def corrected_paired_ttest(a, b, test_train_ratio=TEST_TRAIN_RATIO, level=0.95):
 
 def by_partition(path, model):
     frame = pd.read_csv(path)
-    return frame[frame["modelo"] == model].sort_values("partição")["RMSE validação"].to_numpy()
+    return frame[frame["modelo"] == model].sort_values("partição")["E_CV"].to_numpy()
 
 
 def main():
     eleven = RESULTS / "testes_contagens_por_particao.csv"
     nine = RESULTS / "comparacao_final_por_particao.csv"
     comparisons = {
-        "Boosting 11 colunas - regressão 11 colunas": (
+        "Boosting 11 atributos - regressão 11 atributos": (
             by_partition(eleven, "Boosting"), by_partition(eleven, "Regressão comum")),
-        "Boosting 11 colunas - boosting 9 colunas": (
+        "Boosting 11 atributos - boosting 9 atributos": (
             by_partition(eleven, "Boosting"), by_partition(nine, "Boosting")),
     }
     result = pd.DataFrame(

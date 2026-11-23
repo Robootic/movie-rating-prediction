@@ -1,7 +1,7 @@
 {
   "notebook": "10_testes_finais",
   "data_sha256": "c6a68513f1453981505a4109c6c964e7bf8bb6c9f4dc52de5fcace32cf6c2c4e",
-  "code_sha256": "3b6415f07e9828b97fc213bf1bdf5bb67e1ebbf7c5f1017752318bbd8096fb43",
+  "code_sha256": "236499604c61c2c8e4cc9d93c0ffa4e6db1aea43085a5242c122ff4f0e603aea",
   "partitions_sha256": "ab4ddce6641939fcc3fb86e2c4fbe208ba2b63fafcc51cba0f3f0218af84f496",
   "protocol": {
     "n_splits": 5,
@@ -17,7 +17,7 @@
   },
   "records": [
     {
-      "name": "Regressão comum 9 colunas",
+      "name": "Regressão comum 9 atributos",
       "array_key": "model_0",
       "rmse_oof": 0.6160803127030133,
       "rmse_repeat": [
@@ -83,7 +83,7 @@
       ]
     },
     {
-      "name": "Ridge 9 colunas",
+      "name": "Ridge 9 atributos",
       "array_key": "model_1",
       "rmse_oof": 0.6160809250979248,
       "rmse_repeat": [
@@ -149,7 +149,7 @@
       ]
     },
     {
-      "name": "Boosting 9 colunas",
+      "name": "Boosting 9 atributos",
       "array_key": "model_2",
       "rmse_oof": 0.5651572162117807,
       "rmse_repeat": [
@@ -215,7 +215,7 @@
       ]
     },
     {
-      "name": "Regressão comum 11 colunas",
+      "name": "Regressão comum 11 atributos",
       "array_key": "model_3",
       "rmse_oof": 0.615209641136524,
       "rmse_repeat": [
@@ -281,7 +281,7 @@
       ]
     },
     {
-      "name": "Ridge 11 colunas",
+      "name": "Ridge 11 atributos",
       "array_key": "model_4",
       "rmse_oof": 0.6152102536217743,
       "rmse_repeat": [
@@ -347,7 +347,7 @@
       ]
     },
     {
-      "name": "Boosting 11 colunas",
+      "name": "Boosting 11 atributos",
       "array_key": "model_5",
       "rmse_oof": 0.5449326817354466,
       "rmse_repeat": [

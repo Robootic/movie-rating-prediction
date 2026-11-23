@@ -45,7 +45,7 @@ def raw_plus_affinity(X):
 class EngineeredFeatures(TransformerMixin, BaseEstimator):
     """Aprende a referência do encolhimento apenas no treino da dobra.
 
-    A referência de cada média é a média dessa coluna no treino (sem usar o alvo).
+    A referência de cada média é a média desse atributo no treino (sem usar o alvo).
     shrinkage=0 mantém as médias originais. Contagens entram em log1p.
     """
 

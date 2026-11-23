@@ -38,9 +38,9 @@ def main():
     result = pd.DataFrame([{
         "modelo": "Regressão linear, dez atributos brutos",
         "RMSE OOF repetido": clipped_rmse(y, repeated),
-        "RMSE validação médio": float(np.mean(fold_scores)),
-        "desvio entre partições": float(np.std(fold_scores, ddof=1)),
-        "RMSE treino médio": float(np.mean(train_scores)),
+        "E_CV": float(np.mean(fold_scores)),
+        "desvio_E_CV": float(np.std(fold_scores, ddof=1)),
+        "E_in": float(np.mean(train_scores)),
     }])
     result.to_csv(ROOT / "results" / "rodada_atual" / "referencia_linear_bruta.csv", index=False)
     print(result.to_string(index=False, float_format=lambda x: f"{x:.6f}"))

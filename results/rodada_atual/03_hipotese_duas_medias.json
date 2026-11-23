@@ -1,7 +1,7 @@
 {
   "notebook": "03_hipotese_duas_medias",
   "data_sha256": "c6a68513f1453981505a4109c6c964e7bf8bb6c9f4dc52de5fcace32cf6c2c4e",
-  "code_sha256": "986cfcac19ea823582c4527fc35727b5711b98dbae436def722ecb10fecf37cc",
+  "code_sha256": "a94531f2f373e9dd0263005d26b6ee737001ff19415c5c4307d99c54c6994252",
   "partitions_sha256": "ab4ddce6641939fcc3fb86e2c4fbe208ba2b63fafcc51cba0f3f0218af84f496",
   "protocol": {
     "n_splits": 5,

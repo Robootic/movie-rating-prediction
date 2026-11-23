@@ -14,7 +14,7 @@
     "log_movie_n_ratings"
   ],
   "validation_protocol": "RepeatedKFold 5 folds x 5 repetições, seed 2026",
-  "repeated_oof_rmse": 0.544851,
+  "repeated_oof_rmse": 0.544933,
   "selected_params": {
     "l2_regularization": 0.0,
     "max_leaf_nodes": 15,

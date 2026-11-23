@@ -48,9 +48,9 @@ class CVResult:
     def summary(self):
         return {
             "modelo": self.name,
-            "RMSE validação": self.mean,
-            "desvio entre dobras": self.std,
-            "RMSE treino (E_in)": self.train_scores.mean(),
+            "E_CV": self.mean,
+            "desvio_E_CV": self.std,
+            "E_in": self.train_scores.mean(),
         }
 
 
@@ -74,7 +74,7 @@ def cross_validate(model, X, y, name="", folds=None, clip=True):
 
 def compare(results):
     """Tabela com o resumo de vários CVResult, do melhor para o pior."""
-    return pd.DataFrame([r.summary() for r in results]).set_index("modelo").sort_values("RMSE validação")
+    return pd.DataFrame([r.summary() for r in results]).set_index("modelo").sort_values("E_CV")
 
 
 def paired_difference(a, b):

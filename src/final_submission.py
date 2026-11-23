@@ -36,7 +36,7 @@ FIXED_PARAMS = {
     "random_state": SEED,
 }
 def add_features(frame):
-    """Constrói as onze colunas finais a partir dos dez atributos brutos."""
+    """Constrói os onze atributos finais a partir dos dez atributos brutos."""
     frame = frame.copy()
     genres = {"action", "comedy", "drama"}
     if not set(frame["genre"].unique()).issubset(genres):
