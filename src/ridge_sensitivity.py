@@ -47,9 +47,9 @@ def main():
             {
                 "alpha": alpha,
                 "RMSE OOF repetido": clipped_rmse(y, predictions),
-                "RMSE validação médio": float(np.mean(fold_scores)),
-                "desvio entre partições": float(np.std(fold_scores, ddof=1)),
-                "RMSE treino médio": float(np.mean(train_scores)),
+                "E_CV": float(np.mean(fold_scores)),
+                "desvio_E_CV": float(np.std(fold_scores, ddof=1)),
+                "E_in": float(np.mean(train_scores)),
             }
         )
 
