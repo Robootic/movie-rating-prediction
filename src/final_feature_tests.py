@@ -216,7 +216,7 @@ def main():
     print("Atributos:", best_features)
     print("\nCOMPARAÇÃO FINAL DE PROCEDIMENTOS")
     print(procedure_result.to_string(index=False, float_format=lambda x: f"{x:.6f}"))
-    print("\nResultados salvos em:", destination)
+    print("\nResultados salvos em:", destination.relative_to(ROOT))
 
 
 if __name__ == "__main__":

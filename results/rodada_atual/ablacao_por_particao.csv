@@ -1,0 +1,376 @@
+partição,E_in,E_CV,modelo completo,grupo retirado
+1,0.43695815942185773,0.5460267710298568,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+2,0.4394084684350546,0.5400300727892277,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+3,0.4244705427255694,0.5340331847832063,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+4,0.4228570246011906,0.547946525536885,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+5,0.4228956186137375,0.544240736366351,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+6,0.4357532385083912,0.5530195219307497,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+7,0.43933001553480544,0.5547253052576074,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+8,0.425010480409133,0.5386220166698186,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+9,0.43807591740700624,0.5596843201532171,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+10,0.4261648206401157,0.5250230574563465,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+11,0.42767316609214306,0.5245967779675549,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+12,0.4416088034107464,0.5310718686902759,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+13,0.42326473733316566,0.5541130212511717,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+14,0.41966177735641746,0.5429142586732443,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+15,0.4380463840121989,0.5641687909988897,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+16,0.4212017308668204,0.5557703650920063,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+17,0.4376581760501336,0.5260571687757085,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+18,0.4405474415451157,0.5314055282415245,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+19,0.4196254053068937,0.5429963251428745,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+20,0.43449503051513544,0.5580588759778641,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+21,0.44103272021441114,0.5495373378006406,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+22,0.4394205993492137,0.5174166977514821,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+23,0.43511342385547946,0.5799483482914138,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+24,0.41909219998072816,0.5493906190842384,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+25,0.43916466406723725,0.5480241333056506,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+1,0.9407364304511482,0.9590481952365312,Boosting sem nostalgia (11 atributos),médias
+2,0.9182294727348994,1.0259759543667322,Boosting sem nostalgia (11 atributos),médias
+3,0.9299550682645356,0.9773028484549077,Boosting sem nostalgia (11 atributos),médias
+4,0.9186058254715942,1.0133751396501907,Boosting sem nostalgia (11 atributos),médias
+5,0.928683157394746,0.9942127820250054,Boosting sem nostalgia (11 atributos),médias
+6,0.9270518410977602,0.9836404055444201,Boosting sem nostalgia (11 atributos),médias
+7,0.9314372318931416,1.006268321993084,Boosting sem nostalgia (11 atributos),médias
+8,0.9333003844700475,0.9662817225478413,Boosting sem nostalgia (11 atributos),médias
+9,0.916037544642043,1.01399960569413,Boosting sem nostalgia (11 atributos),médias
+10,0.9292728331188492,0.9914676369735062,Boosting sem nostalgia (11 atributos),médias
+11,0.9262156494566917,1.0017519265274109,Boosting sem nostalgia (11 atributos),médias
+12,0.928315803838928,0.9905613148770874,Boosting sem nostalgia (11 atributos),médias
+13,0.9224578240160476,1.0075263473423275,Boosting sem nostalgia (11 atributos),médias
+14,0.9266605439409996,0.9841660213943498,Boosting sem nostalgia (11 atributos),médias
+15,0.931135868435418,0.9662176155746222,Boosting sem nostalgia (11 atributos),médias
+16,0.9260263029518455,0.9986599109292306,Boosting sem nostalgia (11 atributos),médias
+17,0.9324015026677741,0.9737419699584279,Boosting sem nostalgia (11 atributos),médias
+18,0.9287240635232359,0.9922466249331677,Boosting sem nostalgia (11 atributos),médias
+19,0.913333678152872,1.0271245994477682,Boosting sem nostalgia (11 atributos),médias
+20,0.9298495440203511,0.9679562669576445,Boosting sem nostalgia (11 atributos),médias
+21,0.9341137512689537,0.949714087240091,Boosting sem nostalgia (11 atributos),médias
+22,0.9264737777018178,0.9863310662025566,Boosting sem nostalgia (11 atributos),médias
+23,0.9173916084877829,1.0436975590427209,Boosting sem nostalgia (11 atributos),médias
+24,0.9269503366750168,1.0042830613860865,Boosting sem nostalgia (11 atributos),médias
+25,0.9353259345932138,0.9727396457534432,Boosting sem nostalgia (11 atributos),médias
+1,0.5549605350090187,0.676427513361603,Boosting sem nostalgia (11 atributos),afinidade
+2,0.561234968455688,0.6897767724040617,Boosting sem nostalgia (11 atributos),afinidade
+3,0.5568478396649941,0.6634116040713501,Boosting sem nostalgia (11 atributos),afinidade
+4,0.5592357439338022,0.6633107991074738,Boosting sem nostalgia (11 atributos),afinidade
+5,0.56090798565015,0.6733127662001857,Boosting sem nostalgia (11 atributos),afinidade
+6,0.5674565182404663,0.6755461115345351,Boosting sem nostalgia (11 atributos),afinidade
+7,0.5597157291054555,0.6827794865103335,Boosting sem nostalgia (11 atributos),afinidade
+8,0.556580144672527,0.669784499547696,Boosting sem nostalgia (11 atributos),afinidade
+9,0.5595113194863364,0.711572079066226,Boosting sem nostalgia (11 atributos),afinidade
+10,0.5757289061618102,0.6391046490136263,Boosting sem nostalgia (11 atributos),afinidade
+11,0.5665656131273423,0.6730440756070803,Boosting sem nostalgia (11 atributos),afinidade
+12,0.5645637004491816,0.66124441364675,Boosting sem nostalgia (11 atributos),afinidade
+13,0.5717868554158343,0.6507637931508099,Boosting sem nostalgia (11 atributos),afinidade
+14,0.5613393329314342,0.6618637372250551,Boosting sem nostalgia (11 atributos),afinidade
+15,0.555760425333604,0.6884360393111529,Boosting sem nostalgia (11 atributos),afinidade
+16,0.5536232187973649,0.6880078454613462,Boosting sem nostalgia (11 atributos),afinidade
+17,0.5707830527460143,0.6277698366902759,Boosting sem nostalgia (11 atributos),afinidade
+18,0.5660472344275791,0.6578780328197762,Boosting sem nostalgia (11 atributos),afinidade
+19,0.5549450543192743,0.6741469077221631,Boosting sem nostalgia (11 atributos),afinidade
+20,0.5513348233805134,0.7076034457540022,Boosting sem nostalgia (11 atributos),afinidade
+21,0.5703572370449644,0.6700006970431649,Boosting sem nostalgia (11 atributos),afinidade
+22,0.5690108885592066,0.651827759727277,Boosting sem nostalgia (11 atributos),afinidade
+23,0.5579658373728056,0.6915310032500077,Boosting sem nostalgia (11 atributos),afinidade
+24,0.5625044014112199,0.6610581016664995,Boosting sem nostalgia (11 atributos),afinidade
+25,0.5532023579147014,0.6772338593508367,Boosting sem nostalgia (11 atributos),afinidade
+1,0.441994077212082,0.5496125042283497,Boosting sem nostalgia (11 atributos),gênero
+2,0.4419116796038627,0.543065880460805,Boosting sem nostalgia (11 atributos),gênero
+3,0.4275286982360581,0.5435717611448627,Boosting sem nostalgia (11 atributos),gênero
+4,0.44185950224001963,0.5436126361686858,Boosting sem nostalgia (11 atributos),gênero
+5,0.44174484211936343,0.5537496641517163,Boosting sem nostalgia (11 atributos),gênero
+6,0.4247940297092931,0.5618191754472259,Boosting sem nostalgia (11 atributos),gênero
+7,0.4431517939115049,0.5582654148289097,Boosting sem nostalgia (11 atributos),gênero
+8,0.44454223234369317,0.5424930839181776,Boosting sem nostalgia (11 atributos),gênero
+9,0.44785993608289004,0.5621268788803654,Boosting sem nostalgia (11 atributos),gênero
+10,0.43369206044445513,0.5350027560985027,Boosting sem nostalgia (11 atributos),gênero
+11,0.44455909759252565,0.5354684732270037,Boosting sem nostalgia (11 atributos),gênero
+12,0.4523445916325675,0.5346444962502774,Boosting sem nostalgia (11 atributos),gênero
+13,0.4406667019362977,0.5515249390836989,Boosting sem nostalgia (11 atributos),gênero
+14,0.44038499621125776,0.54896123592592,Boosting sem nostalgia (11 atributos),gênero
+15,0.4406990474025556,0.5681214420834262,Boosting sem nostalgia (11 atributos),gênero
+16,0.424473252606355,0.559346239632295,Boosting sem nostalgia (11 atributos),gênero
+17,0.44634740303288417,0.5386753647420272,Boosting sem nostalgia (11 atributos),gênero
+18,0.4310211009291558,0.5340659705449434,Boosting sem nostalgia (11 atributos),gênero
+19,0.4260458621377132,0.542975581211952,Boosting sem nostalgia (11 atributos),gênero
+20,0.4369677589948667,0.5556392988055254,Boosting sem nostalgia (11 atributos),gênero
+21,0.44611342831735706,0.5530748152708289,Boosting sem nostalgia (11 atributos),gênero
+22,0.444714683093832,0.5192985850175573,Boosting sem nostalgia (11 atributos),gênero
+23,0.42470692710986924,0.5775743841523042,Boosting sem nostalgia (11 atributos),gênero
+24,0.4231255246203824,0.5538067387317273,Boosting sem nostalgia (11 atributos),gênero
+25,0.4389500531512628,0.5505914802997157,Boosting sem nostalgia (11 atributos),gênero
+1,0.5235959281251574,0.5972682536934966,Boosting sem nostalgia (11 atributos),idade
+2,0.5301177176539786,0.5827540428722234,Boosting sem nostalgia (11 atributos),idade
+3,0.5305758507699976,0.5814120900588199,Boosting sem nostalgia (11 atributos),idade
+4,0.5228955157662263,0.5986311450814813,Boosting sem nostalgia (11 atributos),idade
+5,0.46754094397678825,0.5907539911900621,Boosting sem nostalgia (11 atributos),idade
+6,0.5324209549184759,0.6063821956186332,Boosting sem nostalgia (11 atributos),idade
+7,0.5225919794710217,0.6100995174020537,Boosting sem nostalgia (11 atributos),idade
+8,0.5310806559544454,0.5731951440226937,Boosting sem nostalgia (11 atributos),idade
+9,0.5276387284430988,0.5954287129876428,Boosting sem nostalgia (11 atributos),idade
+10,0.5338779964948099,0.5872641570844894,Boosting sem nostalgia (11 atributos),idade
+11,0.5293545559301718,0.5763631032830382,Boosting sem nostalgia (11 atributos),idade
+12,0.5316919919146346,0.5761847680244047,Boosting sem nostalgia (11 atributos),idade
+13,0.46417110398601835,0.5945662525334436,Boosting sem nostalgia (11 atributos),idade
+14,0.5308007242532033,0.5982927885821626,Boosting sem nostalgia (11 atributos),idade
+15,0.5225829587429576,0.6113767978515966,Boosting sem nostalgia (11 atributos),idade
+16,0.5315243927796868,0.5998952035952341,Boosting sem nostalgia (11 atributos),idade
+17,0.5291212740511523,0.5824516244889019,Boosting sem nostalgia (11 atributos),idade
+18,0.5292603339133876,0.5833828849770932,Boosting sem nostalgia (11 atributos),idade
+19,0.5291311581814938,0.5901797526439116,Boosting sem nostalgia (11 atributos),idade
+20,0.521806016883097,0.6072293362639559,Boosting sem nostalgia (11 atributos),idade
+21,0.5278223712398387,0.5887151744947305,Boosting sem nostalgia (11 atributos),idade
+22,0.5331276679418859,0.5681237248236274,Boosting sem nostalgia (11 atributos),idade
+23,0.5197957180734938,0.6269908290143547,Boosting sem nostalgia (11 atributos),idade
+24,0.4656712155397144,0.5980764472536351,Boosting sem nostalgia (11 atributos),idade
+25,0.523686480398473,0.5944663163985922,Boosting sem nostalgia (11 atributos),idade
+1,0.5325878583337976,0.5999545295722581,Boosting sem nostalgia (11 atributos),ano
+2,0.5362439272084651,0.59269022748565,Boosting sem nostalgia (11 atributos),ano
+3,0.5365851934017773,0.5882490118325733,Boosting sem nostalgia (11 atributos),ano
+4,0.5295515117031901,0.6089047666383737,Boosting sem nostalgia (11 atributos),ano
+5,0.5360417437013963,0.5945610131222525,Boosting sem nostalgia (11 atributos),ano
+6,0.5393821714168996,0.6120124043754651,Boosting sem nostalgia (11 atributos),ano
+7,0.5319340156381304,0.611819668741705,Boosting sem nostalgia (11 atributos),ano
+8,0.5339429028050082,0.5908845379776404,Boosting sem nostalgia (11 atributos),ano
+9,0.5341736245288827,0.5990749716828009,Boosting sem nostalgia (11 atributos),ano
+10,0.5371447352640685,0.5896111323436505,Boosting sem nostalgia (11 atributos),ano
+11,0.5354621388254444,0.583729728627123,Boosting sem nostalgia (11 atributos),ano
+12,0.5444230566546191,0.5869564566333618,Boosting sem nostalgia (11 atributos),ano
+13,0.5324060240523775,0.6021144771324795,Boosting sem nostalgia (11 atributos),ano
+14,0.5305771829659015,0.607577334762621,Boosting sem nostalgia (11 atributos),ano
+15,0.5283899683445644,0.6212070638277718,Boosting sem nostalgia (11 atributos),ano
+16,0.5346244707827376,0.5964176504506231,Boosting sem nostalgia (11 atributos),ano
+17,0.5352072738784562,0.593161476484057,Boosting sem nostalgia (11 atributos),ano
+18,0.5360984683728431,0.5906877206673097,Boosting sem nostalgia (11 atributos),ano
+19,0.533218606946123,0.5979582201246807,Boosting sem nostalgia (11 atributos),ano
+20,0.5307237390787255,0.6128248791541425,Boosting sem nostalgia (11 atributos),ano
+21,0.5358922388206646,0.5915927619425059,Boosting sem nostalgia (11 atributos),ano
+22,0.5456525370185129,0.576423955103574,Boosting sem nostalgia (11 atributos),ano
+23,0.525984146882039,0.63265495773717,Boosting sem nostalgia (11 atributos),ano
+24,0.5314428123175937,0.60631227310509,Boosting sem nostalgia (11 atributos),ano
+25,0.531143854512882,0.6017537120516585,Boosting sem nostalgia (11 atributos),ano
+1,0.46434638073129875,0.5684395327369914,Boosting sem nostalgia (11 atributos),contagens
+2,0.44893792309211,0.5565537564654792,Boosting sem nostalgia (11 atributos),contagens
+3,0.47112019752140316,0.5613831002479632,Boosting sem nostalgia (11 atributos),contagens
+4,0.46458199642894993,0.5671538005758032,Boosting sem nostalgia (11 atributos),contagens
+5,0.46174457388562634,0.5766178146688328,Boosting sem nostalgia (11 atributos),contagens
+6,0.44483265726693677,0.5812031682461258,Boosting sem nostalgia (11 atributos),contagens
+7,0.46733953370930775,0.5699769448484622,Boosting sem nostalgia (11 atributos),contagens
+8,0.4511351981367515,0.5552069299781724,Boosting sem nostalgia (11 atributos),contagens
+9,0.4483929712711017,0.5773129208268947,Boosting sem nostalgia (11 atributos),contagens
+10,0.46904330346015716,0.5531181451279916,Boosting sem nostalgia (11 atributos),contagens
+11,0.4528108726927793,0.5460834179928898,Boosting sem nostalgia (11 atributos),contagens
+12,0.4506918624098431,0.5452135927093786,Boosting sem nostalgia (11 atributos),contagens
+13,0.4512162673632769,0.57492014688769,Boosting sem nostalgia (11 atributos),contagens
+14,0.4505711703695812,0.5681073754180469,Boosting sem nostalgia (11 atributos),contagens
+15,0.44595674012383457,0.5765705418679405,Boosting sem nostalgia (11 atributos),contagens
+16,0.4482862457339654,0.5781173152116229,Boosting sem nostalgia (11 atributos),contagens
+17,0.4550088112609684,0.552949840028714,Boosting sem nostalgia (11 atributos),contagens
+18,0.45555868328488236,0.5489527245799665,Boosting sem nostalgia (11 atributos),contagens
+19,0.4461240718513853,0.5713591792983072,Boosting sem nostalgia (11 atributos),contagens
+20,0.45076477889994926,0.5618659000570583,Boosting sem nostalgia (11 atributos),contagens
+21,0.4553965066050038,0.5609615151508442,Boosting sem nostalgia (11 atributos),contagens
+22,0.4734168212496456,0.539703246194131,Boosting sem nostalgia (11 atributos),contagens
+23,0.4642677081041376,0.5935858070873035,Boosting sem nostalgia (11 atributos),contagens
+24,0.4510370677258458,0.5706239586147343,Boosting sem nostalgia (11 atributos),contagens
+25,0.45058498907076877,0.5693642113167291,Boosting sem nostalgia (11 atributos),contagens
+1,0.45386348539844446,0.5250285731724338,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+2,0.41253324909317296,0.5174895028311828,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+3,0.4591661762137074,0.5095466766421286,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+4,0.41223721230214644,0.511667454782937,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+5,0.40009618587718737,0.5266083824839237,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+6,0.4117066025850893,0.5305396019970368,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+7,0.45693206022183874,0.5262051080455005,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+8,0.456778297820618,0.5086932856256375,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+9,0.4547785571352905,0.5329333639380491,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+10,0.4606255204029507,0.5108334824717174,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+11,0.45848634795357607,0.5112759188559636,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+12,0.4597737681943919,0.5056125355708354,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+13,0.397780257557117,0.5320132151948581,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+14,0.45548665812824957,0.5109882181197648,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+15,0.45510386446924556,0.5314019492073666,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+16,0.45248110274310266,0.527732940644453,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+17,0.46107233676739495,0.5067967140020851,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+18,0.4575821629768991,0.5099914559093212,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+19,0.45793262324166495,0.5228618614773456,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+20,0.411142722982613,0.5239487528797812,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+21,0.39904852727277734,0.5196557762175426,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+22,0.46283121544212075,0.4884840675516931,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+23,0.3949845880996131,0.540662217502709,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+24,0.4573703497871449,0.523821609605401,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+25,0.45425977178417515,0.5303153206442835,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+1,0.917534586896975,0.9473723922875918,Boosting com nostalgia (12 atributos),médias
+2,0.8986771305013364,1.0120118279626884,Boosting com nostalgia (12 atributos),médias
+3,0.9146719459451234,0.9616855830669178,Boosting com nostalgia (12 atributos),médias
+4,0.9057950230433344,0.9918137714812534,Boosting com nostalgia (12 atributos),médias
+5,0.9117203325523393,0.9791936969364337,Boosting com nostalgia (12 atributos),médias
+6,0.9119207131730062,0.9722043361561011,Boosting com nostalgia (12 atributos),médias
+7,0.9063099678767463,0.9848879146783126,Boosting com nostalgia (12 atributos),médias
+8,0.9135362938400101,0.9554025858650884,Boosting com nostalgia (12 atributos),médias
+9,0.9034106021520129,0.9976315712494146,Boosting com nostalgia (12 atributos),médias
+10,0.9059653014696761,0.972831536213505,Boosting com nostalgia (12 atributos),médias
+11,0.908930631648097,0.987274373427097,Boosting com nostalgia (12 atributos),médias
+12,0.9112159686108043,0.9698467081164074,Boosting com nostalgia (12 atributos),médias
+13,0.9037264091074688,1.003001925989433,Boosting com nostalgia (12 atributos),médias
+14,0.9111178201107472,0.9675135812077197,Boosting com nostalgia (12 atributos),médias
+15,0.9153059124620743,0.9474814276208625,Boosting com nostalgia (12 atributos),médias
+16,0.8985120038387023,0.9815547087392031,Boosting com nostalgia (12 atributos),médias
+17,0.9143165310274295,0.9594884063876368,Boosting com nostalgia (12 atributos),médias
+18,0.9072057902871895,0.9802433405515779,Boosting com nostalgia (12 atributos),médias
+19,0.8994747048884649,1.0081571308639161,Boosting com nostalgia (12 atributos),médias
+20,0.9172568809083879,0.9523731019671752,Boosting com nostalgia (12 atributos),médias
+21,0.9197825181832753,0.9248927986183005,Boosting com nostalgia (12 atributos),médias
+22,0.9014215476596987,0.973747295417051,Boosting com nostalgia (12 atributos),médias
+23,0.8994421466058912,1.0203579704779224,Boosting com nostalgia (12 atributos),médias
+24,0.9057916155840896,0.9916381909081092,Boosting com nostalgia (12 atributos),médias
+25,0.9121824335142159,0.9584059028909573,Boosting com nostalgia (12 atributos),médias
+1,0.543318068365356,0.6453358893933984,Boosting com nostalgia (12 atributos),afinidade
+2,0.5342351429124602,0.6659405383608412,Boosting com nostalgia (12 atributos),afinidade
+3,0.5390811105613,0.6475707926426284,Boosting com nostalgia (12 atributos),afinidade
+4,0.5378896235911811,0.6388889533277538,Boosting com nostalgia (12 atributos),afinidade
+5,0.5336247049882034,0.6433475514020491,Boosting com nostalgia (12 atributos),afinidade
+6,0.5374469204300305,0.6494764761633867,Boosting com nostalgia (12 atributos),afinidade
+7,0.5428747063884112,0.6565174228266827,Boosting com nostalgia (12 atributos),afinidade
+8,0.5317474396790097,0.6483023349687371,Boosting com nostalgia (12 atributos),afinidade
+9,0.5362747718077773,0.6726395324615144,Boosting com nostalgia (12 atributos),afinidade
+10,0.5484248248703,0.6225795201980863,Boosting com nostalgia (12 atributos),afinidade
+11,0.5320739738737224,0.6446036710344554,Boosting com nostalgia (12 atributos),afinidade
+12,0.5366005946834741,0.6492449875845683,Boosting com nostalgia (12 atributos),afinidade
+13,0.5392386006858203,0.6293992067030505,Boosting com nostalgia (12 atributos),afinidade
+14,0.5364372260929977,0.6324147890882041,Boosting com nostalgia (12 atributos),afinidade
+15,0.5297702122516494,0.6629400449915835,Boosting com nostalgia (12 atributos),afinidade
+16,0.5379831210296803,0.6612587155618582,Boosting com nostalgia (12 atributos),afinidade
+17,0.5408449609742262,0.6180002148214969,Boosting com nostalgia (12 atributos),afinidade
+18,0.5373794048593749,0.6326378122693089,Boosting com nostalgia (12 atributos),afinidade
+19,0.5410066482681101,0.6538633994391744,Boosting com nostalgia (12 atributos),afinidade
+20,0.5370450927136583,0.6725537047724585,Boosting com nostalgia (12 atributos),afinidade
+21,0.5436287606458174,0.6471525413623137,Boosting com nostalgia (12 atributos),afinidade
+22,0.5506401572197915,0.6234584994124669,Boosting com nostalgia (12 atributos),afinidade
+23,0.5286180630959765,0.6717895802284916,Boosting com nostalgia (12 atributos),afinidade
+24,0.5389097716368714,0.6428327526908669,Boosting com nostalgia (12 atributos),afinidade
+25,0.5373774953833406,0.6627239676755063,Boosting com nostalgia (12 atributos),afinidade
+1,0.4574685116643854,0.5281898471094983,Boosting com nostalgia (12 atributos),gênero
+2,0.460874286125213,0.5165066119117252,Boosting com nostalgia (12 atributos),gênero
+3,0.46050838504145836,0.514763687845176,Boosting com nostalgia (12 atributos),gênero
+4,0.417180299779347,0.5145171042707374,Boosting com nostalgia (12 atributos),gênero
+5,0.4029520363519182,0.5283646306191855,Boosting com nostalgia (12 atributos),gênero
+6,0.400763808286294,0.5353614299553012,Boosting com nostalgia (12 atributos),gênero
+7,0.4598196297458221,0.5284188496414665,Boosting com nostalgia (12 atributos),gênero
+8,0.459340645877358,0.5096771096030278,Boosting com nostalgia (12 atributos),gênero
+9,0.4597643539485895,0.5355228470488442,Boosting com nostalgia (12 atributos),gênero
+10,0.46240415679773095,0.5165265409163198,Boosting com nostalgia (12 atributos),gênero
+11,0.4611291376288083,0.5130242071345199,Boosting com nostalgia (12 atributos),gênero
+12,0.4695417874278104,0.5091787003969859,Boosting com nostalgia (12 atributos),gênero
+13,0.45705555558275857,0.5368487805934783,Boosting com nostalgia (12 atributos),gênero
+14,0.45923395728016253,0.5189318045658814,Boosting com nostalgia (12 atributos),gênero
+15,0.40226043349393503,0.5342475578981583,Boosting com nostalgia (12 atributos),gênero
+16,0.45639953159060564,0.5329478814062456,Boosting com nostalgia (12 atributos),gênero
+17,0.46285292242337467,0.5102379626681091,Boosting com nostalgia (12 atributos),gênero
+18,0.4613891467370464,0.5158087186843431,Boosting com nostalgia (12 atributos),gênero
+19,0.4628573713935112,0.5203959472406536,Boosting com nostalgia (12 atributos),gênero
+20,0.4018678932117412,0.5176359995286552,Boosting com nostalgia (12 atributos),gênero
+21,0.4586544361484029,0.518586366074652,Boosting com nostalgia (12 atributos),gênero
+22,0.4674476436978112,0.49226277860906464,Boosting com nostalgia (12 atributos),gênero
+23,0.3987148978284813,0.5448776859917724,Boosting com nostalgia (12 atributos),gênero
+24,0.46009761849548614,0.5288318726216185,Boosting com nostalgia (12 atributos),gênero
+25,0.4624406550930501,0.5322590420577286,Boosting com nostalgia (12 atributos),gênero
+1,0.45404229775087684,0.5242254486203278,Boosting com nostalgia (12 atributos),idade
+2,0.45920121612234555,0.5153343037729993,Boosting com nostalgia (12 atributos),idade
+3,0.4591248149895213,0.5090366707198798,Boosting com nostalgia (12 atributos),idade
+4,0.4009155215119619,0.5092048495556977,Boosting com nostalgia (12 atributos),idade
+5,0.4564135213991227,0.5267958859093966,Boosting com nostalgia (12 atributos),idade
+6,0.41162522888507075,0.5294658077896445,Boosting com nostalgia (12 atributos),idade
+7,0.45758758447282877,0.524619481645211,Boosting com nostalgia (12 atributos),idade
+8,0.45754482548110453,0.5059163482295078,Boosting com nostalgia (12 atributos),idade
+9,0.4558339499846206,0.5332251480882888,Boosting com nostalgia (12 atributos),idade
+10,0.461285722660623,0.5095228069348635,Boosting com nostalgia (12 atributos),idade
+11,0.40421912845296315,0.503148018199956,Boosting com nostalgia (12 atributos),idade
+12,0.45971449889023314,0.5049518976922697,Boosting com nostalgia (12 atributos),idade
+13,0.4557675364681303,0.5378749558556434,Boosting com nostalgia (12 atributos),idade
+14,0.4564442026741926,0.5113186028398068,Boosting com nostalgia (12 atributos),idade
+15,0.39950104781207657,0.531912285628287,Boosting com nostalgia (12 atributos),idade
+16,0.45216364339252846,0.5285627434403919,Boosting com nostalgia (12 atributos),idade
+17,0.4608936519607236,0.5062311696047719,Boosting com nostalgia (12 atributos),idade
+18,0.457526270162191,0.5076067253451696,Boosting com nostalgia (12 atributos),idade
+19,0.40198788268928304,0.5202369288008253,Boosting com nostalgia (12 atributos),idade
+20,0.40021562427919427,0.516356031921555,Boosting com nostalgia (12 atributos),idade
+21,0.40062514556433887,0.5173587416933012,Boosting com nostalgia (12 atributos),idade
+22,0.4651046992332477,0.49021602746460574,Boosting com nostalgia (12 atributos),idade
+23,0.39549878686405815,0.542007331732576,Boosting com nostalgia (12 atributos),idade
+24,0.39781701909276374,0.5261545790399265,Boosting com nostalgia (12 atributos),idade
+25,0.45518549334540964,0.530504639784662,Boosting com nostalgia (12 atributos),idade
+1,0.45439593568091036,0.5241451561146728,Boosting com nostalgia (12 atributos),ano
+2,0.4022187293345396,0.5117081709498656,Boosting com nostalgia (12 atributos),ano
+3,0.4588533760488237,0.5096008716670833,Boosting com nostalgia (12 atributos),ano
+4,0.4011194489247741,0.5107850143006851,Boosting com nostalgia (12 atributos),ano
+5,0.4010532230677146,0.5258929482657795,Boosting com nostalgia (12 atributos),ano
+6,0.3993948072471729,0.5254194433638362,Boosting com nostalgia (12 atributos),ano
+7,0.45801749852948787,0.5243640862884706,Boosting com nostalgia (12 atributos),ano
+8,0.45677895635910487,0.5079114032702091,Boosting com nostalgia (12 atributos),ano
+9,0.45521429695820703,0.532070534647365,Boosting com nostalgia (12 atributos),ano
+10,0.4614225469032909,0.5102466927214344,Boosting com nostalgia (12 atributos),ano
+11,0.40539145712165486,0.5056586354413257,Boosting com nostalgia (12 atributos),ano
+12,0.4595817839422275,0.5045754310126139,Boosting com nostalgia (12 atributos),ano
+13,0.3979681333959514,0.5312012754857318,Boosting com nostalgia (12 atributos),ano
+14,0.4564197125234753,0.5109481777004377,Boosting com nostalgia (12 atributos),ano
+15,0.40016899136912804,0.5311636139945578,Boosting com nostalgia (12 atributos),ano
+16,0.4532739373132786,0.5282731614609176,Boosting com nostalgia (12 atributos),ano
+17,0.4171744503742781,0.506207435115898,Boosting com nostalgia (12 atributos),ano
+18,0.4034806307629345,0.5085639531690529,Boosting com nostalgia (12 atributos),ano
+19,0.4020949705111524,0.5178824787247301,Boosting com nostalgia (12 atributos),ano
+20,0.41420536563208377,0.5219705052684526,Boosting com nostalgia (12 atributos),ano
+21,0.40154713508732603,0.515672057071881,Boosting com nostalgia (12 atributos),ano
+22,0.4643372610288477,0.49021123814195905,Boosting com nostalgia (12 atributos),ano
+23,0.45751472856345266,0.5395191649666303,Boosting com nostalgia (12 atributos),ano
+24,0.45697280827744496,0.5243631157573235,Boosting com nostalgia (12 atributos),ano
+25,0.45369499108365446,0.528087566034806,Boosting com nostalgia (12 atributos),ano
+1,0.4868514863603284,0.548297974187435,Boosting com nostalgia (12 atributos),contagens
+2,0.48665180940682357,0.5378707591545562,Boosting com nostalgia (12 atributos),contagens
+3,0.43141195341873934,0.5379834836137447,Boosting com nostalgia (12 atributos),contagens
+4,0.4913152778215123,0.5359198092259413,Boosting com nostalgia (12 atributos),contagens
+5,0.42421419411744,0.5615728805793875,Boosting com nostalgia (12 atributos),contagens
+6,0.4896643476211587,0.5639235390529997,Boosting com nostalgia (12 atributos),contagens
+7,0.44671070407022684,0.5475967188022599,Boosting com nostalgia (12 atributos),contagens
+8,0.48549466353107706,0.53119736654362,Boosting com nostalgia (12 atributos),contagens
+9,0.4833573829079677,0.5579767247618515,Boosting com nostalgia (12 atributos),contagens
+10,0.484813535508683,0.5370455305485087,Boosting com nostalgia (12 atributos),contagens
+11,0.49106512711524863,0.5359759383790366,Boosting com nostalgia (12 atributos),contagens
+12,0.4443082481002085,0.5321969436731674,Boosting com nostalgia (12 atributos),contagens
+13,0.4840007942540729,0.562032840898677,Boosting com nostalgia (12 atributos),contagens
+14,0.48946792045681725,0.5414599326786718,Boosting com nostalgia (12 atributos),contagens
+15,0.4819653378229938,0.560354187718605,Boosting com nostalgia (12 atributos),contagens
+16,0.42631314075499016,0.5408963660929121,Boosting com nostalgia (12 atributos),contagens
+17,0.43018154935018926,0.5311772705299591,Boosting com nostalgia (12 atributos),contagens
+18,0.48680638968719236,0.5379964110232129,Boosting com nostalgia (12 atributos),contagens
+19,0.4269819157837674,0.5508861252584187,Boosting com nostalgia (12 atributos),contagens
+20,0.4888955875381638,0.5427658312399107,Boosting com nostalgia (12 atributos),contagens
+21,0.4286949695005012,0.5366988987323214,Boosting com nostalgia (12 atributos),contagens
+22,0.4488583464300634,0.5176132462312243,Boosting com nostalgia (12 atributos),contagens
+23,0.4400339620903871,0.5673030952508119,Boosting com nostalgia (12 atributos),contagens
+24,0.48518777733394786,0.5516118079140152,Boosting com nostalgia (12 atributos),contagens
+25,0.4827595520218807,0.5533313236093657,Boosting com nostalgia (12 atributos),contagens
+1,0.43695815942185773,0.5460267710298568,Boosting com nostalgia (12 atributos),idade no lançamento
+2,0.4394084684350546,0.5400300727892277,Boosting com nostalgia (12 atributos),idade no lançamento
+3,0.4244705427255694,0.5340331847832063,Boosting com nostalgia (12 atributos),idade no lançamento
+4,0.4228570246011906,0.547946525536885,Boosting com nostalgia (12 atributos),idade no lançamento
+5,0.4228956186137375,0.544240736366351,Boosting com nostalgia (12 atributos),idade no lançamento
+6,0.4357532385083912,0.5530195219307497,Boosting com nostalgia (12 atributos),idade no lançamento
+7,0.43933001553480544,0.5547253052576074,Boosting com nostalgia (12 atributos),idade no lançamento
+8,0.425010480409133,0.5386220166698186,Boosting com nostalgia (12 atributos),idade no lançamento
+9,0.43807591740700624,0.5596843201532171,Boosting com nostalgia (12 atributos),idade no lançamento
+10,0.4261648206401157,0.5250230574563465,Boosting com nostalgia (12 atributos),idade no lançamento
+11,0.42767316609214306,0.5245967779675549,Boosting com nostalgia (12 atributos),idade no lançamento
+12,0.4416088034107464,0.5310718686902759,Boosting com nostalgia (12 atributos),idade no lançamento
+13,0.42326473733316566,0.5541130212511717,Boosting com nostalgia (12 atributos),idade no lançamento
+14,0.41966177735641746,0.5429142586732443,Boosting com nostalgia (12 atributos),idade no lançamento
+15,0.4380463840121989,0.5641687909988897,Boosting com nostalgia (12 atributos),idade no lançamento
+16,0.4212017308668204,0.5557703650920063,Boosting com nostalgia (12 atributos),idade no lançamento
+17,0.4376581760501336,0.5260571687757085,Boosting com nostalgia (12 atributos),idade no lançamento
+18,0.4405474415451157,0.5314055282415245,Boosting com nostalgia (12 atributos),idade no lançamento
+19,0.4196254053068937,0.5429963251428745,Boosting com nostalgia (12 atributos),idade no lançamento
+20,0.43449503051513544,0.5580588759778641,Boosting com nostalgia (12 atributos),idade no lançamento
+21,0.44103272021441114,0.5495373378006406,Boosting com nostalgia (12 atributos),idade no lançamento
+22,0.4394205993492137,0.5174166977514821,Boosting com nostalgia (12 atributos),idade no lançamento
+23,0.43511342385547946,0.5799483482914138,Boosting com nostalgia (12 atributos),idade no lançamento
+24,0.41909219998072816,0.5493906190842384,Boosting com nostalgia (12 atributos),idade no lançamento
+25,0.43916466406723725,0.5480241333056506,Boosting com nostalgia (12 atributos),idade no lançamento

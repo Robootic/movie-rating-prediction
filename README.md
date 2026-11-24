@@ -77,6 +77,7 @@ python -m src.reference_linear
 python -m src.corrected_test
 python -m src.nostalgia_test
 python -m src.nostalgia_checks
+python -m src.ablation
 python -m src.final_submission
 ```
 
@@ -125,6 +126,18 @@ Antes de adotá-lo, verificamos que o resultado não depende do pressuposto de 2
 
 O modelo final é o **HistGradientBoostingRegressor com doze atributos construídos**: duas médias, afinidade, afinidade², dois indicadores de gênero, idade, ano linear, ano quadrático, os logaritmos das duas contagens e a idade no lançamento. Seu RMSE OOF repetido é **0,519532**. O script `python -m src.final_submission` refaz a seleção interna, ajusta a receita nas 4000 linhas e gera `submissions/submission_final.csv` com 2000 previsões válidas e cortadas em [0, 5].
 
+### Diagnóstico do modelo final
+
+O [notebook 12](notebooks/12_diagnostico_modelo_final.ipynb) separa os erros do modelo final por região dos dados:
+
+- **RMSE por subgrupo:** varia de cerca de 0,46 a 0,59, sem grupos com desempenho ruim. Os maiores erros estão em usuários e filmes com poucas avaliações, em filmes mal avaliados e em afinidade baixa.
+- **Viés:** o resíduo médio fica perto de zero em quase todas as faixas, e o modelo está bem calibrado entre previsões de 1,5 e 4,0. Resta um padrão: o pico da nostalgia ainda é subestimado em cerca de 0,09 estrela.
+- **Notas extremas:** quem deu 0 recebe previsão média de 1,1, e quem deu 5, de 4,6. É o comportamento esperado ao minimizar o erro quadrático diante do ruído irredutível.
+
+### Ablação dos atributos
+
+O [notebook 13](notebooks/13_ablacao.ipynb) retira um grupo de atributos por vez do boosting, com e sem nostalgia, e retreina o modelo nas mesmas 25 partições. Perda de $E_{CV}$ no modelo final ao retirar cada grupo: médias +0,46, afinidade +0,13, contagens +0,03 e idade no lançamento +0,03, todas significativas. Os indicadores de gênero são redundantes com a afinidade. Idade e ano custam cerca de 0,05 cada no modelo sem nostalgia, mas ficam redundantes no modelo final, porque a idade no lançamento carrega a interação entre eles. A ablação explica o modelo final e não foi usada para alterá-lo.
+
 ## Roteiro e estado dos notebooks
 
 | Notebook | Papel | Estado |
@@ -140,6 +153,8 @@ O modelo final é o **HistGradientBoostingRegressor com doze atributos construí
 | [09 Síntese](notebooks/09_sintese_investigacao.ipynb) | Consolidar e diagnosticar erros restantes | Executado, duas hipóteses propostas |
 | [10 Testes finais](notebooks/10_testes_finais.ipynb) | Idade, ano e contagens; teste de significância | Executado, receita de onze atributos |
 | [11 Nostalgia](notebooks/11_hipotese_nostalgia.ipynb) | Explicar a vantagem do boosting; verificações; modelo final e submissão | Executado, modelo final |
+| [12 Diagnóstico](notebooks/12_diagnostico_modelo_final.ipynb) | Erros do modelo final por subgrupo, calibração e notas extremas | Executado |
+| [13 Ablação](notebooks/13_ablacao.ipynb) | Quanto cada grupo de atributos contribui, com e sem nostalgia | Executado |
 
 As 25 partições externas são iguais para todos os modelos. A média das cinco previsões por observação serve apenas aos gráficos; não é a previsão pontuada. Ridge e boosting selecionam hiperparâmetros em três folds internos. Bayesian Ridge estima as precisões no treino com hiperparâmetros dos priors fixados.
 
@@ -150,12 +165,6 @@ As partições compartilham treino; variação e contagens de vitórias são des
 Idade, ano e contagens foram testados em alterações controladas. A receita vencedora usa informação dos dez atributos brutos em onze atributos construídos. Essa receita foi congelada e gerou a primeira submissão. A análise da nostalgia (notebook 11) veio depois, para explicar a vantagem do boosting, e levou ao modelo final atual.
 
 Os notebooks 01 e 02 preservam a exploração inicial e o protocolo anterior (5 × 3); `src/validation.py` é usado apenas pelo notebook 02.
-
-## Materiais de estudo e próximos passos
-
-- [Apresentação visual dos modelos](docs/modelos-bauhaus.html): slides em HTML com exemplos didáticos animados e controles interativos. Abra o arquivo no navegador.
-- [Próximos passos e plano de estudo](docs/proximos-passos.md): sequência dos experimentos, conceitos prioritários e revisão dos notebooks com a voz e a compreensão do grupo.
-- [Rascunho da apresentação](docs/apresentacao-cinemateca.html): ainda usa o protocolo antigo e tem slides de resultados com valores fictícios; precisa ser atualizado antes da apresentação.
 
 ## Referências
 
