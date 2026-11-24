@@ -1,0 +1,376 @@
+partição,l2_regularization,max_leaf_nodes,min_samples_leaf,modelo completo,grupo retirado
+1,0.0,15,60,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+2,0.0,15,60,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+3,0.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+4,0.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+5,0.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+6,0.0,15,60,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+7,0.0,15,60,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+8,0.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+9,10.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+10,0.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+11,0.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+12,10.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+13,0.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+14,0.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+15,0.0,15,60,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+16,0.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+17,0.0,15,60,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+18,10.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+19,0.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+20,0.0,15,60,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+21,10.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+22,0.0,15,60,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+23,10.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+24,0.0,15,20,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+25,0.0,15,60,Boosting sem nostalgia (11 atributos),nenhum (modelo completo)
+1,10.0,7,60,Boosting sem nostalgia (11 atributos),médias
+2,10.0,7,60,Boosting sem nostalgia (11 atributos),médias
+3,10.0,7,20,Boosting sem nostalgia (11 atributos),médias
+4,10.0,7,20,Boosting sem nostalgia (11 atributos),médias
+5,0.0,7,60,Boosting sem nostalgia (11 atributos),médias
+6,0.0,7,60,Boosting sem nostalgia (11 atributos),médias
+7,10.0,7,60,Boosting sem nostalgia (11 atributos),médias
+8,10.0,7,60,Boosting sem nostalgia (11 atributos),médias
+9,0.0,7,20,Boosting sem nostalgia (11 atributos),médias
+10,10.0,7,60,Boosting sem nostalgia (11 atributos),médias
+11,10.0,7,60,Boosting sem nostalgia (11 atributos),médias
+12,10.0,7,20,Boosting sem nostalgia (11 atributos),médias
+13,0.0,7,60,Boosting sem nostalgia (11 atributos),médias
+14,10.0,7,20,Boosting sem nostalgia (11 atributos),médias
+15,10.0,7,20,Boosting sem nostalgia (11 atributos),médias
+16,0.0,7,60,Boosting sem nostalgia (11 atributos),médias
+17,10.0,7,20,Boosting sem nostalgia (11 atributos),médias
+18,0.0,7,60,Boosting sem nostalgia (11 atributos),médias
+19,10.0,7,20,Boosting sem nostalgia (11 atributos),médias
+20,0.0,7,20,Boosting sem nostalgia (11 atributos),médias
+21,0.0,7,60,Boosting sem nostalgia (11 atributos),médias
+22,10.0,7,20,Boosting sem nostalgia (11 atributos),médias
+23,10.0,7,60,Boosting sem nostalgia (11 atributos),médias
+24,10.0,7,20,Boosting sem nostalgia (11 atributos),médias
+25,10.0,7,60,Boosting sem nostalgia (11 atributos),médias
+1,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+2,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+3,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+4,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+5,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+6,10.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+7,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+8,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+9,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+10,10.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+11,10.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+12,10.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+13,10.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+14,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+15,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+16,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+17,10.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+18,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+19,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+20,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+21,10.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+22,10.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+23,10.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+24,10.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+25,0.0,15,60,Boosting sem nostalgia (11 atributos),afinidade
+1,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+2,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+3,0.0,15,20,Boosting sem nostalgia (11 atributos),gênero
+4,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+5,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+6,0.0,15,20,Boosting sem nostalgia (11 atributos),gênero
+7,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+8,10.0,15,20,Boosting sem nostalgia (11 atributos),gênero
+9,10.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+10,0.0,15,20,Boosting sem nostalgia (11 atributos),gênero
+11,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+12,10.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+13,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+14,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+15,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+16,0.0,15,20,Boosting sem nostalgia (11 atributos),gênero
+17,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+18,0.0,15,20,Boosting sem nostalgia (11 atributos),gênero
+19,0.0,15,20,Boosting sem nostalgia (11 atributos),gênero
+20,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+21,10.0,15,20,Boosting sem nostalgia (11 atributos),gênero
+22,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+23,0.0,15,20,Boosting sem nostalgia (11 atributos),gênero
+24,0.0,15,20,Boosting sem nostalgia (11 atributos),gênero
+25,0.0,15,60,Boosting sem nostalgia (11 atributos),gênero
+1,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+2,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+3,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+4,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+5,0.0,15,20,Boosting sem nostalgia (11 atributos),idade
+6,0.0,7,60,Boosting sem nostalgia (11 atributos),idade
+7,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+8,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+9,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+10,10.0,7,20,Boosting sem nostalgia (11 atributos),idade
+11,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+12,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+13,0.0,15,20,Boosting sem nostalgia (11 atributos),idade
+14,10.0,7,20,Boosting sem nostalgia (11 atributos),idade
+15,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+16,10.0,7,20,Boosting sem nostalgia (11 atributos),idade
+17,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+18,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+19,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+20,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+21,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+22,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+23,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+24,0.0,15,20,Boosting sem nostalgia (11 atributos),idade
+25,0.0,7,20,Boosting sem nostalgia (11 atributos),idade
+1,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+2,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+3,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+4,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+5,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+6,0.0,7,60,Boosting sem nostalgia (11 atributos),ano
+7,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+8,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+9,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+10,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+11,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+12,10.0,7,20,Boosting sem nostalgia (11 atributos),ano
+13,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+14,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+15,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+16,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+17,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+18,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+19,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+20,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+21,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+22,10.0,7,20,Boosting sem nostalgia (11 atributos),ano
+23,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+24,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+25,0.0,7,20,Boosting sem nostalgia (11 atributos),ano
+1,0.0,15,60,Boosting sem nostalgia (11 atributos),contagens
+2,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+3,10.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+4,10.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+5,10.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+6,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+7,0.0,15,60,Boosting sem nostalgia (11 atributos),contagens
+8,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+9,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+10,10.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+11,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+12,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+13,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+14,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+15,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+16,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+17,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+18,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+19,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+20,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+21,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+22,10.0,15,60,Boosting sem nostalgia (11 atributos),contagens
+23,0.0,15,60,Boosting sem nostalgia (11 atributos),contagens
+24,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+25,0.0,15,20,Boosting sem nostalgia (11 atributos),contagens
+1,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+2,0.0,15,60,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+3,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+4,10.0,15,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+5,0.0,15,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+6,0.0,15,60,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+7,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+8,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+9,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+10,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+11,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+12,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+13,0.0,15,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+14,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+15,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+16,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+17,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+18,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+19,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+20,0.0,15,60,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+21,0.0,15,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+22,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+23,0.0,15,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+24,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+25,0.0,7,20,Boosting com nostalgia (12 atributos),nenhum (modelo completo)
+1,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+2,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+3,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+4,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+5,10.0,7,60,Boosting com nostalgia (12 atributos),médias
+6,10.0,7,60,Boosting com nostalgia (12 atributos),médias
+7,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+8,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+9,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+10,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+11,10.0,7,60,Boosting com nostalgia (12 atributos),médias
+12,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+13,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+14,10.0,7,60,Boosting com nostalgia (12 atributos),médias
+15,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+16,0.0,7,20,Boosting com nostalgia (12 atributos),médias
+17,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+18,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+19,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+20,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+21,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+22,0.0,7,20,Boosting com nostalgia (12 atributos),médias
+23,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+24,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+25,10.0,7,20,Boosting com nostalgia (12 atributos),médias
+1,10.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+2,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+3,10.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+4,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+5,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+6,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+7,10.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+8,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+9,10.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+10,10.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+11,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+12,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+13,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+14,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+15,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+16,10.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+17,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+18,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+19,10.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+20,10.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+21,10.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+22,10.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+23,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+24,0.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+25,10.0,15,60,Boosting com nostalgia (12 atributos),afinidade
+1,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+2,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+3,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+4,10.0,15,20,Boosting com nostalgia (12 atributos),gênero
+5,0.0,15,20,Boosting com nostalgia (12 atributos),gênero
+6,0.0,15,20,Boosting com nostalgia (12 atributos),gênero
+7,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+8,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+9,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+10,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+11,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+12,10.0,7,20,Boosting com nostalgia (12 atributos),gênero
+13,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+14,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+15,0.0,15,20,Boosting com nostalgia (12 atributos),gênero
+16,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+17,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+18,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+19,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+20,0.0,15,20,Boosting com nostalgia (12 atributos),gênero
+21,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+22,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+23,0.0,15,20,Boosting com nostalgia (12 atributos),gênero
+24,0.0,7,20,Boosting com nostalgia (12 atributos),gênero
+25,0.0,7,60,Boosting com nostalgia (12 atributos),gênero
+1,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+2,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+3,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+4,0.0,15,20,Boosting com nostalgia (12 atributos),idade
+5,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+6,0.0,15,60,Boosting com nostalgia (12 atributos),idade
+7,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+8,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+9,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+10,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+11,0.0,15,20,Boosting com nostalgia (12 atributos),idade
+12,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+13,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+14,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+15,0.0,15,20,Boosting com nostalgia (12 atributos),idade
+16,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+17,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+18,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+19,0.0,15,20,Boosting com nostalgia (12 atributos),idade
+20,0.0,15,20,Boosting com nostalgia (12 atributos),idade
+21,0.0,15,20,Boosting com nostalgia (12 atributos),idade
+22,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+23,0.0,15,20,Boosting com nostalgia (12 atributos),idade
+24,0.0,15,20,Boosting com nostalgia (12 atributos),idade
+25,0.0,7,20,Boosting com nostalgia (12 atributos),idade
+1,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+2,0.0,15,20,Boosting com nostalgia (12 atributos),ano
+3,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+4,0.0,15,20,Boosting com nostalgia (12 atributos),ano
+5,0.0,15,20,Boosting com nostalgia (12 atributos),ano
+6,0.0,15,20,Boosting com nostalgia (12 atributos),ano
+7,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+8,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+9,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+10,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+11,0.0,15,20,Boosting com nostalgia (12 atributos),ano
+12,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+13,0.0,15,20,Boosting com nostalgia (12 atributos),ano
+14,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+15,0.0,15,20,Boosting com nostalgia (12 atributos),ano
+16,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+17,10.0,15,20,Boosting com nostalgia (12 atributos),ano
+18,0.0,15,20,Boosting com nostalgia (12 atributos),ano
+19,0.0,15,20,Boosting com nostalgia (12 atributos),ano
+20,0.0,15,60,Boosting com nostalgia (12 atributos),ano
+21,0.0,15,20,Boosting com nostalgia (12 atributos),ano
+22,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+23,0.0,7,60,Boosting com nostalgia (12 atributos),ano
+24,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+25,0.0,7,20,Boosting com nostalgia (12 atributos),ano
+1,0.0,7,60,Boosting com nostalgia (12 atributos),contagens
+2,0.0,7,20,Boosting com nostalgia (12 atributos),contagens
+3,0.0,15,20,Boosting com nostalgia (12 atributos),contagens
+4,0.0,7,60,Boosting com nostalgia (12 atributos),contagens
+5,0.0,15,20,Boosting com nostalgia (12 atributos),contagens
+6,0.0,7,60,Boosting com nostalgia (12 atributos),contagens
+7,0.0,15,60,Boosting com nostalgia (12 atributos),contagens
+8,0.0,7,20,Boosting com nostalgia (12 atributos),contagens
+9,0.0,7,20,Boosting com nostalgia (12 atributos),contagens
+10,0.0,7,20,Boosting com nostalgia (12 atributos),contagens
+11,0.0,7,60,Boosting com nostalgia (12 atributos),contagens
+12,10.0,15,20,Boosting com nostalgia (12 atributos),contagens
+13,0.0,7,20,Boosting com nostalgia (12 atributos),contagens
+14,10.0,7,20,Boosting com nostalgia (12 atributos),contagens
+15,0.0,7,20,Boosting com nostalgia (12 atributos),contagens
+16,0.0,15,20,Boosting com nostalgia (12 atributos),contagens
+17,0.0,15,20,Boosting com nostalgia (12 atributos),contagens
+18,0.0,7,20,Boosting com nostalgia (12 atributos),contagens
+19,0.0,15,20,Boosting com nostalgia (12 atributos),contagens
+20,0.0,7,60,Boosting com nostalgia (12 atributos),contagens
+21,0.0,15,20,Boosting com nostalgia (12 atributos),contagens
+22,10.0,15,20,Boosting com nostalgia (12 atributos),contagens
+23,10.0,15,20,Boosting com nostalgia (12 atributos),contagens
+24,0.0,7,20,Boosting com nostalgia (12 atributos),contagens
+25,0.0,7,20,Boosting com nostalgia (12 atributos),contagens
+1,0.0,15,60,Boosting com nostalgia (12 atributos),idade no lançamento
+2,0.0,15,60,Boosting com nostalgia (12 atributos),idade no lançamento
+3,0.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+4,0.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+5,0.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+6,0.0,15,60,Boosting com nostalgia (12 atributos),idade no lançamento
+7,0.0,15,60,Boosting com nostalgia (12 atributos),idade no lançamento
+8,0.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+9,10.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+10,0.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+11,0.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+12,10.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+13,0.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+14,0.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+15,0.0,15,60,Boosting com nostalgia (12 atributos),idade no lançamento
+16,0.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+17,0.0,15,60,Boosting com nostalgia (12 atributos),idade no lançamento
+18,10.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+19,0.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+20,0.0,15,60,Boosting com nostalgia (12 atributos),idade no lançamento
+21,10.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+22,0.0,15,60,Boosting com nostalgia (12 atributos),idade no lançamento
+23,10.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+24,0.0,15,20,Boosting com nostalgia (12 atributos),idade no lançamento
+25,0.0,15,60,Boosting com nostalgia (12 atributos),idade no lançamento
