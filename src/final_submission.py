@@ -147,8 +147,8 @@ def main():
         f"mín={prediction.min():.6f}, média={prediction.mean():.6f}, "
         f"máx={prediction.max():.6f}"
     )
-    print("Submissão salva em:", destination)
-    print("Metadados salvos em:", metadata_path)
+    print("Submissão salva em:", destination.relative_to(ROOT))
+    print("Metadados salvos em:", metadata_path.relative_to(ROOT))
 
 
 if __name__ == "__main__":

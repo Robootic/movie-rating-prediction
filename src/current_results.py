@@ -56,4 +56,4 @@ def save_run(root, notebook, frame, target, predictions, by_fold,
         json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8'
     )
     np.savez_compressed(destination / (notebook + '.npz'), **arrays)
-    print('Resultados verificados e salvos em', destination / (notebook + '.json'))
+    print('Resultados verificados e salvos em', (destination / (notebook + '.json')).relative_to(root))
