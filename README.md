@@ -125,6 +125,14 @@ Antes de adotá-lo, verificamos que o resultado não depende do pressuposto de 2
 
 O modelo final é o **HistGradientBoostingRegressor com doze atributos construídos**: duas médias, afinidade, afinidade², dois indicadores de gênero, idade, ano linear, ano quadrático, os logaritmos das duas contagens e a idade no lançamento. Seu RMSE OOF repetido é **0,519532**. O script `python -m src.final_submission` refaz a seleção interna, ajusta a receita nas 4000 linhas e gera `submissions/submission_final.csv` com 2000 previsões válidas e cortadas em [0, 5].
 
+### Diagnóstico do modelo final
+
+O [notebook 12](notebooks/12_diagnostico_modelo_final.ipynb) separa os erros do modelo final por região dos dados:
+
+- **RMSE por subgrupo:** varia de cerca de 0,46 a 0,59, sem grupos com desempenho ruim. Os maiores erros estão em usuários e filmes com poucas avaliações, em filmes mal avaliados e em afinidade baixa.
+- **Viés:** o resíduo médio fica perto de zero em quase todas as faixas, e o modelo está bem calibrado entre previsões de 1,5 e 4,0. Resta um padrão: o pico da nostalgia ainda é subestimado em cerca de 0,09 estrela.
+- **Notas extremas:** quem deu 0 recebe previsão média de 1,1, e quem deu 5, de 4,6. É o comportamento esperado ao minimizar o erro quadrático diante do ruído irredutível.
+
 ## Roteiro e estado dos notebooks
 
 | Notebook | Papel | Estado |
@@ -140,6 +148,7 @@ O modelo final é o **HistGradientBoostingRegressor com doze atributos construí
 | [09 Síntese](notebooks/09_sintese_investigacao.ipynb) | Consolidar e diagnosticar erros restantes | Executado, duas hipóteses propostas |
 | [10 Testes finais](notebooks/10_testes_finais.ipynb) | Idade, ano e contagens; teste de significância | Executado, receita de onze atributos |
 | [11 Nostalgia](notebooks/11_hipotese_nostalgia.ipynb) | Explicar a vantagem do boosting; verificações; modelo final e submissão | Executado, modelo final |
+| [12 Diagnóstico](notebooks/12_diagnostico_modelo_final.ipynb) | Erros do modelo final por subgrupo, calibração e notas extremas | Executado |
 
 As 25 partições externas são iguais para todos os modelos. A média das cinco previsões por observação serve apenas aos gráficos; não é a previsão pontuada. Ridge e boosting selecionam hiperparâmetros em três folds internos. Bayesian Ridge estima as precisões no treino com hiperparâmetros dos priors fixados.
 
