@@ -57,7 +57,7 @@ def main():
     destination = ROOT / "results" / "rodada_atual" / "sensibilidade_ridge.csv"
     result.to_csv(destination, index=False)
     print(result.to_string(index=False, float_format=lambda value: f"{value:.6f}"))
-    print("Resultado salvo em:", destination)
+    print("Resultado salvo em:", destination.relative_to(ROOT))
 
 
 if __name__ == "__main__":
