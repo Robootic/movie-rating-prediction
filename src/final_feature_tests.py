@@ -82,9 +82,9 @@ def evaluate_feature_sets(frame, y, folds):
                 "modelo": name,
                 "n_atributos": len(features),
                 "RMSE OOF repetido": clipped_rmse(y, repeated),
-                "RMSE validação médio": float(np.mean(fold_scores)),
-                "desvio entre partições": float(np.std(fold_scores, ddof=1)),
-                "RMSE treino médio": float(np.mean(train_scores)),
+                "E_CV": float(np.mean(fold_scores)),
+                "desvio_E_CV": float(np.std(fold_scores, ddof=1)),
+                "E_in": float(np.mean(train_scores)),
             }
         )
     return pd.DataFrame(rows).sort_values("RMSE OOF repetido"), predictions
@@ -140,16 +140,16 @@ def compare_procedures(frame, y, folds, features):
                 {
                     "modelo": name,
                     "partição": partition + 1,
-                    "RMSE treino": clipped_rmse(y[train], pred_train),
-                    "RMSE validação": clipped_rmse(y[valid], pred_valid),
+                    "E_in": clipped_rmse(y[train], pred_train),
+                    "E_CV": clipped_rmse(y[valid], pred_valid),
                 }
             )
 
     by_fold = pd.DataFrame(rows)
     summary = by_fold.groupby("modelo", sort=False).agg(
-        RMSE_validação_médio=("RMSE validação", "mean"),
-        desvio_partições=("RMSE validação", "std"),
-        RMSE_treino_médio=("RMSE treino", "mean"),
+        E_CV=("E_CV", "mean"),
+        desvio_E_CV=("E_CV", "std"),
+        E_in=("E_in", "mean"),
     )
     summary.insert(
         0,

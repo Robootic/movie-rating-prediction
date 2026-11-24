@@ -1,2 +1,2 @@
-modelo,RMSE OOF repetido,RMSE validação médio,desvio entre partições,RMSE treino médio
+modelo,RMSE OOF repetido,E_CV,desvio_E_CV,E_in
 "Regressão linear, dez atributos brutos",0.8240637868333076,0.8238441939635099,0.019415115531721636,0.8203521965902612

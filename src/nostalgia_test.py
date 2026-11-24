@@ -1,12 +1,12 @@
 """Testa a hipótese de nostalgia: idade do usuário no lançamento do filme.
 
 Usuários dão notas mais altas a filmes lançados quando tinham cerca de 10 a 20
-anos. Idade e ano entram separados na receita de onze colunas, então um modelo
+anos. Idade e ano entram separados na receita de onze atributos, então um modelo
 aditivo não representa esse pico. Aqui comparamos, nas mesmas 25 partições:
 
-- regressão com onze colunas, com e sem um "pico" de nostalgia, cujo centro e
+- regressão com onze atributos, com e sem um "pico" de nostalgia, cujo centro e
   largura são escolhidos em três folds internos (validação aninhada);
-- boosting com onze colunas, com e sem a idade no lançamento como coluna bruta
+- boosting com onze atributos, com e sem a idade no lançamento como atributo bruto
   (as árvores podem aprender o formato do pico sozinhas).
 """
 
@@ -24,12 +24,11 @@ from sklearn.preprocessing import StandardScaler
 
 from src.corrected_test import corrected_paired_ttest
 from src.final_feature_tests import BOOST_FIXED, BOOST_GRID, INNER_SPLITS, N_REPEATS, N_SPLITS
-from src.final_submission import FEATURES, SEED, add_features, clipped_rmse
+from src.final_submission import (AGE_AT_RELEASE, FEATURES, REFERENCE_YEAR, SEED,
+                                  add_features, clipped_rmse)
 
 
 ROOT = Path(__file__).resolve().parent.parent
-REFERENCE_YEAR = 2024  # último ano de lançamento; mudar a referência só desloca o centro
-AGE_AT_RELEASE = "age_at_release"
 NOSTALGIA_GRID = {
     "nostalgia__center": [10, 12, 14, 15, 16, 18, 20],
     "nostalgia__width": [3, 4, 6, 8, 10],
@@ -75,7 +74,7 @@ def inner_search(estimator, grid):
 
 
 def procedures():
-    """Nome -> (colunas usadas, função que cria o estimador com busca interna)."""
+    """Nome -> (atributos usados, função que cria o estimador com busca interna)."""
     with_age = FEATURES + [AGE_AT_RELEASE]
     linear = lambda: Pipeline([("scale", StandardScaler()), ("model", LinearRegression())])
     linear_bump = lambda: inner_search(
@@ -85,10 +84,10 @@ def procedures():
     )
     boosting = lambda: inner_search(HistGradientBoostingRegressor(**BOOST_FIXED), BOOST_GRID)
     return {
-        "Regressão 11 colunas": (FEATURES, linear),
-        "Regressão 11 colunas + nostalgia": (with_age, linear_bump),
-        "Boosting 11 colunas": (FEATURES, boosting),
-        "Boosting 11 colunas + idade no lançamento": (with_age, boosting),
+        "Regressão 11 atributos": (FEATURES, linear),
+        "Regressão 11 atributos + nostalgia": (with_age, linear_bump),
+        "Boosting 11 atributos": (FEATURES, boosting),
+        "Boosting 11 atributos + idade no lançamento": (with_age, boosting),
     }
 
 
@@ -111,27 +110,27 @@ def main():
             repeated[name][partition // N_SPLITS, valid] = pred_valid
             rows.append({
                 "modelo": name, "partição": partition + 1,
-                "RMSE treino": clipped_rmse(y[train], pred_train),
-                "RMSE validação": clipped_rmse(y[valid], pred_valid),
+                "E_in": clipped_rmse(y[train], pred_train),
+                "E_CV": clipped_rmse(y[valid], pred_valid),
             })
         print("concluído:", name)
 
     by_fold = pd.DataFrame(rows)
     summary = by_fold.groupby("modelo", sort=False).agg(
-        RMSE_validação_médio=("RMSE validação", "mean"),
-        desvio_partições=("RMSE validação", "std"),
-        RMSE_treino_médio=("RMSE treino", "mean"),
+        E_CV=("E_CV", "mean"),
+        desvio_E_CV=("E_CV", "std"),
+        E_in=("E_in", "mean"),
     )
     summary.insert(0, "RMSE OOF repetido", [clipped_rmse(y, repeated[n]) for n in summary.index])
     summary = summary.reset_index()
 
-    fold_scores = {n: g.sort_values("partição")["RMSE validação"].to_numpy()
+    fold_scores = {n: g.sort_values("partição")["E_CV"].to_numpy()
                    for n, g in by_fold.groupby("modelo")}
     pairs = [
-        ("Regressão 11 colunas + nostalgia", "Regressão 11 colunas"),
-        ("Boosting 11 colunas + idade no lançamento", "Boosting 11 colunas"),
-        ("Regressão 11 colunas + nostalgia", "Boosting 11 colunas"),
-        ("Boosting 11 colunas + idade no lançamento", "Regressão 11 colunas + nostalgia"),
+        ("Regressão 11 atributos + nostalgia", "Regressão 11 atributos"),
+        ("Boosting 11 atributos + idade no lançamento", "Boosting 11 atributos"),
+        ("Regressão 11 atributos + nostalgia", "Boosting 11 atributos"),
+        ("Boosting 11 atributos + idade no lançamento", "Regressão 11 atributos + nostalgia"),
     ]
     tests = pd.DataFrame([
         {"comparação": f"{a} - {b}", **corrected_paired_ttest(fold_scores[a], fold_scores[b])}
