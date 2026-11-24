@@ -41,6 +41,7 @@ Idade, ano linear, ano quadrático e as duas contagens em log foram avaliados. A
 - **Reprodutibilidade.** Os testes corrigidos têm código (`src/corrected_test.py`). O boosting varia na quarta casa decimal entre computadores (0,544851 na primeira execução, 0,544933 na atual), porque algumas configurações da grade empatam quase exatamente; a regressão é idêntica. Os resultados em `results/rodada_atual` foram regenerados na execução atual.
 - **Diagnóstico do modelo final.** O notebook 12 separa os erros por subgrupo, testa a calibração e analisa as notas extremas. O erro restante é, em boa parte, ruído; resta um viés pequeno no pico da nostalgia.
 - **Ablação.** O notebook 13 retira um grupo de atributos por vez do boosting, com e sem nostalgia. Médias, afinidade, contagens e idade no lançamento são necessárias; gênero é redundante com a afinidade; idade e ano ficam redundantes depois que a idade no lançamento entra.
+- **Variante de classificação (24 de novembro).** O notebook 14 faz a parte opcional do enunciado: prever se o usuário gosta do filme (`stars ≥ 4`). A logística com o pico de nostalgia empata com o boosting classificador (erro de 12,1% contra 12,0%), e o modelo final de regressão com corte em 3,5 erra 11,6%. O modelo final e a submissão não mudam.
 - **Organização.** Os notebooks do roteiro antigo, o gerador do relatório e o material auxiliar foram removidos. Os termos foram padronizados: atributo, $E_{in}$ e $E_{CV}$.
 
 Pendências:

@@ -1,0 +1,18 @@
+modelo a,modelo b,métrica,diferença média (a − b),IC inferior,IC superior,p-valor,partições em que a é melhor
+"Logística, dez atributos brutos",Constante (proporção de treino),E_CV,-0.27035,-0.29241735327762425,-0.24828264672237568,8.249423443071153e-19,25
+"Logística, dez atributos brutos",Constante (proporção de treino),log-loss,-0.22598553687083495,-0.240049351003174,-0.21192172273849588,1.4645030406408995e-21,25
+"Logística, dez atributos brutos",Constante (proporção de treino),AUC,0.3604068287173362,0.3513542827723336,0.3694593746623388,6.295220261867358e-31,25
+"Logística, 11 atributos","Logística, dez atributos brutos",E_CV,-0.07085000000000001,-0.08384401827394428,-0.05785598172605575,4.66818481224954e-11,25
+"Logística, 11 atributos","Logística, dez atributos brutos",log-loss,-0.14815970233358206,-0.16445779989441908,-0.13186160477274503,7.595446120169731e-16,25
+"Logística, 11 atributos","Logística, dez atributos brutos",AUC,0.07674194208350779,0.06829359830180323,0.08519028586521235,7.727362634182132e-16,25
+"Logística, 11 atributos + pico de nostalgia","Logística, 11 atributos",E_CV,-0.0254,-0.032226466692589925,-0.018573533307410073,6.459318810961e-08,25
+"Logística, 11 atributos + pico de nostalgia","Logística, 11 atributos",log-loss,-0.05549663653364226,-0.06350853232955471,-0.047484740737729805,3.076854086953064e-13,25
+"Logística, 11 atributos + pico de nostalgia","Logística, 11 atributos",AUC,0.020299228242092383,0.017171461218006022,0.023426995266178745,1.242273312626288e-12,25
+"Boosting classificador, 12 atributos","Logística, 11 atributos",E_CV,-0.0263,-0.0369146238147278,-0.0156853761852722,3.116742453341576e-05,25
+"Boosting classificador, 12 atributos","Logística, 11 atributos",log-loss,-0.051269289203525775,-0.06162461697397212,-0.04091396143307943,3.218197650051248e-10,25
+"Boosting classificador, 12 atributos","Logística, 11 atributos",AUC,0.02048792465332189,0.01628631755092474,0.02468953175571904,4.338996201513914e-10,25
+"Boosting classificador, 12 atributos","Logística, 11 atributos + pico de nostalgia",E_CV,-0.0008999999999999997,-0.00981864068943117,0.00801864068943117,0.8367735027786032,14
+"Boosting classificador, 12 atributos","Logística, 11 atributos + pico de nostalgia",log-loss,0.004227347330116483,-0.005347988475739759,0.013802683135972726,0.3712642418065847,8
+"Boosting classificador, 12 atributos","Logística, 11 atributos + pico de nostalgia",AUC,0.00018869641122950753,-0.0033022764164831967,0.0036796692389422115,0.912100667663315,13
+"Boosting classificador, 12 atributos","Modelo final de regressão, corte em 3,5",E_CV,0.004050000000000001,-0.003456101068573518,0.01155610106857352,0.27648018933588225,5
+"Boosting classificador, 12 atributos","Modelo final de regressão, corte em 3,5",AUC,-0.0024082766765877485,-0.005441593207355327,0.0006250398541798301,0.11433850928904223,4

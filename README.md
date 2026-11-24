@@ -78,6 +78,7 @@ python -m src.corrected_test
 python -m src.nostalgia_test
 python -m src.nostalgia_checks
 python -m src.ablation
+python -m src.classification
 python -m src.final_submission
 ```
 
@@ -138,6 +139,21 @@ O [notebook 12](notebooks/12_diagnostico_modelo_final.ipynb) separa os erros do 
 
 O [notebook 13](notebooks/13_ablacao.ipynb) retira um grupo de atributos por vez do boosting, com e sem nostalgia, e retreina o modelo nas mesmas 25 partições. Perda de $E_{CV}$ no modelo final ao retirar cada grupo: médias +0,46, afinidade +0,13, contagens +0,03 e idade no lançamento +0,03, todas significativas. Os indicadores de gênero são redundantes com a afinidade. Idade e ano custam cerca de 0,05 cada no modelo sem nostalgia, mas ficam redundantes no modelo final, porque a idade no lançamento carrega a interação entre eles. A ablação explica o modelo final e não foi usada para alterá-lo.
 
+### Variante de classificação
+
+O [notebook 14](notebooks/14_classificacao_opcional.ipynb) trata a variante opcional do enunciado: prever se o usuário gosta do filme (`stars ≥ 4`), com as mesmas 25 partições e os mesmos atributos. A métrica principal é o erro de classificação; também medimos log-loss e AUC.
+
+| Modelo | Erro de classificação | AUC |
+|---|---:|---:|
+| Constante (sempre "gostou") | 0,487 | 0,500 |
+| Regressão logística, dez atributos brutos | 0,217 | 0,860 |
+| Regressão logística, 11 atributos | 0,146 | 0,937 |
+| Regressão logística, 11 atributos + pico de nostalgia | 0,121 | 0,957 |
+| Boosting classificador, 12 atributos | 0,120 | 0,958 |
+| Modelo final de regressão, "gostou" se a nota prevista ≥ 3,5 | 0,116 | 0,960 |
+
+A história da regressão se repete: a construção de atributos traz os maiores ganhos, e o boosting vence a logística de onze atributos. Com o pico de nostalgia, a logística empata com o boosting classificador (p = 0,84), com gap $E_{CV} - E_{in}$ dez vezes menor. O modelo final de regressão, com um corte na nota prevista, classifica tão bem quanto o classificador dedicado. Quase todos os erros estão nas notas 3 e 4, a fronteira entre gostar e não gostar. A classificação não altera o modelo final nem a submissão.
+
 ## Roteiro e estado dos notebooks
 
 | Notebook | Papel | Estado |
@@ -155,6 +171,7 @@ O [notebook 13](notebooks/13_ablacao.ipynb) retira um grupo de atributos por vez
 | [11 Nostalgia](notebooks/11_hipotese_nostalgia.ipynb) | Explicar a vantagem do boosting; verificações; modelo final e submissão | Executado, modelo final |
 | [12 Diagnóstico](notebooks/12_diagnostico_modelo_final.ipynb) | Erros do modelo final por subgrupo, calibração e notas extremas | Executado |
 | [13 Ablação](notebooks/13_ablacao.ipynb) | Quanto cada grupo de atributos contribui, com e sem nostalgia | Executado |
+| [14 Classificação](notebooks/14_classificacao_opcional.ipynb) | Variante opcional: prever se o usuário gosta do filme (`stars ≥ 4`) | Executado |
 
 As 25 partições externas são iguais para todos os modelos. A média das cinco previsões por observação serve apenas aos gráficos; não é a previsão pontuada. Ridge e boosting selecionam hiperparâmetros em três folds internos. Bayesian Ridge estima as precisões no treino com hiperparâmetros dos priors fixados.
 
