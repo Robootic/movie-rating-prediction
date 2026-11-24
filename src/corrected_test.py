@@ -1,12 +1,21 @@
 """Teste t pareado corrigido para partições de validação cruzada repetida.
 
-As 25 partições compartilham boa parte do treino, então as diferenças de RMSE
-entre dois modelos não são independentes e o teste t comum subestima a
-variância. A correção de Nadeau e Bengio (2003) multiplica a variância por
-(1/J + n_validação/n_treino) em vez de 1/J.
+Dois modelos avaliados nas mesmas J partições geram diferenças
+d_j = E_CV(a, j) - E_CV(b, j). As partições compartilham boa parte do treino
+(com 5 dobras, 3200 de 4000 linhas), então essas diferenças não são
+independentes e o teste t comum, com variância s²/J, subestima a incerteza.
+A correção de Nadeau e Bengio (2003) usa
+
+    t = média(d) / sqrt((1/J + n_validação/n_treino) * s²),
+
+comparado a uma t de Student com J - 1 graus de liberdade. Com J = 25 e
+n_validação/n_treino = 1/4, o erro padrão fica cerca de 2,7 vezes maior que no
+teste comum. A correção é aproximada e não protege contra o otimismo de
+escolher a melhor entre muitas variantes. Explicação completa e exemplo passo a
+passo: notebooks/10_testes_finais.ipynb, seção 3.
 
 Executar este módulo recalcula, a partir dos CSVs por partição em
-results/rodada_atual, os testes citados no relatório.
+results/rodada_atual, os testes da comparação final de onze atributos.
 """
 
 from pathlib import Path
@@ -44,16 +53,16 @@ def corrected_paired_ttest(a, b, test_train_ratio=TEST_TRAIN_RATIO, level=0.95):
 
 def by_partition(path, model):
     frame = pd.read_csv(path)
-    return frame[frame["modelo"] == model].sort_values("partição")["RMSE validação"].to_numpy()
+    return frame[frame["modelo"] == model].sort_values("partição")["E_CV"].to_numpy()
 
 
 def main():
     eleven = RESULTS / "testes_contagens_por_particao.csv"
     nine = RESULTS / "comparacao_final_por_particao.csv"
     comparisons = {
-        "Boosting 11 colunas - regressão 11 colunas": (
+        "Boosting 11 atributos - regressão 11 atributos": (
             by_partition(eleven, "Boosting"), by_partition(eleven, "Regressão comum")),
-        "Boosting 11 colunas - boosting 9 colunas": (
+        "Boosting 11 atributos - boosting 9 atributos": (
             by_partition(eleven, "Boosting"), by_partition(nine, "Boosting")),
     }
     result = pd.DataFrame(

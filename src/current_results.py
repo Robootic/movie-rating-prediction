@@ -32,14 +32,14 @@ def save_run(root, notebook, frame, target, predictions, by_fold,
         assert len(scores) == n_splits * n_repeats
         recomputed = [float(np.sqrt(np.mean((target[valid] - values[j // n_splits, valid]) ** 2)))
                       for j, (_, valid) in enumerate(partitions)]
-        np.testing.assert_allclose(recomputed, scores['RMSE validação'], atol=1e-12)
+        np.testing.assert_allclose(recomputed, scores['E_CV'], atol=1e-12)
         key = f'model_{i}'
         arrays[key] = values
         records.append({'name': name, 'array_key': key,
                         'rmse_oof': float(np.sqrt(np.mean((values - target) ** 2))),
                         'rmse_repeat': np.sqrt(np.mean((values - target) ** 2, axis=1)).tolist(),
                         'rmse_valid': recomputed,
-                        'rmse_train': scores['RMSE treino'].tolist()})
+                        'rmse_train': scores['E_in'].tolist()})
     source = root / 'notebooks' / (notebook + '.ipynb')
     cells = json.loads(source.read_text(encoding='utf-8'))['cells']
     code = '\n'.join(''.join(c['source']) for c in cells if c['cell_type'] == 'code')

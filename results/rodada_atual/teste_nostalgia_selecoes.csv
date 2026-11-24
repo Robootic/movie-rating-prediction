@@ -1,76 +1,76 @@
 modelo,partição,nostalgia__center,nostalgia__width,l2_regularization,max_leaf_nodes,min_samples_leaf
-Regressão 11 colunas + nostalgia,1,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,2,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,3,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,4,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,5,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,6,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,7,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,8,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,9,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,10,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,11,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,12,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,13,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,14,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,15,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,16,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,17,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,18,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,19,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,20,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,21,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,22,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,23,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,24,15.0,6.0,,,
-Regressão 11 colunas + nostalgia,25,15.0,6.0,,,
-Boosting 11 colunas,1,,,0.0,15.0,60.0
-Boosting 11 colunas,2,,,0.0,15.0,60.0
-Boosting 11 colunas,3,,,0.0,15.0,20.0
-Boosting 11 colunas,4,,,0.0,15.0,20.0
-Boosting 11 colunas,5,,,0.0,15.0,20.0
-Boosting 11 colunas,6,,,0.0,15.0,60.0
-Boosting 11 colunas,7,,,0.0,15.0,60.0
-Boosting 11 colunas,8,,,0.0,15.0,20.0
-Boosting 11 colunas,9,,,10.0,15.0,20.0
-Boosting 11 colunas,10,,,0.0,15.0,20.0
-Boosting 11 colunas,11,,,0.0,15.0,20.0
-Boosting 11 colunas,12,,,10.0,15.0,20.0
-Boosting 11 colunas,13,,,0.0,15.0,20.0
-Boosting 11 colunas,14,,,0.0,15.0,20.0
-Boosting 11 colunas,15,,,0.0,15.0,60.0
-Boosting 11 colunas,16,,,0.0,15.0,20.0
-Boosting 11 colunas,17,,,0.0,15.0,60.0
-Boosting 11 colunas,18,,,10.0,15.0,20.0
-Boosting 11 colunas,19,,,0.0,15.0,20.0
-Boosting 11 colunas,20,,,0.0,15.0,60.0
-Boosting 11 colunas,21,,,10.0,15.0,20.0
-Boosting 11 colunas,22,,,0.0,15.0,60.0
-Boosting 11 colunas,23,,,10.0,15.0,20.0
-Boosting 11 colunas,24,,,0.0,15.0,20.0
-Boosting 11 colunas,25,,,0.0,15.0,60.0
-Boosting 11 colunas + idade no lançamento,1,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,2,,,0.0,15.0,60.0
-Boosting 11 colunas + idade no lançamento,3,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,4,,,10.0,15.0,20.0
-Boosting 11 colunas + idade no lançamento,5,,,0.0,15.0,20.0
-Boosting 11 colunas + idade no lançamento,6,,,0.0,15.0,60.0
-Boosting 11 colunas + idade no lançamento,7,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,8,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,9,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,10,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,11,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,12,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,13,,,0.0,15.0,20.0
-Boosting 11 colunas + idade no lançamento,14,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,15,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,16,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,17,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,18,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,19,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,20,,,0.0,15.0,60.0
-Boosting 11 colunas + idade no lançamento,21,,,0.0,15.0,20.0
-Boosting 11 colunas + idade no lançamento,22,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,23,,,0.0,15.0,20.0
-Boosting 11 colunas + idade no lançamento,24,,,0.0,7.0,20.0
-Boosting 11 colunas + idade no lançamento,25,,,0.0,7.0,20.0
+Regressão 11 atributos + nostalgia,1,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,2,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,3,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,4,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,5,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,6,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,7,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,8,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,9,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,10,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,11,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,12,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,13,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,14,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,15,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,16,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,17,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,18,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,19,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,20,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,21,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,22,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,23,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,24,15.0,6.0,,,
+Regressão 11 atributos + nostalgia,25,15.0,6.0,,,
+Boosting 11 atributos,1,,,0.0,15.0,60.0
+Boosting 11 atributos,2,,,0.0,15.0,60.0
+Boosting 11 atributos,3,,,0.0,15.0,20.0
+Boosting 11 atributos,4,,,0.0,15.0,20.0
+Boosting 11 atributos,5,,,0.0,15.0,20.0
+Boosting 11 atributos,6,,,0.0,15.0,60.0
+Boosting 11 atributos,7,,,0.0,15.0,60.0
+Boosting 11 atributos,8,,,0.0,15.0,20.0
+Boosting 11 atributos,9,,,10.0,15.0,20.0
+Boosting 11 atributos,10,,,0.0,15.0,20.0
+Boosting 11 atributos,11,,,0.0,15.0,20.0
+Boosting 11 atributos,12,,,10.0,15.0,20.0
+Boosting 11 atributos,13,,,0.0,15.0,20.0
+Boosting 11 atributos,14,,,0.0,15.0,20.0
+Boosting 11 atributos,15,,,0.0,15.0,60.0
+Boosting 11 atributos,16,,,0.0,15.0,20.0
+Boosting 11 atributos,17,,,0.0,15.0,60.0
+Boosting 11 atributos,18,,,10.0,15.0,20.0
+Boosting 11 atributos,19,,,0.0,15.0,20.0
+Boosting 11 atributos,20,,,0.0,15.0,60.0
+Boosting 11 atributos,21,,,10.0,15.0,20.0
+Boosting 11 atributos,22,,,0.0,15.0,60.0
+Boosting 11 atributos,23,,,10.0,15.0,20.0
+Boosting 11 atributos,24,,,0.0,15.0,20.0
+Boosting 11 atributos,25,,,0.0,15.0,60.0
+Boosting 11 atributos + idade no lançamento,1,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,2,,,0.0,15.0,60.0
+Boosting 11 atributos + idade no lançamento,3,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,4,,,10.0,15.0,20.0
+Boosting 11 atributos + idade no lançamento,5,,,0.0,15.0,20.0
+Boosting 11 atributos + idade no lançamento,6,,,0.0,15.0,60.0
+Boosting 11 atributos + idade no lançamento,7,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,8,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,9,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,10,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,11,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,12,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,13,,,0.0,15.0,20.0
+Boosting 11 atributos + idade no lançamento,14,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,15,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,16,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,17,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,18,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,19,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,20,,,0.0,15.0,60.0
+Boosting 11 atributos + idade no lançamento,21,,,0.0,15.0,20.0
+Boosting 11 atributos + idade no lançamento,22,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,23,,,0.0,15.0,20.0
+Boosting 11 atributos + idade no lançamento,24,,,0.0,7.0,20.0
+Boosting 11 atributos + idade no lançamento,25,,,0.0,7.0,20.0

@@ -1,5 +1,5 @@
 {
-  "model": "HistGradientBoostingRegressor com todos os atributos brutos",
+  "model": "HistGradientBoostingRegressor com onze atributos + idade no lançamento",
   "features": [
     "user_avg_stars",
     "movie_avg_stars",
@@ -11,19 +11,21 @@
     "release_year_scaled",
     "release_year_squared",
     "log_user_n_ratings",
-    "log_movie_n_ratings"
+    "log_movie_n_ratings",
+    "age_at_release"
   ],
+  "reference_year": 2024,
   "validation_protocol": "RepeatedKFold 5 folds x 5 repetições, seed 2026",
-  "repeated_oof_rmse": 0.544851,
+  "repeated_oof_rmse": 0.519532,
   "selected_params": {
     "l2_regularization": 0.0,
     "max_leaf_nodes": 15,
-    "min_samples_leaf": 60
+    "min_samples_leaf": 20
   },
-  "inner_cv_rmse_full_train": 0.5463701876065662,
-  "selection_reason": "Após incluir idade, ano e as contagens em log1p, superou regressão e Ridge nas 25 partições e usa informação dos dez atributos brutos.",
-  "prediction_min": 0.40262083487755723,
-  "prediction_mean": 3.4085116108092874,
+  "inner_cv_rmse_full_train": 0.5178814643039041,
+  "selection_reason": "Com a idade no lançamento (hipótese de nostalgia), superou o boosting de onze atributos e a regressão com o pico de nostalgia nas 25 partições, com diferença significativa no teste t corrigido.",
+  "prediction_min": 0.21181922712346857,
+  "prediction_mean": 3.40630798880371,
   "prediction_max": 5.0,
   "rows": 2000,
   "versions": {
