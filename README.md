@@ -166,12 +166,6 @@ Idade, ano e contagens foram testados em alterações controladas. A receita ven
 
 Os notebooks 01 e 02 preservam a exploração inicial e o protocolo anterior (5 × 3); `src/validation.py` é usado apenas pelo notebook 02.
 
-## Materiais de estudo e próximos passos
-
-- [Apresentação visual dos modelos](docs/modelos-bauhaus.html): slides em HTML com exemplos didáticos animados e controles interativos. Abra o arquivo no navegador.
-- [Próximos passos e plano de estudo](docs/proximos-passos.md): sequência dos experimentos, conceitos prioritários e revisão dos notebooks com a voz e a compreensão do grupo.
-- [Rascunho da apresentação](docs/apresentacao-cinemateca.html): ainda usa o protocolo antigo e tem slides de resultados com valores fictícios; precisa ser atualizado antes da apresentação.
-
 ## Referências
 
 - Y. Abu-Mostafa, M. Magdon-Ismail e H.-T. Lin. *Learning from Data*. AMLBook, 2012.
