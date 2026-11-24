@@ -77,6 +77,7 @@ python -m src.reference_linear
 python -m src.corrected_test
 python -m src.nostalgia_test
 python -m src.nostalgia_checks
+python -m src.ablation
 python -m src.final_submission
 ```
 
@@ -133,6 +134,10 @@ O [notebook 12](notebooks/12_diagnostico_modelo_final.ipynb) separa os erros do 
 - **Viés:** o resíduo médio fica perto de zero em quase todas as faixas, e o modelo está bem calibrado entre previsões de 1,5 e 4,0. Resta um padrão: o pico da nostalgia ainda é subestimado em cerca de 0,09 estrela.
 - **Notas extremas:** quem deu 0 recebe previsão média de 1,1, e quem deu 5, de 4,6. É o comportamento esperado ao minimizar o erro quadrático diante do ruído irredutível.
 
+### Ablação dos atributos
+
+O [notebook 13](notebooks/13_ablacao.ipynb) retira um grupo de atributos por vez do boosting, com e sem nostalgia, e retreina o modelo nas mesmas 25 partições. Perda de $E_{CV}$ no modelo final ao retirar cada grupo: médias +0,46, afinidade +0,13, contagens +0,03 e idade no lançamento +0,03, todas significativas. Os indicadores de gênero são redundantes com a afinidade. Idade e ano custam cerca de 0,05 cada no modelo sem nostalgia, mas ficam redundantes no modelo final, porque a idade no lançamento carrega a interação entre eles. A ablação explica o modelo final e não foi usada para alterá-lo.
+
 ## Roteiro e estado dos notebooks
 
 | Notebook | Papel | Estado |
@@ -149,6 +154,7 @@ O [notebook 12](notebooks/12_diagnostico_modelo_final.ipynb) separa os erros do 
 | [10 Testes finais](notebooks/10_testes_finais.ipynb) | Idade, ano e contagens; teste de significância | Executado, receita de onze atributos |
 | [11 Nostalgia](notebooks/11_hipotese_nostalgia.ipynb) | Explicar a vantagem do boosting; verificações; modelo final e submissão | Executado, modelo final |
 | [12 Diagnóstico](notebooks/12_diagnostico_modelo_final.ipynb) | Erros do modelo final por subgrupo, calibração e notas extremas | Executado |
+| [13 Ablação](notebooks/13_ablacao.ipynb) | Quanto cada grupo de atributos contribui, com e sem nostalgia | Executado |
 
 As 25 partições externas são iguais para todos os modelos. A média das cinco previsões por observação serve apenas aos gráficos; não é a previsão pontuada. Ridge e boosting selecionam hiperparâmetros em três folds internos. Bayesian Ridge estima as precisões no treino com hiperparâmetros dos priors fixados.
 
