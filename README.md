@@ -152,7 +152,7 @@ O [notebook 14](notebooks/14_classificacao_opcional.ipynb) trata a variante opci
 | Boosting classificador, 12 atributos | 0,120 | 0,958 |
 | Modelo final de regressão, "gostou" se a nota prevista ≥ 3,5 | 0,116 | 0,960 |
 
-A história da regressão se repete: a construção de atributos traz os maiores ganhos, e o boosting vence a logística de onze atributos. Com o pico de nostalgia, a logística empata com o boosting classificador (p = 0,84), com gap $E_{CV} - E_{in}$ dez vezes menor. O modelo final de regressão, com um corte na nota prevista, classifica tão bem quanto o classificador dedicado. Quase todos os erros estão nas notas 3 e 4, a fronteira entre gostar e não gostar. A classificação não altera o modelo final nem a submissão.
+A história da regressão se repete: a construção de atributos traz os maiores ganhos, e o boosting vence a logística de onze atributos. Com o pico de nostalgia, a logística empata com o boosting classificador (p = 0,84), com gap $E_{CV} - E_{in}$ dez vezes menor. O modelo final de regressão, com um corte na nota prevista, classifica tão bem quanto o classificador dedicado. Quase todos os erros estão nas notas 3 e 4, a fronteira entre gostar e não gostar. No plano idade × ano de lançamento, a nostalgia aparece como uma faixa diagonal que a fronteira da logística só consegue contornar com o pico de nostalgia, um exemplo da transformação não linear do curso. A classificação não altera o modelo final nem a submissão.
 
 ## Roteiro e estado dos notebooks
 
