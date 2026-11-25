@@ -50,7 +50,6 @@ notebooks/     análises exploratórias e experimentos
 src/           código reutilizável: validação, atributos, testes e submissão
 results/       resultados das execuções completas e figuras do relatório
 submissions/   previsões geradas para o conjunto de teste
-docs/          documentos de organização do projeto
 ```
 
 ## Como reproduzir
