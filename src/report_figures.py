@@ -4,9 +4,12 @@ Salva em results/figuras/:
 - evolucao_rmse.pdf: RMSE OOF repetido dos principais modelos, da previsão constante
   ao boosting final, na ordem da investigação;
 - idade_lancamento.pdf: nota média observada em função da idade do usuário no
-  lançamento do filme, com o pico entre 10 e 20 anos.
+  lançamento do filme, com o pico entre 10 e 20 anos;
+- notas_extremas.pdf: previsão OOF média do modelo final para cada nota real, que
+  mostra as notas extremas puxadas para o centro (notebook 12, seção 4).
 
-Lê data/train.csv e results/rodada_atual; não treina nenhum modelo.
+Lê data/train.csv e results/rodada_atual; não treina nenhum modelo. Os eixos usam
+vírgula decimal, como o texto do relatório.
 """
 
 import json
@@ -15,6 +18,7 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.ticker import ScalarFormatter
 import numpy as np
 import pandas as pd
 
@@ -27,6 +31,18 @@ BIN_WIDTH = 4       # largura das faixas de idade no lançamento, em anos
 MIN_PAIRS = 30      # faixas com menos pares são omitidas
 STYLE = {"font.size": 8, "font.family": "serif", "mathtext.fontset": "cm",
          "axes.grid": True, "grid.alpha": 0.3}
+
+
+class CommaFormatter(ScalarFormatter):
+    """Rótulos dos eixos com vírgula decimal e casas uniformes (3,0; 3,2; ...)."""
+
+    def __call__(self, value, pos=None):
+        return super().__call__(value, pos).replace(".", ",")
+
+
+def decimal_comma(ax):
+    ax.xaxis.set_major_formatter(CommaFormatter())
+    ax.yaxis.set_major_formatter(CommaFormatter())
 
 
 def notebook_rmse(notebook, name):
@@ -77,6 +93,7 @@ def plot_evolution(table):
     ax.set_xlim(0, 1.36)
     ax.grid(axis="y", visible=False)
     ax.set_xlabel("RMSE OOF repetido (5 dobras × 5 repetições)")
+    ax.xaxis.set_major_formatter(CommaFormatter())
     handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in colors.values()]
     ax.legend(handles, colors.keys(), fontsize=7, loc="lower right")
     fig.tight_layout()
@@ -104,6 +121,31 @@ def plot_nostalgia(frame, curve):
     ax.text(1, 4.12, "depois →", ha="left", va="center", fontsize=6.5, color="0.35")
     ax.set(xlabel="idade do usuário no lançamento do filme (anos)", ylabel="nota observada média")
     ax.legend(fontsize=7, loc="upper right")
+    decimal_comma(ax)
+    fig.tight_layout()
+    return fig
+
+
+def extremes_table():
+    """Pares e previsão OOF média do modelo final para cada nota real (0 a 5)."""
+    arrays = np.load(RESULTS / "12_diagnostico_modelo_final.npz")
+    frame = pd.DataFrame({"nota": arrays["target"], "previsão": arrays["model_0"].mean(axis=0)})
+    return frame.groupby("nota")["previsão"].agg(pares="size", média="mean")
+
+
+def plot_extremes(table):
+    fig, ax = plt.subplots(figsize=(4.0, 2.6))
+    ax.plot([0, 5], [0, 5], "k--", lw=0.8, label="previsão perfeita")
+    ax.plot(table.index, table["média"], "o-", ms=4, lw=1.2, color="C0",
+            label="previsão média do modelo final")
+    for star, row in table.iterrows():
+        above = row["média"] > star  # rótulo do lado oposto à diagonal
+        ax.annotate(f"{row['média']:.1f}".replace(".", ","), (star, row["média"]),
+                    xytext=(-5, 5) if above else (5, -10), textcoords="offset points", fontsize=7,
+                    ha="right" if above else "left")
+    ax.set(xlabel="nota real", ylabel="previsão média (OOF)", xlim=(-0.3, 5.3), ylim=(-0.3, 5.3))
+    ax.legend(fontsize=7, loc="upper left")
+    decimal_comma(ax)
     fig.tight_layout()
     return fig
 
@@ -119,10 +161,14 @@ def main():
     curve = nostalgia_curve(frame)
     plot_nostalgia(frame, curve).savefig(DESTINATION / "idade_lancamento.pdf", bbox_inches="tight")
 
+    extremes = extremes_table()
+    plot_extremes(extremes).savefig(DESTINATION / "notas_extremas.pdf", bbox_inches="tight")
+
     band = frame["age_at_release"].between(10, 20)
     print(table.to_string(index=False, float_format=lambda x: f"{x:.4f}"))
     print(f"Nota média com 10 a 20 anos no lançamento: {frame.loc[band, 'stars'].mean():.2f} "
           f"({band.sum()} pares); demais pares: {frame.loc[~band, 'stars'].mean():.2f}")
+    print(extremes.round(3).to_string())
     print("Figuras salvas em:", DESTINATION.relative_to(ROOT))
 
 
