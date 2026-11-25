@@ -143,7 +143,7 @@ def plot_extremes(table):
         ax.annotate(f"{row['média']:.1f}".replace(".", ","), (star, row["média"]),
                     xytext=(-5, 5) if above else (5, -10), textcoords="offset points", fontsize=7,
                     ha="right" if above else "left")
-    ax.set(xlabel="nota real", ylabel="previsão média (OOF)", xlim=(-0.3, 5.3), ylim=(-0.3, 5.3))
+    ax.set(xlabel="nota real", ylabel="previsão média (OOF)", xlim=(-0.5, 5.5), ylim=(-0.3, 5.3))
     ax.legend(fontsize=7, loc="upper left")
     decimal_comma(ax)
     fig.tight_layout()
