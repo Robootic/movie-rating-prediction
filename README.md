@@ -48,7 +48,7 @@ Em seguida testamos idade, ano e as duas contagens, chegando a onze atributos co
 data/          dados (não versionados; ver data/README.md)
 notebooks/     análises exploratórias e experimentos
 src/           código reutilizável: validação, atributos, testes e submissão
-results/       resultados em JSON das execuções completas
+results/       resultados das execuções completas e figuras do relatório
 submissions/   previsões geradas para o conjunto de teste
 docs/          documentos de organização do projeto
 ```
@@ -79,6 +79,7 @@ python -m src.nostalgia_test
 python -m src.nostalgia_checks
 python -m src.ablation
 python -m src.final_submission
+python -m src.report_figures
 ```
 
 ## Resultados da rodada atual
